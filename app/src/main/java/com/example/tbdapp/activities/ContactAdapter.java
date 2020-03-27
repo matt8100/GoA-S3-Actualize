@@ -22,11 +22,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
         public TextView mTextView;
+        public TextView mFirstLetter;
 
         public ContactViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.contactImage);
             mTextView = itemView.findViewById(R.id.contactName);
+            mFirstLetter = itemView.findViewById(R.id.contactFirstLetter);
         }
     }
 
@@ -48,6 +50,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView.setText(currentItem.getText());
+        holder.mFirstLetter.setText(currentItem.getFirstLetter());
     }
 
     @Override

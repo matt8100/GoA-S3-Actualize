@@ -6,25 +6,43 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:id="@+id/contactFirstLetter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="36sp" />
 
         <ImageView
             android:id="@+id/contactImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/contactFirstLetter" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/contactName"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/contactImage"
             android:text="line 1"
-            android:id="@+id/contactName"
-
             android:textColor="@android:color/black"
             android:textSize="20sp" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
