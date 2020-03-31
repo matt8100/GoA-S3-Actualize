@@ -1,4 +1,4 @@
-package com.example.tbdapp.activities;
+package com.example.tbdapp.views;
 
 public class ContactItem {
     private int mImageResource;

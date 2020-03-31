@@ -1,4 +1,4 @@
-package com.example.tbdapp.activities;
+package com.example.tbdapp.views.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
-
-import org.xmlpull.v1.XmlPullParserException;
+import com.example.tbdapp.views.ContactItem;
 
 import java.util.ArrayList;
 
