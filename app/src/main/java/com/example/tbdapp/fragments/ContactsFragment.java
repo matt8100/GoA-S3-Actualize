@@ -1,4 +1,4 @@
-package com.example.tbdapp.activities;
+package com.example.tbdapp.fragments;
 
 import android.view.LayoutInflater;
 import android.os.Bundle;
@@ -11,15 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.activities.MainActivity;
+import com.example.tbdapp.views.ContactItem;
+import com.example.tbdapp.views.adapters.ContactAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-public class FragmentContacts extends Fragment {
+public class ContactsFragment extends Fragment {
     ArrayList<MainActivity.Advisor> advisorList;
 
-    public FragmentContacts(ArrayList<MainActivity.Advisor> advisors) {
+    public ContactsFragment(ArrayList<MainActivity.Advisor> advisors) {
         advisorList = advisors;
     }
 
