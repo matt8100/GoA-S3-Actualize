@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.tbdapp.R;
 import com.example.tbdapp.fragments.ContactsFragment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,15 +29,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Advisor object variable, given advisor's name, advisor type, and image
-    public class Advisor {
+    public class Advisor implements Serializable {
         public String advisorName;
         public String advisorType;
+        public String advisorDescription;
+        public String advisorSkills;
         public int advisorImage;
         public boolean isFavourite;
 
-        public Advisor(String advisorName, String advisorType, int advisorImage, boolean isFavourite) {
+        public Advisor(String advisorName, String advisorType, String advisorDescription, String advisorSkills, int advisorImage, boolean isFavourite) {
             this.advisorName = advisorName;
             this.advisorType = advisorType;
+            this.advisorDescription = advisorDescription;
+            this.advisorSkills = advisorSkills;
             this.advisorImage = advisorImage;
             this.isFavourite = isFavourite;
         }
@@ -47,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
         public String getAdvisorType() {
             return advisorType;
         }
+        public String getAdvisorDescription() {
+            return advisorDescription;
+        }
+        public String getAdvisorSkills() {
+            return advisorSkills;
+        }
         public int getAdvisorImage() {
             return advisorImage;
         }
@@ -56,18 +67,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createAdvisorProfiles() {
-        advisorList.add(new Advisor("Brittany Williams", "Financial", R.drawable.ic_face, true));
-        advisorList.add(new Advisor("Thomas Edwards", "Career", R.drawable.ic_face, true));
-        advisorList.add(new Advisor("Daniel Wilson", "Career", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Jaimie Miller", "Career", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Raiqah Johal", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Chris Peacock", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("George London", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Alexei Dubrivonich", "Financial", R.drawable.ic_face, true));
-        advisorList.add(new Advisor("Aetherbald the Great", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Pyńęł Rziąćic", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Cornelius II of Rome", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Rünerig Pfochmännördt", "Financial", R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Brittany Williams", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
+        advisorList.add(new Advisor("Thomas Edwards", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
+        advisorList.add(new Advisor("Daniel Wilson", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Jaimie Miller", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Raiqah Johal", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Chris Peacock", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("George London", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Alexei Dubrivonich", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
+        advisorList.add(new Advisor("Aetherbald the Great", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Pyńęł Rziąćic", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Cornelius II of Rome", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Rünerig Pfochmännördt", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
     }
 }
