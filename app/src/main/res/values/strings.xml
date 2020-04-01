@@ -1,10 +1,19 @@
 <resources>
+
     <string name="placeholderText">This text is placeholder text.</string>
     <string name="app_name">TBD App</string>
+
+    <!-- Tab Bar -->
     <string name="tab_item_explore">Explore</string>
     <string name="tab_item_messaging">Messaging</string>
     <string name="tab_item_userProfile">Profile</string>
+
+    <!-- Advisor Profile -->
     <string name="advisorProfile_header1">Description</string>
     <string name="advisorProfile_header2">Skills</string>
     <string name="advisorProfile_requestButton">Request</string>
+
+    <!-- Accessibility -->
+    <string name="advisorImage">Advisor Image</string>
+    <string name="backButton">Back Button</string>
 </resources>
