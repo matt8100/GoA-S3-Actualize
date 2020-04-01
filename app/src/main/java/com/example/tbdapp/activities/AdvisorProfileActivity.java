@@ -1,6 +1,5 @@
 package com.example.tbdapp.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -18,6 +17,8 @@ public class AdvisorProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advisor_profile);
+
+        getActionBar().hide();
 
         // declare variables
         final TextView advisorName = findViewById(R.id.advisorProfile_advisorName);
