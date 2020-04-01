@@ -44,9 +44,8 @@ public class ExploreFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new ExploreAdapter(advisorList);
+        mAdapter = new ExploreAdapter(getContext(), advisorList);
         recyclerView.setAdapter(mAdapter);
-
 
         return rootView;
     }

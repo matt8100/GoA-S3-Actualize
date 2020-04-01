@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         loadExploreFragment();
     }
 
-
     private void loadContactsFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout, new ContactsFragment(advisorList));
