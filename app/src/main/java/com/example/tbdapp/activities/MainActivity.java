@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.fragments.ContactsFragment;
+import com.example.tbdapp.fragments.ExploreFragment;
 
 import java.util.ArrayList;
 
@@ -21,8 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
         createAdvisorProfiles();
 
+//        loadContactsFragment();
+        loadExploreFragment();
+    }
+
+
+    private void loadContactsFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout, new ContactsFragment(advisorList));
+        ft.commit();
+    }
+
+    private void loadExploreFragment() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frameLayout, new ExploreFragment(advisorList));
         ft.commit();
     }
 
@@ -40,5 +53,6 @@ public class MainActivity extends AppCompatActivity {
         advisorList.add(new Advisor("Cornelius II of Rome", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         advisorList.add(new Advisor("Rünerig Pfochmännördt", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
+        
     }
 }
