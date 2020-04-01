@@ -37,6 +37,7 @@
             android:layout_height="24dp"
             android:layout_marginStart="18dp"
             android:background="#FFFFFF"
+            android:contentDescription="@string/backButton"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +47,10 @@
 
     <ImageView
         android:id="@+id/advisorProfile_advisorImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_marginTop="24dp"
+        android:contentDescription="@string/advisorImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
@@ -63,6 +65,7 @@
         android:fontFamily="sans-serif-condensed"
         android:paddingHorizontal="6dp"
         android:paddingVertical="10dp"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
