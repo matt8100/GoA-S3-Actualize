@@ -24,20 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         createAdvisorProfiles();
 
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AdvisorProfileActivity.class);
-                Bundle bundle = new Bundle();
-
-                bundle.putSerializable("advisor", advisorList.get(2));
-                intent.putExtras(bundle);
-
-                startActivity(intent);
-            }
-        });
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout, new ContactsFragment(advisorList));
         ft.commit();
