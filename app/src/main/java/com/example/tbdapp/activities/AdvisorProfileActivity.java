@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.activities.MainActivity.Advisor;
+import com.example.tbdapp.classes.Advisor;
 
 public class AdvisorProfileActivity extends AppCompatActivity {
 
@@ -38,11 +38,11 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         Advisor advisor = (Advisor) getIntent().getExtras().getSerializable("advisor");
 
         // set text
-        advisorName.setText(advisor.getAdvisorName());
-        advisorType.setText(advisor.getAdvisorType());
-        advisorImage.setImageResource(advisor.getAdvisorImage());
-        advisorDescription.setText(advisor.getAdvisorDescription());
-        advisorSkills.setText(advisor.getAdvisorSkills());
+        advisorName.setText(advisor.advisorName);
+        advisorType.setText(advisor.advisorType);
+        advisorImage.setImageResource(advisor.advisorImage);
+        advisorDescription.setText(advisor.advisorDescription);
+        advisorSkills.setText(advisor.advisorSkills);
 
     }
 
