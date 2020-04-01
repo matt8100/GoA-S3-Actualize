@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.activities.MainActivity;
-import com.example.tbdapp.classes.Advisor;
+import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.views.ContactItem;
 import com.example.tbdapp.views.adapters.ContactAdapter;
 

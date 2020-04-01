@@ -3,13 +3,10 @@ package com.example.tbdapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.classes.Advisor;
+import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.fragments.ContactsFragment;
 
 import java.util.ArrayList;

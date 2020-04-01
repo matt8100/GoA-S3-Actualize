@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.classes.Advisor;
+import com.example.tbdapp.models.Advisor;
 
 public class AdvisorProfileActivity extends AppCompatActivity {
 
