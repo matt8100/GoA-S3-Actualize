@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.activities.MainActivity;
+import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.views.ContactItem;
 import com.example.tbdapp.views.adapters.ContactAdapter;
 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ContactsFragment extends Fragment {
-    ArrayList<MainActivity.Advisor> advisorList;
+    ArrayList<Advisor> advisorList;
 
-    public ContactsFragment(ArrayList<MainActivity.Advisor> advisors) {
+    public ContactsFragment(ArrayList<Advisor> advisors) {
         advisorList = advisors;
     }
 
@@ -32,15 +32,15 @@ public class ContactsFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Advisor lists are temp storage of type Advisor object
-        ArrayList<MainActivity.Advisor> starredAdvisorList = new ArrayList<>();
-        ArrayList<MainActivity.Advisor> normalAdvisorList = new ArrayList<>();
+        ArrayList<Advisor> starredAdvisorList = new ArrayList<>();
+        ArrayList<Advisor> normalAdvisorList = new ArrayList<>();
         ArrayList<ContactItem> starredContactsList = new ArrayList<>();
         ArrayList<ContactItem> normalContactsList = new ArrayList<>();
 
         //Put all advisor names in an array, sort the array
         ArrayList<String> advisorNames = new ArrayList<>();
         for(int i=0;i<advisorList.size();i++) {
-            advisorNames.add(advisorList.get(i).getAdvisorName());
+            advisorNames.add(advisorList.get(i).advisorName);
         }
         Collections.sort(advisorNames);
 
@@ -48,24 +48,24 @@ public class ContactsFragment extends Fragment {
         for(int i=0;i<advisorNames.size();i++) {
             int indexOfAdvisor = 0;
             for (int j=0; j<advisorList.size();j++) {
-                if (advisorList.get(j).getAdvisorName() == advisorNames.get(i)) {
+                if (advisorList.get(j).advisorName == advisorNames.get(i)) {
                     //therefore: advisorName[i] corresponds to normalAdvisorList[j]
                     indexOfAdvisor = j;
                     break;
                 }
             }
-            if(advisorList.get(indexOfAdvisor).isFavourite()) {
+            if(advisorList.get(indexOfAdvisor).isFavourite) {
                 starredAdvisorList.add(advisorList.get(indexOfAdvisor));
             }else {
-                System.out.println(advisorList.get(indexOfAdvisor).getAdvisorName());
+                System.out.println(advisorList.get(indexOfAdvisor).advisorName);
                 normalAdvisorList.add(advisorList.get(indexOfAdvisor));
             }
         }
 
         //For all favourited advisors
         for(int i=0;i<starredAdvisorList.size();i++) {
-            int image = starredAdvisorList.get(i).getAdvisorImage();
-            String name = starredAdvisorList.get(i).getAdvisorName();
+            int image = starredAdvisorList.get(i).advisorImage;
+            String name = starredAdvisorList.get(i).advisorName;
             String star = "★";
             if(i > 0) {
                 star = "";
@@ -76,11 +76,11 @@ public class ContactsFragment extends Fragment {
         //For all normal advisors
         ArrayList<String> usedLetters = new ArrayList<>();
         for(int i=0;i<normalAdvisorList.size();i++) {
-            int image1 = normalAdvisorList.get(i).getAdvisorImage();
-            String name1 = normalAdvisorList.get(i).getAdvisorName();
+            int image1 = normalAdvisorList.get(i).advisorImage;
+            String name1 = normalAdvisorList.get(i).advisorName;
             String letter1 = "";
-            if(usedLetters.indexOf(Character.toString(normalAdvisorList.get(i).getAdvisorName().charAt(0)).toUpperCase()) == -1) {
-                letter1 = Character.toString(normalAdvisorList.get(i).getAdvisorName().charAt(0)).toUpperCase();
+            if(usedLetters.indexOf(Character.toString(normalAdvisorList.get(i).advisorName.charAt(0)).toUpperCase()) == -1) {
+                letter1 = Character.toString(normalAdvisorList.get(i).advisorName.charAt(0)).toUpperCase();
                 usedLetters.add(letter1);
             }
             normalContactsList.add(new ContactItem(image1, name1, letter1));
