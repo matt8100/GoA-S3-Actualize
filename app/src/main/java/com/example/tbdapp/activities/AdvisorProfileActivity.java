@@ -18,7 +18,7 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advisor_profile);
 
-        getActionBar().hide();
+//        getSupportActionBar().hide();
 
         // declare variables
         final TextView advisorName = findViewById(R.id.advisorProfile_advisorName);
