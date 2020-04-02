@@ -57,7 +57,6 @@ public class ContactsFragment extends Fragment {
             if(advisorList.get(indexOfAdvisor).isFavourite) {
                 starredAdvisorList.add(advisorList.get(indexOfAdvisor));
             }else {
-                System.out.println(advisorList.get(indexOfAdvisor).advisorName);
                 normalAdvisorList.add(advisorList.get(indexOfAdvisor));
             }
         }
