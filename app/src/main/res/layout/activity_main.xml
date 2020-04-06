@@ -14,17 +14,19 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/exploreTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tab_item_explore" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/messagesTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/messagesTab"
             android:text="@string/tab_item_messaging" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/profileTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tab_item_userProfile" />
@@ -37,8 +39,6 @@
         app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
