@@ -9,12 +9,29 @@
         android:id="@+id/messagesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/input" />
+        android:layout_above="@+id/input"
+        android:layout_marginBottom="0dp"
+
+        app:incomingDefaultBubbleColor="#ACB4F3"
+        app:incomingTextColor="#000000"
+        app:incomingTextSize="16sp"
+        app:incomingTimeTextSize="0sp"
+
+        app:outcomingDefaultBubbleColor="#D3D4E0"
+        app:outcomingTextColor="#000000"
+        app:outcomingTextSize="16sp"
+        app:outcomingTimeTextSize="0sp"
+
+        app:textAutoLink="all"
+        />
 
     <com.stfalcon.chatkit.messages.MessageInput
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+
+        app:showAttachmentButton="true"
+        />
 
 </RelativeLayout>
