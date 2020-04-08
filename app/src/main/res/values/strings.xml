@@ -3,7 +3,7 @@
     <string name="tab_item_explore">Explore</string>
     <string name="tab_item_messaging">Messaging</string>
     <string name="tab_item_userProfile">Profile</string>
-    <string-array name="labels_province" >
+    <string-array name="labels_province">
         <item>Province</item>
         <item>Alberta</item>
         <item>British Columbia</item>
@@ -19,7 +19,7 @@
         <item>Saskatchewan</item>
         <item>Yukon</item>
     </string-array>
-    <string-array name="labels_citizenship" >
+    <string-array name="labels_citizenship">
         <item>Citizenship</item>
         <item>Canadian Citizen</item>
         <item>Permanent Resident</item>
@@ -27,7 +27,7 @@
         <item>Work Permit</item>
 
     </string-array>
-    <string-array name="labels_employmentStatus" >
+    <string-array name="labels_employmentStatus">
         <item>Employment Status</item>
         <item>Contract Worker</item>
         <item>Employee</item>
@@ -35,12 +35,12 @@
         <item>Unemployed</item>
 
     </string-array>
-    <string-array name="labels_expectedIncome" >
+    <string-array name="labels_expectedIncome">
         <item>Expected Income</item>
         <item>$30,000</item>
 
     </string-array>
-    <string-array name="labels_housingStatus" >
+    <string-array name="labels_housingStatus">
         <item>Housing Status</item>
         <item>Free lodger</item>
         <item>Itinerant</item>
@@ -48,13 +48,17 @@
         <item>Tenant</item>
 
     </string-array>
-    <string-array name="labels_healthCondition" >
-    <item>Health Condition</item>
+    <string-array name="labels_healthCondition">
+        <item>Health Condition</item>
 
     </string-array>
-    <string-array name="labels_lookingFor" >
-    <item>Looking For...</item>
+    <string-array name="labels_lookingFor">
+        <item>Looking For...</item>
 
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
 
 </resources>

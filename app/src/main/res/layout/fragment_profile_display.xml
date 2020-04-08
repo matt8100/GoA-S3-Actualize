@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,25 +7,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/doneButton"
+        android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="70dp"
         android:contextClickable="true"
-        android:onClick="launchdone"
+        android:onClick="launchEdit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="405dp"
-        android:layout_height="510dp"
+        android:layout_width="425dp"
+        android:layout_height="675dp"
         android:layout_marginTop="150dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="80dp"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,15 +54,12 @@
                 android:text="Name"
                 android:textStyle="bold"></TextView>
 
-            <EditText
-                android:id="@+id/editText_name"
+            <TextView
+                android:id="@+id/label_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:ems="10"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:layout_marginRight="16dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,12 +75,10 @@
                     android:text="Date Of Birth"
                     android:textStyle="bold"></TextView>
 
-                <EditText
-                    android:id="@+id/editText_dateOfBirth"
+                <TextView
+                    android:id="@+id/label_dateOfBirth"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Date of Birth" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -94,15 +90,12 @@
                 android:text="Email"
                 android:textStyle="bold"></TextView>
 
-            <EditText
-                android:id="@+id/editText_email"
+            <TextView
+                android:id="@+id/label_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:layout_marginRight="16dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,12 +111,10 @@
                     android:text="Province"
                     android:textStyle="bold"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_province"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_province"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
 
@@ -141,11 +132,10 @@
                     android:text="Citizenship"
                     android:textStyle="bold"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_citizenship"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_citizenship"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -162,11 +152,10 @@
                     android:text="Employment Status"
                     android:textStyle="bold"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_employmentStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_employmentStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
 
@@ -185,11 +174,10 @@
                     android:textStyle="bold"></TextView>
 
 
-                <Spinner
-                    android:id="@+id/spinner_expectedIncome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_expectedIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
 
@@ -208,11 +196,10 @@
                     android:textStyle="bold"></TextView>
 
 
-                <Spinner
-                    android:id="@+id/spinner_housingStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_housingStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,11 +217,10 @@
                     android:textStyle="bold"></TextView>
 
 
-                <Spinner
-                    android:id="@+id/spinner_healthCondition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_healthCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -251,11 +237,10 @@
                     android:text="Looking For..."
                     android:textStyle="bold"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_lookingFor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                <TextView
+                    android:id="@+id/label_lookingFor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
         </LinearLayout>
