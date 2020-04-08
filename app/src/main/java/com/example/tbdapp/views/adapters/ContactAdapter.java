@@ -2,6 +2,7 @@ package com.example.tbdapp.views.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        ContactItem currentItem =  mContactList.get(position);
+        final ContactItem currentItem =  mContactList.get(position);
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView.setText(currentItem.getText());
@@ -60,6 +61,10 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChatActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable("contact", currentItem);
+                intent.putExtras(bundle);
 
                 context.startActivity(intent);
             }
