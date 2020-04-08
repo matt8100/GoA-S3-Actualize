@@ -11,20 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="40dp"
         android:contextClickable="true"
         android:onClick="launchdone"
+        android:src="@drawable/done_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="405dp"
-        android:layout_height="510dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="675dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="120dp"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,47 +34,52 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="100dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/profile_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_marginTop="80dp"
+                android:clickable="true"
+                android:onClick="imagePicker"
+                app:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Name"
+                android:textSize="18sp"
                 android:textStyle="bold"></TextView>
 
             <EditText
                 android:id="@+id/editText_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:ems="10"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:hint="first name and last name"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date Of Birth"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
                 <EditText
@@ -82,40 +87,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Date of Birth" />
+                    android:hint="YYYY-MM-DD"
+                    android:inputType="datetime"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Email"
+                android:textSize="18sp"
                 android:textStyle="bold"></TextView>
 
             <EditText
                 android:id="@+id/editText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:hint="Type your email here"
+                android:inputType="textEmailAddress"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Province"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
                 <Spinner
@@ -123,65 +133,71 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:popupElevation="30dp" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Citizenship"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
                 <Spinner
                     android:id="@+id/spinner_citizenship"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:popupElevation="30dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Employment Status"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
                 <Spinner
                     android:id="@+id/spinner_employmentStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:popupElevation="30dp" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Expected Income"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
 
@@ -189,22 +205,24 @@
                     android:id="@+id/spinner_expectedIncome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:popupElevation="30dp" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Housing Status"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
 
@@ -212,21 +230,23 @@
                     android:id="@+id/spinner_housingStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:popupElevation="30dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Health Condition"
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
 
@@ -234,28 +254,32 @@
                     android:id="@+id/spinner_healthCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:popupElevation="30dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Looking For..."
+                    android:textSize="18sp"
                     android:textStyle="bold"></TextView>
 
                 <Spinner
                     android:id="@+id/spinner_lookingFor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:popupElevation="18dp" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="50dp"
+                    android:popupElevation="30dp" />
             </LinearLayout>
 
         </LinearLayout>

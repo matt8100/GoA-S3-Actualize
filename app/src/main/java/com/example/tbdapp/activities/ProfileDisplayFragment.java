@@ -32,14 +32,56 @@ public class ProfileDisplayFragment extends ProfileFragment {
     private ProfileFragment fragmentProfile;
 
 
-
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
         fragmentProfile = ProfileFragment.newInstance();
-        Bundle displayPage = getArguments();
+
+        UserInformation user = User.getUser();
+
+        NameTextView = v.findViewById(R.id.label_name);
+        NameTextView.setText(user.name);
+
+
+        dateOfBirthTextView = v.findViewById(R.id.label_dateOfBirth);
+        dateOfBirthTextView.setText(user.dateOfBirth);
+
+
+        emailTextView = v.findViewById(R.id.label_email);
+        emailTextView.setText(user.email);
+
+
+        provinceTextView = v.findViewById(R.id.label_province);
+        provinceTextView.setText(user.provinceText);
+
+
+        citizenshipTextView = v.findViewById(R.id.label_citizenship);
+        citizenshipTextView.setText(user.citizenshipText);
+
+
+        employmentStatusTextView = v.findViewById(R.id.label_employmentStatus);
+        employmentStatusTextView.setText(user.employmentStatusText);
+
+
+        housingStatusTextView = v.findViewById(R.id.label_housingStatus);
+        housingStatusTextView.setText(user.housingStatusText);
+
+
+        expectedIncomeTextView = v.findViewById(R.id.label_expectedIncome);
+        expectedIncomeTextView.setText(user.expectedIncomeText);
+
+
+        healthConditionTextView = v.findViewById(R.id.label_healthCondition);
+        healthConditionTextView.setText(user.healthConditionText);
+
+
+        lookingForTextView = v.findViewById(R.id.label_lookingFor);
+        lookingForTextView.setText(user.lookingForText);
+
+
+        /*Bundle displayPage = getArguments();
         if(displayPage != null){
             String name = displayPage.getString("name");
             String dateOfBirth = displayPage.getString("dateOfBirth");
@@ -70,8 +112,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
             healthConditionTextView = v.findViewById(R.id.label_healthCondition);
             healthConditionTextView.setText(healthCondition);
             lookingForTextView = v.findViewById(R.id.label_lookingFor);
-            lookingForTextView.setText(lookingFor);
-        }
+            lookingForTextView.setText(lookingFor);*/
 
 
         FloatingActionButton editButton = v.findViewById(R.id.editButton);

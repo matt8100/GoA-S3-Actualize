@@ -1,16 +1,16 @@
 package com.example.tbdapp.activities;
 
 public class UserInformation {
-    public String name = "Cathy";
-    public String dateOfBirth = "2002-06-27";
-    public String email = "Cathy@gmail.com";
-    public String province = "British Columbia";
-    public String citizenship = "Citizen";
-    public String employmentStatus = "apple";
-    public String expectedIncome = "20";
-    public String housingStatus = "cathy";
-    public String healthCondition = "Cathy";
-    public String lookingFor = "Cathy";
+    public String name ;
+    public String dateOfBirth;
+    public String email ;
+    public String provinceText ;
+    public String citizenshipText ;
+    public String employmentStatusText;
+    public String expectedIncomeText ;
+    public String housingStatusText ;
+    public String healthConditionText ;
+    public String lookingForText ;
 
     public UserInformation(){
     }
@@ -20,13 +20,13 @@ public class UserInformation {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
-        this.employmentStatus = employmentStatus;
-        this.province = province;
-        this.citizenship = citizenship;
-        this.healthCondition = healthCondition;
-        this.housingStatus = housingStatus;
-        this.lookingFor = lookingFor;
-        this.expectedIncome = expectedIncome;
+        this.employmentStatusText = employmentStatus;
+        this.provinceText = province;
+        this.citizenshipText = citizenship;
+        this.healthConditionText = healthCondition;
+        this.housingStatusText = housingStatus;
+        this.lookingForText = lookingFor;
+        this.expectedIncomeText = expectedIncome;
     }
 
     public String getName(){
@@ -43,30 +43,30 @@ public class UserInformation {
     }
 
     public String getCitizenship() {
-        return citizenship;
+        return citizenshipText;
     }
 
     public String getEmploymentStatus() {
-        return employmentStatus;
+        return employmentStatusText;
     }
 
     public String getExpectedIncome() {
-        return expectedIncome;
+        return expectedIncomeText;
     }
 
     public String getHealthCondition() {
-        return healthCondition;
+        return healthConditionText;
     }
 
     public String getHousingStatus() {
-        return housingStatus;
+        return housingStatusText;
     }
 
     public String getLookingFor() {
-        return lookingFor;
+        return lookingForText;
     }
 
     public String getProvince() {
-        return province;
+        return provinceText;
     }
 }

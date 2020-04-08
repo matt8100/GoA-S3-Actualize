@@ -163,8 +163,25 @@ public class ProfileFragment extends Fragment implements
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserInformation myUser = User.getUser();
+
+                myUser.name = editTextName.getText().toString();
+                myUser.dateOfBirth= editTextDateOfBirth.getText().toString();
+                myUser.email = editTextEmail.getText().toString();
+                myUser.provinceText = province.getSelectedItem().toString();
+                myUser.citizenshipText = citizenship.getSelectedItem().toString();
+                myUser.employmentStatusText = employmentStatus.getSelectedItem().toString();
+                myUser.expectedIncomeText = expectedIncome.getSelectedItem().toString();
+                myUser.housingStatusText = housingStatus.getSelectedItem().toString();
+                myUser.healthConditionText = healthCondition.getSelectedItem().toString();
+                myUser.lookingForText = lookingFor.getSelectedItem().toString();
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                String name = editTextName.getText().toString();
+                fragmentTransaction.replace(R.id.fragment_container,profileDisplayFragment);
+                fragmentTransaction.commit();
+
+
+                /*String name = editTextName.getText().toString();
                 String dateOfBirth= editTextDateOfBirth.getText().toString();
                 String email = editTextEmail.getText().toString();
                 String provinceText = province.getSelectedItem().toString();
@@ -186,11 +203,28 @@ public class ProfileFragment extends Fragment implements
                 editPage.putString("housingStatus",housingStatusText);
                 editPage.putString("healthCondition",healthConditionText);
                 editPage.putString("lookingFor",lookingForText);
-                profileDisplayFragment.setArguments(editPage);
-                fragmentTransaction.replace(R.id.fragment_container,profileDisplayFragment);
-                fragmentTransaction.commit();
+                profileDisplayFragment.setArguments(editPage);*/
+
             }
         });
+
+        //Bundle changeInformation = getArguments();
+        /*if (changeInformation != null){
+            String name = changeInformation.getString("name");
+            String dateOfBirth = changeInformation.getString("dateOfBirth");
+            String email = changeInformation.getString("email");
+            String provinceInfo = changeInformation.getString("province");
+            String citizenship = changeInformation.getString("citizenship");
+            String employmentStatus = changeInformation.getString("employmentStatus");
+            String expectedIncome = changeInformation.getString("expectedIncome");
+            String housingStatus = changeInformation.getString("housingStatus");
+            String lookingFor = changeInformation.getString("lookingFor");
+            String healthCondition = changeInformation.getString("healthCondition");
+            editTextName.setText(name);
+            editTextDateOfBirth.setText(dateOfBirth);
+            editTextEmail.setText(email);
+        }*/
+
 
         // Inflate the layout for this fragment
         return v;

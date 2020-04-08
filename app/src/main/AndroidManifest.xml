@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light"
+        android:name=".activities.User">
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +25,12 @@
             android:label = "UserInformation"
             android:parentActivityName=".activities.MainActivity">
         </activity>
+        <activity android:name=".activities.ProfileDisplayFragment"
+            android:label = "ProfileDisplayFragment"
+            android:parentActivityName=".activities.MainActivity">
+        </activity>
+
+
 
     </application>
 

@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("TAG","launch profile");
     }
 
+    public void imagePicker(View view) {
+
+    }
 }
 
 

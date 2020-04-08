@@ -4,7 +4,7 @@
     <string name="tab_item_messaging">Messaging</string>
     <string name="tab_item_userProfile">Profile</string>
     <string-array name="labels_province">
-        <item>Province</item>
+        <item> </item>
         <item>Alberta</item>
         <item>British Columbia</item>
         <item>Manitoba</item>
@@ -20,7 +20,7 @@
         <item>Yukon</item>
     </string-array>
     <string-array name="labels_citizenship">
-        <item>Citizenship</item>
+        <item> </item>
         <item>Canadian Citizen</item>
         <item>Permanent Resident</item>
         <item>Refugee</item>
@@ -28,7 +28,7 @@
 
     </string-array>
     <string-array name="labels_employmentStatus">
-        <item>Employment Status</item>
+        <item> </item>
         <item>Contract Worker</item>
         <item>Employee</item>
         <item>Self-employed</item>
@@ -36,12 +36,13 @@
 
     </string-array>
     <string-array name="labels_expectedIncome">
-        <item>Expected Income</item>
+        <item> </item>
         <item>$30,000</item>
+        <item>$50,000</item>
 
     </string-array>
     <string-array name="labels_housingStatus">
-        <item>Housing Status</item>
+        <item> </item>
         <item>Free lodger</item>
         <item>Itinerant</item>
         <item>Owner</item>
@@ -49,11 +50,14 @@
 
     </string-array>
     <string-array name="labels_healthCondition">
-        <item>Health Condition</item>
+        <item> </item>
+        <item>In good health</item>
 
     </string-array>
     <string-array name="labels_lookingFor">
-        <item>Looking For...</item>
+        <item> </item>
+        <item>A career adviser</item>
+        <item>A financial adviser</item>
 
     </string-array>
 
