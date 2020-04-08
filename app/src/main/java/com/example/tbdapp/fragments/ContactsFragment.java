@@ -101,7 +101,7 @@ public class ContactsFragment extends Fragment {
         mLinearLayoutManager = new LinearLayoutManager(thisActivity);
 
         //Put the array contents into the recyclerview via the adapter
-        mAdapter = new ContactAdapter(allContactItems);
+        mAdapter = new ContactAdapter(getContext(), allContactItems);
 
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
