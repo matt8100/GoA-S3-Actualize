@@ -1,6 +1,8 @@
 package com.example.tbdapp.views;
 
-public class ContactItem {
+import java.io.Serializable;
+
+public class ContactItem implements Serializable {
     private int mImageResource;
     private String mText;
     private String firstLetter;

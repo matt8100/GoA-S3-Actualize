@@ -1,5 +1,8 @@
 package com.example.tbdapp.views.adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.activities.ChatActivity;
 import com.example.tbdapp.views.ContactItem;
 
 import java.util.ArrayList;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
 
+    private Context context;
     private ArrayList<ContactItem> mContactList;
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
@@ -31,8 +36,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
     }
 
-    public ContactAdapter (ArrayList<ContactItem> contactList) {
-        mContactList = contactList;
+    public ContactAdapter (Context context, ArrayList<ContactItem> mContactList) {
+        this.context = context;
+        this.mContactList = mContactList;
     }
 
     @NonNull
@@ -45,11 +51,24 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        ContactItem currentItem =  mContactList.get(position);
+        final ContactItem currentItem =  mContactList.get(position);
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView.setText(currentItem.getText());
         holder.mFirstLetter.setText(currentItem.getFirstLetter());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ChatActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable("contact", currentItem);
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
