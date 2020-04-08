@@ -31,6 +31,8 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ContactItem contact = (ContactItem) getIntent().getSerializableExtra("contact");
         mMessagesList = findViewById(R.id.messagesList);
         mMessageInput = findViewById(R.id.input);
