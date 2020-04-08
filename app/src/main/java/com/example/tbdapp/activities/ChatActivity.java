@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Author;
 import com.example.tbdapp.models.Message;
+import com.example.tbdapp.views.ContactItem;
+import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
@@ -16,43 +18,52 @@ import java.util.Date;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private MessagesList messagesList;
-    private Author receiver;
-    private Author sender;
-    private Date date;
+    private MessagesList mMessagesList;
+    private MessageInput mMessageInput;
+    private Author mReceiver;
+    private Author mSender;
+    private Date mDate;
     private MessagesListAdapter<Message> mAdapter;
-    private ArrayList<Message> messageArrayList;
+    private ArrayList<Message> mMessageArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
 
-        messagesList = findViewById(R.id.messagesList);
-        receiver = new Author("0", "Matthew", null);
-        sender = new Author("1", "Hod", null);
-        date = new Date();
-        mAdapter = new MessagesListAdapter<Message>(sender.getId(), null);
-        messageArrayList = new ArrayList<>();
+        ContactItem contact = (ContactItem) getIntent().getSerializableExtra("contact");
+        mMessagesList = findViewById(R.id.messagesList);
+        mMessageInput = findViewById(R.id.input);
+        mReceiver = new Author("0", "Matthew", null);
+        mSender = new Author("1", contact.getText(), null);
+        mDate = new Date();
+        mAdapter = new MessagesListAdapter<Message>(mSender.getId(), null);
+        mMessageArrayList = new ArrayList<>();
 
-        messagesList.setAdapter(mAdapter);
+        setTitle(mSender.getName());
+        mMessagesList.setAdapter(mAdapter);
 
         createMessages();
-
         loadMessages();
 
+        mMessageInput.setInputListener(new MessageInput.InputListener() {
+            @Override
+            public boolean onSubmit(CharSequence input) {
+                //validate and send message
+                mAdapter.addToStart(new Message("0", input.toString(), mSender, mDate), true);
+                return true;
+            }
+        });
     }
 
     private void createMessages() {
-        messageArrayList.add(new Message("0","Hi, how are you doing?", sender, date));
-        messageArrayList.add(new Message("1","I'm doing great, how are you?", receiver, date));
-        messageArrayList.add(new Message("0","I'm doing fine as well.", sender, date));
+        mMessageArrayList.add(new Message("0","Hi, how are you doing?", mSender, mDate));
+        mMessageArrayList.add(new Message("1","I'm doing great, how are you?", mReceiver, mDate));
+        mMessageArrayList.add(new Message("0","I'm doing fine as well.", mSender, mDate));
     }
 
     private void loadMessages() {
-        for (int i=0;i<messageArrayList.size();i++) {
-            mAdapter.addToStart(messageArrayList.get(i), false);
-        }
+        mAdapter.addToEnd(mMessageArrayList, true);
     }
 }
 
