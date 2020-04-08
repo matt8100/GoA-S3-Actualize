@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //TEMP: video activity
-//        Intent intent = new Intent(this, VideoCallActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, VideoCallActivity.class);
+        startActivity(intent);
     }
 
     private void loadContactsFragment() {
