@@ -14,9 +14,9 @@ import com.example.tbdapp.models.Advisor;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class VideoCallActivity extends AppCompatActivity {
+    //Default mic and camera options
     boolean micOn = true;
     boolean cameraOn = true;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class VideoCallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_call);
 
 
-
+        //set the video of primary video (advisor's video)
         VideoView mainVideo = findViewById(R.id.mainVideo);
         String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
         mainVideo.setVideoURI(Uri.parse(videoPath));
@@ -36,7 +36,8 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
-        VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
+        //set the video of secondary video (client's video)
+        final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
         String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
         secondaryVideo.setVideoURI(Uri.parse(videoPath2));
         secondaryVideo.start();
@@ -46,9 +47,13 @@ public class VideoCallActivity extends AppCompatActivity {
                 mp.setLooping(true);
             }
         });
+
+        //references to fabs
         final FloatingActionButton microphone = findViewById(R.id.fab_mic);
         final FloatingActionButton camera = findViewById(R.id.fab_camera);
+        final FloatingActionButton endCallButton = findViewById(R.id.fab_hangUp);
 
+        //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                  micOn = !micOn;
@@ -60,14 +65,23 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
+        //toggle on/off camera
         camera.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 cameraOn = !cameraOn;
                 if(cameraOn) {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
+                    findViewById(R.id.secondaryVideo).setVisibility(View.VISIBLE);
                 }else {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
+                    findViewById(R.id.secondaryVideo).setVisibility(View.INVISIBLE);
                 }
+            }
+        });
+
+        endCallButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Do something that ends the call
             }
         });
 

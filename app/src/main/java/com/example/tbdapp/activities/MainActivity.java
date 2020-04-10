@@ -31,11 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabLayout();
         loadFragment(0); //load fragment for first tab layout item
-
-
-        //TEMP: video activity
-        Intent intent = new Intent(this, VideoCallActivity.class);
-        startActivity(intent);
     }
 
     private void loadContactsFragment() {
