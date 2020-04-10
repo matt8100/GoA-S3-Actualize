@@ -22,6 +22,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tbdapp.activities.ChatActivity" />
         </activity>
+        <activity android:name=".activities.VideoCallActivity" />
     </application>
 
 </manifest>
