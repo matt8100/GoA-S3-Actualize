@@ -3,8 +3,10 @@ package com.example.tbdapp.activities;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import java.io.InputStream;
+
 public class UserInformation {
-    public Uri photo ;
+    Uri photo ;
     public String name = "Jane Foster";
     public String dateOfBirth = "1996-09-04";
     public String email = "Janefoster@tdb.com" ;

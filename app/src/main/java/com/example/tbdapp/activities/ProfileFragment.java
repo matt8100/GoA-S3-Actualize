@@ -96,9 +96,16 @@ public class ProfileFragment extends Fragment implements
         adapter_province.setDropDownViewResource
                 (android.R.layout.simple_spinner_dropdown_item);
 
+
         if (province != null) {
             province.setAdapter(adapter_province);
         }
+
+        int provincePosition ;
+        String provinceString = user.provinceText;
+        provincePosition = adapter_province.getPosition(provinceString);
+        province.setSelection(provincePosition);
+
 
         //Spinner code for citizenship
 
@@ -114,6 +121,11 @@ public class ProfileFragment extends Fragment implements
             citizenship.setAdapter(adapter_citizenship);
         }
 
+        int citizenshipPosition ;
+        String citizenshipString = user.citizenshipText;
+        citizenshipPosition = adapter_citizenship.getPosition(citizenshipString);
+        citizenship.setSelection(citizenshipPosition);
+
         //Spinner code for employment status
 
         if (employmentStatus != null) {
@@ -127,6 +139,11 @@ public class ProfileFragment extends Fragment implements
         if (employmentStatus != null) {
             employmentStatus.setAdapter(adapter_employmentStatus);
         }
+
+        int employmentStatusPosition ;
+        String employmentStatusString = user.employmentStatusText;
+        employmentStatusPosition = adapter_employmentStatus.getPosition(employmentStatusString);
+        employmentStatus.setSelection(employmentStatusPosition);
 
         //Spinner code for expected income
 
@@ -142,6 +159,11 @@ public class ProfileFragment extends Fragment implements
             expectedIncome.setAdapter(adapter_expectedIncome);
         }
 
+        int expectedIncomePosition ;
+        String expectedIncomeString = user.expectedIncomeText;
+        expectedIncomePosition = adapter_expectedIncome.getPosition(expectedIncomeString);
+        expectedIncome.setSelection(expectedIncomePosition);
+
         //Spinner code for housing status
 
         if (housingStatus != null) {
@@ -155,6 +177,11 @@ public class ProfileFragment extends Fragment implements
         if (housingStatus != null) {
             housingStatus.setAdapter(adapter_housingStatus);
         }
+
+        int housingStatusPosition ;
+        String housingStatusString = user.housingStatusText;
+        housingStatusPosition = adapter_housingStatus.getPosition(housingStatusString);
+        housingStatus.setSelection(housingStatusPosition);
 
         //Spinner code for health condition
 
@@ -170,6 +197,11 @@ public class ProfileFragment extends Fragment implements
             healthCondition.setAdapter(adapter_healthCondition);
         }
 
+        int healthConditionPosition ;
+        String healthConditionString = user.healthConditionText;
+        healthConditionPosition = adapter_healthCondition.getPosition(healthConditionString);
+        healthCondition.setSelection(healthConditionPosition);
+
         //Spinner code for looking for
 
         if (lookingFor != null) {
@@ -183,6 +215,11 @@ public class ProfileFragment extends Fragment implements
         if (lookingFor != null) {
             lookingFor.setAdapter(adapter_lookingFor);
         }
+
+        int lookingForPosition ;
+        String lookingForString = user.lookingForText;
+        lookingForPosition = adapter_lookingFor.getPosition(lookingForString);
+        lookingFor.setSelection(lookingForPosition);
 
         FloatingActionButton doneButton = v.findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
