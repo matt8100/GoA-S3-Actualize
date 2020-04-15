@@ -1,12 +1,16 @@
 package com.example.tbdapp.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +19,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tbdapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import static android.app.Activity.RESULT_OK;
+
 public class ProfileFragment extends Fragment implements
         AdapterView.OnItemSelectedListener{
 
@@ -22,6 +28,9 @@ public class ProfileFragment extends Fragment implements
     private EditText editTextDateOfBirth;
     private EditText editTextEmail;
     private Spinner province,citizenship,employmentStatus,expectedIncome,housingStatus,healthCondition,lookingFor;
+    private ImageView profileImage;
+    private static final int SELECT_IMAGE = 1;
+    Uri imageUri;
 
 
 
@@ -49,6 +58,7 @@ public class ProfileFragment extends Fragment implements
 
         profileDisplayFragment = ProfileDisplayFragment.newInstance();
 
+        profileImage = v.findViewById(R.id.profile_imageView);
         editTextName = v.findViewById(R.id.editText_name);
         editTextDateOfBirth = v.findViewById(R.id.editText_dateOfBirth);
         editTextEmail = v.findViewById(R.id.editText_email);
@@ -60,6 +70,21 @@ public class ProfileFragment extends Fragment implements
         healthCondition = v.findViewById(R.id.spinner_healthCondition);
         lookingFor = v.findViewById(R.id.spinner_lookingFor);
 
+
+        UserInformation user = User.getUser();
+
+        profileImage.setImageURI(user.photo);
+        editTextName.setText(user.name);
+        editTextDateOfBirth.setText(user.dateOfBirth);
+        editTextEmail.setText(user.email);
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            final Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            startActivityForResult(galleryIntent, SELECT_IMAGE);
+            }
+        });
 
         //Spinner for province
 
@@ -175,6 +200,7 @@ public class ProfileFragment extends Fragment implements
                 myUser.housingStatusText = housingStatus.getSelectedItem().toString();
                 myUser.healthConditionText = healthCondition.getSelectedItem().toString();
                 myUser.lookingForText = lookingFor.getSelectedItem().toString();
+                myUser.photo = imageUri;
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container,profileDisplayFragment);
@@ -228,6 +254,15 @@ public class ProfileFragment extends Fragment implements
 
         // Inflate the layout for this fragment
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(resultCode == RESULT_OK && requestCode == SELECT_IMAGE){
+            imageUri = data.getData();
+            profileImage.setImageURI(imageUri);
+        }
     }
 
 

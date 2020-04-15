@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tbdapp.R;
@@ -18,6 +19,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
 
     private TextView NameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
             expectedIncomeTextView,housingStatusTextView,lookingForTextView,healthConditionTextView;
+    private ImageView profileImageView;
 
 
     public ProfileDisplayFragment() {
@@ -40,6 +42,9 @@ public class ProfileDisplayFragment extends ProfileFragment {
         fragmentProfile = ProfileFragment.newInstance();
 
         UserInformation user = User.getUser();
+
+        profileImageView = v.findViewById(R.id.profile_imageView);
+        profileImageView.setImageURI(user.photo);
 
         NameTextView = v.findViewById(R.id.label_name);
         NameTextView.setText(user.name);
@@ -119,6 +124,21 @@ public class ProfileDisplayFragment extends ProfileFragment {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                UserInformation myUser = User.getUser();
+
+                myUser.name = NameTextView.getText().toString();
+                myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
+                myUser.email = emailTextView.getText().toString();
+                myUser.provinceText = provinceTextView.getText().toString();
+                myUser.citizenshipText = citizenshipTextView.getText().toString();
+                myUser.employmentStatusText = employmentStatusTextView.getText().toString();
+                myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
+                myUser.housingStatusText = housingStatusTextView.getText().toString();
+                myUser.healthConditionText = healthConditionTextView.getText().toString();
+                myUser.lookingForText = lookingForTextView.getText().toString();
+                myUser.photo = imageUri;
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragmentProfile);
                 fragmentTransaction.commit();

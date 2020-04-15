@@ -48,14 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void LaunchProfile(View view) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragmentProfile);
+        fragmentTransaction.replace(R.id.fragment_container, fragmentProfileDisplay);
         fragmentTransaction.commit();
         Log.d("TAG","launch profile");
     }
 
-    public void imagePicker(View view) {
-
-    }
 }
 
 

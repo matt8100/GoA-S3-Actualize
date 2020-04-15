@@ -37,6 +37,7 @@
     </string-array>
     <string-array name="labels_expectedIncome">
         <item> </item>
+        <item>$20,000</item>
         <item>$30,000</item>
         <item>$50,000</item>
 
@@ -51,7 +52,8 @@
     </string-array>
     <string-array name="labels_healthCondition">
         <item> </item>
-        <item>In good health</item>
+        <item>None</item>
+        <item>Asthma</item>
 
     </string-array>
     <string-array name="labels_lookingFor">

@@ -1,22 +1,27 @@
 package com.example.tbdapp.activities;
 
+import android.net.Uri;
+import android.provider.MediaStore;
+
 public class UserInformation {
-    public String name ;
-    public String dateOfBirth;
-    public String email ;
-    public String provinceText ;
-    public String citizenshipText ;
-    public String employmentStatusText;
-    public String expectedIncomeText ;
-    public String housingStatusText ;
-    public String healthConditionText ;
-    public String lookingForText ;
+    public Uri photo ;
+    public String name = "Jane Foster";
+    public String dateOfBirth = "1996-09-04";
+    public String email = "Janefoster@tdb.com" ;
+    public String provinceText = "Ontario";
+    public String citizenshipText = "Permanent Resident";
+    public String employmentStatusText = "Unemployed";
+    public String expectedIncomeText = "$10,000";
+    public String housingStatusText = "Tenant" ;
+    public String healthConditionText = "None";
+    public String lookingForText = "A financial adviser";
 
     public UserInformation(){
     }
 
-    public UserInformation(String name,String dateOfBirth, String email,String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String healthCondition, String lookingFor
+    public UserInformation(Uri photo, String name, String dateOfBirth, String email, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String healthCondition, String lookingFor
     ){
+        this.photo = photo;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
