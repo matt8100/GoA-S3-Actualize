@@ -25,8 +25,8 @@ public class VideoCallActivity extends AppCompatActivity {
 
 
         //set the video of primary video (advisor's video)
-        VideoView mainVideo = findViewById(R.id.mainVideo);
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
+        final VideoView mainVideo = findViewById(R.id.mainVideo);
+        final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
         mainVideo.setVideoURI(Uri.parse(videoPath));
         mainVideo.start();
         mainVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -38,7 +38,7 @@ public class VideoCallActivity extends AppCompatActivity {
 
         //set the video of secondary video (client's video)
         final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
-        String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
+        final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
         secondaryVideo.setVideoURI(Uri.parse(videoPath2));
         secondaryVideo.start();
         secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -72,6 +72,14 @@ public class VideoCallActivity extends AppCompatActivity {
                 if(cameraOn) {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
                     findViewById(R.id.secondaryVideo).setVisibility(View.VISIBLE);
+                    secondaryVideo.setVideoURI(Uri.parse(videoPath2));
+                    secondaryVideo.start();
+                    secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mp) {
+                            mp.setLooping(true);
+                        }
+                    });
                 }else {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
                     findViewById(R.id.secondaryVideo).setVisibility(View.INVISIBLE);
@@ -84,7 +92,5 @@ public class VideoCallActivity extends AppCompatActivity {
                 //Do something that ends the call
             }
         });
-
     }
-
 }
