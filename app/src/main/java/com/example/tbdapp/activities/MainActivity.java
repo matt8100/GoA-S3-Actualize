@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.example.tbdapp.R;
 import com.google.android.material.tabs.TabLayout;
@@ -51,6 +52,32 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, fragmentProfileDisplay);
         fragmentTransaction.commit();
         Log.d("TAG","launch profile");
+    }
+
+    public void onCheckBoxClicked(View view) {
+
+        UserInformation myUser = User.getUser();
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch (view.getId()) {
+            case R.id.healthCondition_1:
+                if (checked)
+                    myUser.healthConditionText = getString(R.string.healthCondition1);
+                break;
+            case R.id.healthCondition_2:
+                if (checked)
+                    getString(R.string.healthCondition2);
+                myUser.healthConditionText = getString(R.string.healthCondition2);
+                break;
+            case R.id.healthCondition_3:
+                if (checked)
+                    getString(R.string.healthCondition3);
+                myUser.healthConditionText = getString(R.string.healthCondition3);
+                break;
+            default:
+                break;
+        }
     }
 
 }

@@ -4,10 +4,13 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class UserInformation {
     Uri photo ;
     public String name = "Jane Foster";
+    public String preferredName = "Jane";
     public String dateOfBirth = "1996-09-04";
     public String email = "Janefoster@tdb.com" ;
     public String provinceText = "Ontario";
@@ -21,16 +24,17 @@ public class UserInformation {
     public UserInformation(){
     }
 
-    public UserInformation(Uri photo, String name, String dateOfBirth, String email, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String healthCondition, String lookingFor
+    public UserInformation(Uri photo, String name, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor
     ){
         this.photo = photo;
         this.name = name;
+        this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.employmentStatusText = employmentStatus;
         this.provinceText = province;
         this.citizenshipText = citizenship;
-        this.healthConditionText = healthCondition;
+        this.healthConditionText = healthConditionText;
         this.housingStatusText = housingStatus;
         this.lookingForText = lookingFor;
         this.expectedIncomeText = expectedIncome;

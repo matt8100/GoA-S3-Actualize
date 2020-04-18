@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -19,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tbdapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment implements
@@ -26,9 +29,11 @@ public class ProfileFragment extends Fragment implements
 
     private EditText editTextName;
     private EditText editTextDateOfBirth;
+    private EditText editTextPreferredName;
     private EditText editTextEmail;
-    private Spinner province,citizenship,employmentStatus,expectedIncome,housingStatus,healthCondition,lookingFor;
+    private Spinner province,citizenship,employmentStatus,expectedIncome,housingStatus,lookingFor;
     private ImageView profileImage;
+    private CheckBox healthCondition1, healthCondition2, healthCondition3;
     private static final int SELECT_IMAGE = 1;
     Uri imageUri;
 
@@ -60,14 +65,22 @@ public class ProfileFragment extends Fragment implements
 
         profileImage = v.findViewById(R.id.profile_imageView);
         editTextName = v.findViewById(R.id.editText_name);
+        editTextName.setFocusable(false);
+        editTextPreferredName = v.findViewById(R.id.editText_preferredName);
         editTextDateOfBirth = v.findViewById(R.id.editText_dateOfBirth);
+        editTextDateOfBirth.setFocusable(false);
         editTextEmail = v.findViewById(R.id.editText_email);
+        editTextEmail.setFocusable(false);
         province = v.findViewById(R.id.spinner_province);
+        province.setEnabled(false);
         citizenship = v.findViewById(R.id.spinner_citizenship);
+        citizenship.setEnabled(false);
         employmentStatus = v.findViewById(R.id.spinner_employmentStatus);
         expectedIncome = v.findViewById(R.id.spinner_expectedIncome);
         housingStatus = v.findViewById(R.id.spinner_housingStatus);
-        healthCondition = v.findViewById(R.id.spinner_healthCondition);
+        healthCondition1 = v.findViewById(R.id.healthCondition_1);
+        healthCondition2 = v.findViewById(R.id.healthCondition_2);
+        healthCondition3 = v.findViewById(R.id.healthCondition_3);
         lookingFor = v.findViewById(R.id.spinner_lookingFor);
 
 
@@ -75,6 +88,7 @@ public class ProfileFragment extends Fragment implements
 
         profileImage.setImageURI(user.photo);
         editTextName.setText(user.name);
+        editTextPreferredName.setText((user.preferredName));
         editTextDateOfBirth.setText(user.dateOfBirth);
         editTextEmail.setText(user.email);
 
@@ -184,7 +198,7 @@ public class ProfileFragment extends Fragment implements
         housingStatus.setSelection(housingStatusPosition);
 
         //Spinner code for health condition
-
+        /*
         if (healthCondition != null) {
             healthCondition.setOnItemSelectedListener(this);
         }
@@ -202,6 +216,8 @@ public class ProfileFragment extends Fragment implements
         healthConditionPosition = adapter_healthCondition.getPosition(healthConditionString);
         healthCondition.setSelection(healthConditionPosition);
 
+
+         */
         //Spinner code for looking for
 
         if (lookingFor != null) {
@@ -228,6 +244,7 @@ public class ProfileFragment extends Fragment implements
                 UserInformation myUser = User.getUser();
 
                 myUser.name = editTextName.getText().toString();
+                myUser.preferredName = editTextPreferredName.getText().toString();
                 myUser.dateOfBirth= editTextDateOfBirth.getText().toString();
                 myUser.email = editTextEmail.getText().toString();
                 myUser.provinceText = province.getSelectedItem().toString();
@@ -235,7 +252,25 @@ public class ProfileFragment extends Fragment implements
                 myUser.employmentStatusText = employmentStatus.getSelectedItem().toString();
                 myUser.expectedIncomeText = expectedIncome.getSelectedItem().toString();
                 myUser.housingStatusText = housingStatus.getSelectedItem().toString();
-                myUser.healthConditionText = healthCondition.getSelectedItem().toString();
+
+               if (healthCondition2.isChecked() && healthCondition3.isChecked()&& healthCondition1.isChecked()) {
+                   myUser.healthConditionText = "healthCondition1, healthCondition2, healthCondition3";
+               }else if (healthCondition1.isChecked() && healthCondition2.isChecked()){
+                   myUser.healthConditionText = "healthCondition1, healthCondition2";
+               }else if (healthCondition1.isChecked() && healthCondition3.isChecked()){
+                   myUser.healthConditionText = "healthCondition1, healthCondition3";
+               }else if (healthCondition2.isChecked() && healthCondition3.isChecked()) {
+                   myUser.healthConditionText = "healthCondition2, healthCondition3";
+               }else if (healthCondition1.isChecked()){
+                   myUser.healthConditionText = "healthCondition1";
+               }else if (healthCondition2.isChecked()){
+                   myUser.healthConditionText = "healthCondition2";
+               }else if (healthCondition3.isChecked()) {
+                   myUser.healthConditionText = "healthCondition3";
+               }else{
+                   myUser.healthConditionText = "None";
+               }
+
                 myUser.lookingForText = lookingFor.getSelectedItem().toString();
                 myUser.photo = imageUri;
 
@@ -243,55 +278,14 @@ public class ProfileFragment extends Fragment implements
                 fragmentTransaction.replace(R.id.fragment_container,profileDisplayFragment);
                 fragmentTransaction.commit();
 
-
-                /*String name = editTextName.getText().toString();
-                String dateOfBirth= editTextDateOfBirth.getText().toString();
-                String email = editTextEmail.getText().toString();
-                String provinceText = province.getSelectedItem().toString();
-                String citizenshipText = citizenship.getSelectedItem().toString();
-                String employmentStatusText = employmentStatus.getSelectedItem().toString();
-                String expectedIncomeText = expectedIncome.getSelectedItem().toString();
-                String housingStatusText = housingStatus.getSelectedItem().toString();
-                String healthConditionText = healthCondition.getSelectedItem().toString();
-                String lookingForText = lookingFor.getSelectedItem().toString();
-                ProfileDisplayFragment profileDisplayFragment = new ProfileDisplayFragment();
-                Bundle editPage = new Bundle();
-                editPage.putString("name", name);
-                editPage.putString("dateOfBirth",dateOfBirth);
-                editPage.putString("email", email);
-                editPage.putString("province",provinceText);
-                editPage.putString("citizenship",citizenshipText);
-                editPage.putString("employmentStatus",employmentStatusText);
-                editPage.putString("expectedIncome",expectedIncomeText);
-                editPage.putString("housingStatus",housingStatusText);
-                editPage.putString("healthCondition",healthConditionText);
-                editPage.putString("lookingFor",lookingForText);
-                profileDisplayFragment.setArguments(editPage);*/
-
             }
         });
-
-        //Bundle changeInformation = getArguments();
-        /*if (changeInformation != null){
-            String name = changeInformation.getString("name");
-            String dateOfBirth = changeInformation.getString("dateOfBirth");
-            String email = changeInformation.getString("email");
-            String provinceInfo = changeInformation.getString("province");
-            String citizenship = changeInformation.getString("citizenship");
-            String employmentStatus = changeInformation.getString("employmentStatus");
-            String expectedIncome = changeInformation.getString("expectedIncome");
-            String housingStatus = changeInformation.getString("housingStatus");
-            String lookingFor = changeInformation.getString("lookingFor");
-            String healthCondition = changeInformation.getString("healthCondition");
-            editTextName.setText(name);
-            editTextDateOfBirth.setText(dateOfBirth);
-            editTextEmail.setText(email);
-        }*/
 
 
         // Inflate the layout for this fragment
         return v;
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -301,6 +295,8 @@ public class ProfileFragment extends Fragment implements
             profileImage.setImageURI(imageUri);
         }
     }
+
+
 
 
 }

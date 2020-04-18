@@ -17,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfileDisplayFragment extends ProfileFragment {
 
-    private TextView NameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
+    private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
             expectedIncomeTextView,housingStatusTextView,lookingForTextView,healthConditionTextView;
     private ImageView profileImageView;
 
@@ -48,6 +48,9 @@ public class ProfileDisplayFragment extends ProfileFragment {
 
         NameTextView = v.findViewById(R.id.label_name);
         NameTextView.setText(user.name);
+
+        preferredNameTextView = v.findViewById(R.id.label_preferredName);
+        preferredNameTextView.setText(user.preferredName);
 
 
         dateOfBirthTextView = v.findViewById(R.id.label_dateOfBirth);
@@ -81,44 +84,8 @@ public class ProfileDisplayFragment extends ProfileFragment {
         healthConditionTextView = v.findViewById(R.id.label_healthCondition);
         healthConditionTextView.setText(user.healthConditionText);
 
-
         lookingForTextView = v.findViewById(R.id.label_lookingFor);
         lookingForTextView.setText(user.lookingForText);
-
-
-        /*Bundle displayPage = getArguments();
-        if(displayPage != null){
-            String name = displayPage.getString("name");
-            String dateOfBirth = displayPage.getString("dateOfBirth");
-            String email = displayPage.getString("email");
-            String province = displayPage.getString("province");
-            String citizenship = displayPage.getString("citizenship");
-            String employmentStatus = displayPage.getString("employmentStatus");
-            String expectedIncome = displayPage.getString("expectedIncome");
-            String housingStatus = displayPage.getString("housingStatus");
-            String lookingFor = displayPage.getString("lookingFor");
-            String healthCondition = displayPage.getString("healthCondition");
-            NameTextView = v.findViewById(R.id.label_name);
-            NameTextView.setText(name);
-            dateOfBirthTextView = v.findViewById(R.id.label_dateOfBirth);
-            dateOfBirthTextView.setText(dateOfBirth);
-            emailTextView = v.findViewById(R.id.label_email);
-            emailTextView.setText(email);
-            provinceTextView = v.findViewById(R.id.label_province);
-            provinceTextView.setText(province);
-            citizenshipTextView = v.findViewById(R.id.label_citizenship);
-            citizenshipTextView.setText(citizenship);
-            employmentStatusTextView = v.findViewById(R.id.label_employmentStatus);
-            employmentStatusTextView.setText(employmentStatus);
-            housingStatusTextView = v.findViewById(R.id.label_housingStatus);
-            housingStatusTextView.setText(housingStatus);
-            expectedIncomeTextView = v.findViewById(R.id.label_expectedIncome);
-            expectedIncomeTextView.setText(expectedIncome);
-            healthConditionTextView = v.findViewById(R.id.label_healthCondition);
-            healthConditionTextView.setText(healthCondition);
-            lookingForTextView = v.findViewById(R.id.label_lookingFor);
-            lookingForTextView.setText(lookingFor);*/
-
 
         FloatingActionButton editButton = v.findViewById(R.id.editButton);
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +95,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
                 UserInformation myUser = User.getUser();
 
                 myUser.name = NameTextView.getText().toString();
+                myUser.preferredName = preferredNameTextView.getText().toString();
                 myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
                 myUser.email = emailTextView.getText().toString();
                 myUser.provinceText = provinceTextView.getText().toString();
