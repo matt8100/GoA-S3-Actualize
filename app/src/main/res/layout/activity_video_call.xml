@@ -51,7 +51,7 @@
         app:backgroundTint="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fab_hangUp"
-        app:srcCompat="@drawable/ic_mute" />
+        app:srcCompat="@drawable/ic_unmute" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_camera"
@@ -64,6 +64,6 @@
         app:backgroundTint="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fab_hangUp"
-        app:srcCompat="@drawable/ic_camera_off" />
+        app:srcCompat="@drawable/ic_camera_on" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
