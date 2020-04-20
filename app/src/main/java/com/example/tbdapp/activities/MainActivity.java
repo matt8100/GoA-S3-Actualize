@@ -19,86 +19,67 @@ public class MainActivity extends AppCompatActivity {
 
     private ProfileDisplayFragment fragmentProfileDisplay;
     private ProfileFragment fragmentProfile;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentProfileDisplay = ProfileDisplayFragment.newInstance();
         fragmentProfile = ProfileFragment.newInstance();
-        TabLayout tabItem = findViewById(R.id.tab_profile);
-        LaunchProfile(findViewById(R.id.tab_profile));
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_edit, menu);
-        return true;
-
+        //LaunchProfile(findViewById(R.id.tab_profile));
+        setupTabLayout();
+        loadFragment(0);
     }
 
 
-    public boolean onEditSelected(MenuItem item){
-        if(item.getItemId()== R.id.buttonEdit) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragmentProfile);
-            fragmentTransaction.commit();
-        }return true;
+    private void loadFragment(int position) {
+        switch (position) {
+            case 0: //position of first tab bar item (explore screen)
+                //loadExploreFragment();
+                break;
+            case 1: //position of second tab bar item (contacts screen)
+                //loadContactsFragment();
+                break;
+            case 2: //position of third tab bar item (profile screen)
+                loadProfileFragment();
+                break;
+        }
     }
 
 
-    public void LaunchProfile(View view) {
+    private void setupTabLayout() {
+        mTabLayout = findViewById(R.id.tabLayout);
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                //Log.d(TAG, "TabLayout Tab selected: " + position);
+                loadFragment(position);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+
+    public void loadProfileFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragmentProfileDisplay);
         fragmentTransaction.commit();
         Log.d("TAG","launch profile");
     }
 
-    public void onCheckBoxClicked(View view) {
 
-        UserInformation myUser = User.getUser();
-
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch (view.getId()) {
-            case R.id.healthCondition_1:
-                if (checked)
-                    myUser.healthConditionText = getString(R.string.healthCondition1);
-                break;
-            case R.id.healthCondition_2:
-                if (checked)
-                    getString(R.string.healthCondition2);
-                myUser.healthConditionText = getString(R.string.healthCondition2);
-                break;
-            case R.id.healthCondition_3:
-                if (checked)
-                    getString(R.string.healthCondition3);
-                myUser.healthConditionText = getString(R.string.healthCondition3);
-                break;
-            default:
-                break;
-        }
-    }
 
 }
 
-
-
-
-
-
-/*
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profile);
-        }
-
-    public void LaunchProfile(View view) {
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
-    }
-}
-*/
