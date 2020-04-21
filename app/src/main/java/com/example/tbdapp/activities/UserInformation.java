@@ -1,11 +1,6 @@
 package com.example.tbdapp.activities;
 
 import android.net.Uri;
-import android.provider.MediaStore;
-
-import java.io.InputStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class UserInformation {
     Uri photo ;
