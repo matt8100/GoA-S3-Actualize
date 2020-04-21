@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private void loadFragment(int position) {
         switch (position) {
             case 0: //position of first tab bar item (explore screen)
-                loadExploreFragment();
+                //loadExploreFragment();
                 break;
             case 1: //position of second tab bar item (contacts screen)
-                loadContactsFragment();
+                //loadContactsFragment();
                 break;
             case 2: //position of third tab bar item (profile screen)
                 loadProfileFragment();
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Log.d(TAG, "TabLayout Tab selected: " + position);
+               // Log.d(//TAG, "TabLayout Tab selected: " + position);
                 loadFragment(position);
             }
 
