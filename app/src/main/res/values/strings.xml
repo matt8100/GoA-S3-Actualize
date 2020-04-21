@@ -7,8 +7,69 @@
     <string name="tab_item_explore">Explore</string>
     <string name="tab_item_messaging">Messaging</string>
     <string name="tab_item_userProfile">Profile</string>
+    <string-array name="labels_province">
 
-    <!-- Advisor Profile -->
+        <item>Alberta</item>
+        <item>British Columbia</item>
+        <item>Manitoba</item>
+        <item>New Brunswick</item>
+        <item>Newfoundland and Labrador</item>
+        <item>Northwest Territories</item>
+        <item>Nova Scotia</item>
+        <item>Nunavut</item>
+        <item>Ontario</item>
+        <item>Prince Edward Island</item>
+        <item>Quebec</item>
+        <item>Saskatchewan</item>
+        <item>Yukon</item>
+    </string-array>
+    <string-array name="labels_citizenship">
+
+        <item>Canadian Citizen</item>
+        <item>Permanent Resident</item>
+        <item>Refugee</item>
+        <item>Work Permit</item>
+
+    </string-array>
+    <string-array name="labels_employmentStatus">
+
+        <item>Contract Worker</item>
+        <item>Employee</item>
+        <item>Self-employed</item>
+        <item>Unemployed</item>
+
+    </string-array>
+    <string-array name="labels_expectedIncome">
+
+        <item>$20,000</item>
+        <item>$30,000</item>
+        <item>$50,000</item>
+
+    </string-array>
+    <string-array name="labels_housingStatus">
+
+        <item>Free lodger</item>
+        <item>Itinerant</item>
+        <item>Owner</item>
+        <item>Tenant</item>
+
+    </string-array>
+
+    <string-array name="labels_lookingFor">
+
+        <item>A career adviser</item>
+        <item>A financial adviser</item>
+
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
+    <string name="healthCondition1" />
+    <string name="healthCondition2" />
+    <string name="healthCondition3" />
+    <string name="healthCondition">healthCondition1</string>
+    
+        <!-- Advisor Profile -->
     <string name="advisorProfile_header1">Description</string>
     <string name="advisorProfile_header2">Skills</string>
     <string name="advisorProfile_requestButton">Request</string>
@@ -16,4 +77,5 @@
     <!-- Accessibility -->
     <string name="advisorImage">Advisor Image</string>
     <string name="backButton">Back Button</string>
+
 </resources>

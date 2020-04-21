@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,21 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/doneButton"
+        android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"
         android:contextClickable="true"
-        android:onClick="launchdone"
-        android:src="@drawable/done_button"
+        android:onClick="launchEdit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/edit_button"
+        />
 
 
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="675dp"
         android:layout_marginTop="120dp"
@@ -43,31 +45,33 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="80dp"
-                android:clickable="true"
-                android:onClick="imagePicker"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"
                 app:srcCompat="@drawable/profile_picture"
-                 />
+                />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Name"
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
 
-            <EditText
-                android:id="@+id/editText_name"
+            </TextView>
+
+            <TextView
+                android:id="@+id/label_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="first name and last name"
-                android:inputType="textPersonName"
-                android:textSize="18sp" />
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,15 +87,17 @@
                     android:text="Preferred Name"
                     android:textSize="18sp"
                     android:textColor="@android:color/background_dark"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    >
 
-                <EditText
-                    android:id="@+id/editText_preferredName"
+                </TextView>
+
+                <TextView
+                    android:id="@+id/label_preferredName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint=""
-                    android:inputType="textPersonName"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/background_dark"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -110,15 +116,17 @@
                     android:text="Date Of Birth"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    >
 
-                <EditText
-                    android:id="@+id/editText_dateOfBirth"
+                </TextView>
+
+                <TextView
+                    android:id="@+id/label_dateOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="YYYY-MM-DD"
-                    android:inputType="datetime"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/background_dark"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -128,20 +136,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/background_dark"
                 android:text="Email"
+                android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
                 android:textStyle="bold"></TextView>
 
-            <EditText
-                android:id="@+id/editText_email"
+            <TextView
+                android:id="@+id/label_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:textColor="@android:color/background_dark"
                 android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="Type your email here"
-                android:inputType="textEmailAddress"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -157,16 +163,16 @@
                     android:layout_height="wrap_content"
                     android:text="Province"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    android:textSize="18sp"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_province"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/label_province"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
-                    android:popupElevation="30dp" />
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
 
@@ -182,16 +188,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Citizenship"
+                    android:textStyle="bold"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="18sp"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_citizenship"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/label_citizenship"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:popupElevation="30dp"/>
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -207,15 +214,16 @@
                     android:layout_height="wrap_content"
                     android:text="Employment Status"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    android:textSize="18sp"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_employmentStatus"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/label_employmentStatus"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:popupElevation="30dp" />
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
 
@@ -232,16 +240,17 @@
                     android:layout_height="wrap_content"
                     android:text="Expected Income"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    android:textSize="18sp"></TextView>
 
 
-                <Spinner
-                    android:id="@+id/spinner_expectedIncome"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/label_expectedIncome"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:popupElevation="30dp" />
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
 
@@ -255,19 +264,20 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@android:color/background_dark"
                     android:layout_height="wrap_content"
                     android:text="Housing Status"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textColor="@android:color/background_dark"
+                    android:textStyle="bold"
+                    android:textSize="18sp"></TextView>
 
 
-                <Spinner
-                    android:id="@+id/spinner_housingStatus"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/label_housingStatus"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:popupElevation="30dp" />
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -278,66 +288,21 @@
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
-
-                    <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Health Condition"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    android:textSize="18sp"></TextView>
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/healthCondition_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="healthCondition_1" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/label_healthCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/healthCondition_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="healthCondition_2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/healthCondition_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="healthCondition_3" />
-                </LinearLayout>
-
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
@@ -353,17 +318,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Looking For..."
+                    android:textStyle="bold"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="18sp"></TextView>
 
-                <Spinner
-                    android:id="@+id/spinner_lookingFor"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/label_lookingFor"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="50dp"
-                    android:popupElevation="30dp" />
+                    android:textColor="@android:color/background_dark"
+                    android:layout_marginBottom="50dp"/>
             </LinearLayout>
 
         </LinearLayout>

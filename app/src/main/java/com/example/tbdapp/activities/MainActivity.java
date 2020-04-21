@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.tbdapp.R;
+import com.google.android.material.tabs.TabLayout;
 import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.fragments.ContactsFragment;
 import com.example.tbdapp.fragments.ExploreFragment;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private ProfileDisplayFragment fragmentProfileDisplay;
     private TabLayout mTabLayout;
 
     private static final String TAG = "MyActivity";
@@ -23,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fragmentProfileDisplay = ProfileDisplayFragment.newInstance();
 
         createAdvisorProfiles();
 
@@ -44,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    private void loadProfileFragment() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+    public void loadProfileFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragmentProfileDisplay);
+        fragmentTransaction.commit();
+        Log.d("TAG","launch profile");
     }
 
     private void loadFragment(int position) {
@@ -68,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Log.d(TAG, "TabLayout Tab selected: " + position);
+               // Log.d(//TAG, "TabLayout Tab selected: " + position);
                 loadFragment(position);
             }
 
@@ -99,5 +107,7 @@ public class MainActivity extends AppCompatActivity {
         advisorList.add(new Advisor("Rünerig Pfochmännördt", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         
-    }
+        }
 }
+
+
