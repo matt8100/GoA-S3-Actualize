@@ -5,11 +5,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.CheckBox;
 
 import com.example.tbdapp.R;
 import com.google.android.material.tabs.TabLayout;
@@ -24,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ProfileDisplayFragment fragmentProfileDisplay;
-    private ProfileFragment fragmentProfile;
     private TabLayout mTabLayout;
 
     private static final String TAG = "MyActivity";
@@ -36,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentProfileDisplay = ProfileDisplayFragment.newInstance();
-        fragmentProfile = ProfileFragment.newInstance();
-        //LaunchProfile(findViewById(R.id.profileTab));
 
         createAdvisorProfiles();
 
@@ -84,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Log.d(TAG, "TabLayout Tab selected: " + position);
+               // Log.d(//TAG, "TabLayout Tab selected: " + position);
                 loadFragment(position);
             }
 

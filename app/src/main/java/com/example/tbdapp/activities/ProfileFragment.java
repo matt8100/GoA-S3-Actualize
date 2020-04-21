@@ -20,8 +20,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tbdapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment implements
@@ -197,27 +195,7 @@ public class ProfileFragment extends Fragment implements
         housingStatusPosition = adapter_housingStatus.getPosition(housingStatusString);
         housingStatus.setSelection(housingStatusPosition);
 
-        //Spinner code for health condition
-        /*
-        if (healthCondition != null) {
-            healthCondition.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<CharSequence> adapter_healthCondition = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_healthCondition, android.R.layout.simple_spinner_item);
-        adapter_healthCondition.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
 
-        if (healthCondition != null) {
-            healthCondition.setAdapter(adapter_healthCondition);
-        }
-
-        int healthConditionPosition ;
-        String healthConditionString = user.healthConditionText;
-        healthConditionPosition = adapter_healthCondition.getPosition(healthConditionString);
-        healthCondition.setSelection(healthConditionPosition);
-
-
-         */
         //Spinner code for looking for
 
         if (lookingFor != null) {

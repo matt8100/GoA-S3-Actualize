@@ -54,12 +54,7 @@
         <item>Tenant</item>
 
     </string-array>
-    <string-array name="labels_healthCondition">
 
-        <item>None</item>
-        <item>Asthma</item>
-
-    </string-array>
     <string-array name="labels_lookingFor">
 
         <item>A career adviser</item>
@@ -67,7 +62,6 @@
 
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit">Edit</string>
     <string name="healthCondition1" />
