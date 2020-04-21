@@ -108,7 +108,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
                 myUser.photo = imageUri;
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragmentProfile);
+                fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
                 fragmentTransaction.commit();
             }
         });
