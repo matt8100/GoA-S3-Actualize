@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.activities.ChatActivity;
-import com.example.tbdapp.views.ContactItem;
+import com.example.tbdapp.models.Advisor;
 
 import java.util.ArrayList;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
 
     private Context context;
-    private ArrayList<ContactItem> mContactList;
+    private ArrayList<Advisor> mContactList;
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
@@ -36,7 +36,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
     }
 
-    public ContactAdapter (Context context, ArrayList<ContactItem> mContactList) {
+    public ContactAdapter (Context context, ArrayList<Advisor> mContactList) {
         this.context = context;
         this.mContactList = mContactList;
     }
@@ -51,11 +51,11 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        final ContactItem currentItem =  mContactList.get(position);
+        final Advisor currentItem =  mContactList.get(position);
 
-        holder.mImageView.setImageResource(currentItem.getImageResource());
-        holder.mTextView.setText(currentItem.getText());
-        holder.mFirstLetter.setText(currentItem.getFirstLetter());
+        holder.mImageView.setImageResource(currentItem.advisorImage);
+        holder.mTextView.setText(currentItem.advisorName);
+        holder.mFirstLetter.setText(currentItem.advisorDescription);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

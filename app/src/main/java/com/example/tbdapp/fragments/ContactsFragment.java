@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Advisor;
-import com.example.tbdapp.views.ContactItem;
 import com.example.tbdapp.views.adapters.ContactAdapter;
 
 import java.util.ArrayList;
@@ -34,8 +33,8 @@ public class ContactsFragment extends Fragment {
         //Advisor lists are temp storage of type Advisor object
         ArrayList<Advisor> starredAdvisorList = new ArrayList<>();
         ArrayList<Advisor> normalAdvisorList = new ArrayList<>();
-        ArrayList<ContactItem> starredContactsList = new ArrayList<>();
-        ArrayList<ContactItem> normalContactsList = new ArrayList<>();
+        ArrayList<Advisor> starredContactsList = new ArrayList<>();
+        ArrayList<Advisor> normalContactsList = new ArrayList<>();
 
         //Put all advisor names in an array, sort the array
         ArrayList<String> advisorNames = new ArrayList<>();
@@ -69,7 +68,9 @@ public class ContactsFragment extends Fragment {
             if(i > 0) {
                 star = "";
             }
-            starredContactsList.add(new ContactItem(image, name, star));
+            //starredContactsList.add(new Advisor(image, name, star));
+            starredContactsList.add(new Advisor(name, "", star, "", image, false));
+            //String advisorName, String advisorType, String advisorDescription, String advisorSkills, int advisorImage, boolean isFavourite
         }
 
         //For all normal advisors
@@ -82,11 +83,11 @@ public class ContactsFragment extends Fragment {
                 letter1 = Character.toString(normalAdvisorList.get(i).advisorName.charAt(0)).toUpperCase();
                 usedLetters.add(letter1);
             }
-            normalContactsList.add(new ContactItem(image1, name1, letter1));
+            normalContactsList.add(new Advisor(name1, "", letter1, "", image1, false));
         }
 
         //Put all the contact items in the same array list
-        ArrayList<ContactItem> allContactItems = new ArrayList<>();
+        ArrayList<Advisor> allContactItems = new ArrayList<>();
         for(int i=0;i<starredContactsList.size();i++) {
             allContactItems.add(starredContactsList.get(i));
         }
