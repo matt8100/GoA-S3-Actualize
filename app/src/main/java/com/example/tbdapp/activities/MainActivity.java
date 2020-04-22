@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.fragments.ProfileDisplayFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.fragments.ContactsFragment;
 import com.example.tbdapp.fragments.ExploreFragment;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fragmentProfileDisplay = ProfileDisplayFragment.newInstance();
+        fragmentProfileDisplay = new ProfileDisplayFragment();
 
         createAdvisorProfiles();
 
@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         advisorList.add(new Advisor("Cornelius II of Rome", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         advisorList.add(new Advisor("Rünerig Pfochmännördt", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        
         }
 }
 

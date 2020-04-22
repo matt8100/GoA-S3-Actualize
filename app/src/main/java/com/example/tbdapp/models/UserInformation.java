@@ -1,9 +1,9 @@
-package com.example.tbdapp.activities;
+package com.example.tbdapp.models;
 
 import android.net.Uri;
 
 public class UserInformation {
-    Uri photo ;
+    public Uri photo ;
     public String name = "Jane Foster";
     public String preferredName = "Jane";
     public String dateOfBirth = "1996-09-04";
@@ -19,8 +19,7 @@ public class UserInformation {
     public UserInformation(){
     }
 
-    public UserInformation(Uri photo, String name, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor
-    ){
+    public UserInformation(Uri photo, String name, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
         this.photo = photo;
         this.name = name;
         this.preferredName = preferredName;
@@ -36,43 +35,6 @@ public class UserInformation {
     }
 
     public String getName(){
-
         return name;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getCitizenship() {
-        return citizenshipText;
-    }
-
-    public String getEmploymentStatus() {
-        return employmentStatusText;
-    }
-
-    public String getExpectedIncome() {
-        return expectedIncomeText;
-    }
-
-    public String getHealthCondition() {
-        return healthConditionText;
-    }
-
-    public String getHousingStatus() {
-        return housingStatusText;
-    }
-
-    public String getLookingFor() {
-        return lookingForText;
-    }
-
-    public String getProvince() {
-        return provinceText;
     }
 }
