@@ -16,16 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".fragments.ProfileFragment"
-            android:label = "Profile"
-            android:parentActivityName=".activities.MainActivity">
-        </activity>
         <activity android:name=".models.UserInformation"
             android:label = "UserInformation"
-            android:parentActivityName=".activities.MainActivity">
-        </activity>
-        <activity android:name=".fragments.ProfileDisplayFragment"
-            android:label = "ProfileDisplayFragment"
             android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity android:name=".activities.AdvisorProfileActivity" />
