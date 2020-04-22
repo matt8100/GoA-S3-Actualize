@@ -68,9 +68,7 @@ public class ContactsFragment extends Fragment {
             if(i > 0) {
                 star = "";
             }
-            //starredContactsList.add(new Advisor(image, name, star));
             starredContactsList.add(new Advisor(name, "", star, "", image, false));
-            //String advisorName, String advisorType, String advisorDescription, String advisorSkills, int advisorImage, boolean isFavourite
         }
 
         //For all normal advisors
