@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Author;
 import com.example.tbdapp.models.Message;
-import com.example.tbdapp.views.ContactItem;
+import com.example.tbdapp.models.Advisor;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
@@ -33,11 +33,11 @@ public class ChatActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ContactItem contact = (ContactItem) getIntent().getSerializableExtra("contact");
+        Advisor contact = (Advisor) getIntent().getSerializableExtra("contact");
         mMessagesList = findViewById(R.id.messagesList);
         mMessageInput = findViewById(R.id.input);
         mReceiver = new Author("0", "Matthew", null);
-        mSender = new Author("1", contact.getText(), null);
+        mSender = new Author("1", contact.advisorName, null);
         mDate = new Date();
         mAdapter = new MessagesListAdapter<Message>(mSender.getId(), null);
         mMessageArrayList = new ArrayList<>();
