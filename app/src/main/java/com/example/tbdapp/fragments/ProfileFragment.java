@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -75,7 +76,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
         healthCondition3 = v.findViewById(R.id.healthCondition_3);
         lookingFor = v.findViewById(R.id.spinner_lookingFor);
 
-        User user = User.myUser;
+        User user = Singleton.getInstance().user;
 
         profileImage.setImageURI(user.photo);
         editTextName.setText(user.name);
@@ -197,7 +198,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User myUser = User.myUser;
+                User myUser = Singleton.getInstance().user;
 
                 myUser.name = editTextName.getText().toString();
                 myUser.preferredName = editTextPreferredName.getText().toString();

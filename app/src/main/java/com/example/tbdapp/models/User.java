@@ -1,11 +1,8 @@
 package com.example.tbdapp.models;
 
-import android.app.Application;
 import android.net.Uri;
 
-public class User extends Application {
-    public static User myUser = new User();
-
+public class User {
     public Uri photo ;
     public String name = "Jane Foster";
     public String preferredName = "Jane";
@@ -34,11 +31,6 @@ public class User extends Application {
         this.expectedIncomeText = expectedIncome;
     }
 
-    public User() {
-
-    }
-
-    public String getName(){
-        return name;
+    User() {
     }
 }
