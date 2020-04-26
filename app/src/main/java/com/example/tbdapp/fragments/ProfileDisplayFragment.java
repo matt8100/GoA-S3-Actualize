@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.User;
-import com.example.tbdapp.models.UserInformation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfileDisplayFragment extends ProfileFragment {
@@ -33,7 +32,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
         fragmentProfile = new ProfileFragment();
 
-        UserInformation user = User.getUser();
+        User user = User.myUser;
 
         profileImageView = v.findViewById(R.id.profile_imageView);
         profileImageView.setImageURI(user.photo);
@@ -76,7 +75,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
             @Override
             public void onClick(View view) {
 
-                UserInformation myUser = User.getUser();
+                User myUser = User.myUser;
 
                 myUser.name = NameTextView.getText().toString();
                 myUser.preferredName = preferredNameTextView.getText().toString();
