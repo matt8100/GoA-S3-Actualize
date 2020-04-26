@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Advisor;
+import com.squareup.picasso.Picasso;
 
 public class AdvisorProfileActivity extends AppCompatActivity {
 
@@ -40,9 +41,9 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         Advisor advisor = (Advisor) getIntent().getSerializableExtra("advisor");
 
         // set text
-        advisorName.setText(advisor.advisorName);
+        advisorName.setText(advisor.name);
         advisorType.setText(advisor.advisorType);
-        advisorImage.setImageResource(advisor.advisorImage);
+        Picasso.get().load(advisor.avatar).into(advisorImage);
         advisorDescription.setText(advisor.advisorDescription);
         advisorSkills.setText(advisor.advisorSkills);
 

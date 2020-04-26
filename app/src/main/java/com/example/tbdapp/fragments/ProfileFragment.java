@@ -22,6 +22,7 @@ import com.example.tbdapp.R;
 import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -78,7 +79,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
 
         User user = Singleton.getInstance().user;
 
-        profileImage.setImageURI(user.photo);
+        Picasso.get().load(user.avatar).into(profileImage);
         editTextName.setText(user.name);
         editTextPreferredName.setText((user.preferredName));
         editTextDateOfBirth.setText(user.dateOfBirth);
@@ -236,7 +237,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
                }
 
                 myUser.lookingForText = lookingFor.getSelectedItem().toString();
-                myUser.photo = imageUri;
+                myUser.avatar = imageUri.toString();
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, profileDisplayFragment);
@@ -255,7 +256,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode == SELECT_IMAGE){
             imageUri = data.getData();
-            profileImage.setImageURI(imageUri);
+            Picasso.get().load(imageUri).into(profileImage);
         }
     }
 
