@@ -22,7 +22,6 @@ public class ProfileDisplayFragment extends ProfileFragment {
     public ProfileDisplayFragment() {
         // Required empty public constructor
     }
-    
     private ProfileFragment fragmentProfile;
 
     @Override
