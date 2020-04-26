@@ -1,5 +1,7 @@
 package com.example.tbdapp.models;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 public class Advisor extends Author implements Serializable {
