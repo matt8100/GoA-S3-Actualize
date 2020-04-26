@@ -1,21 +1,18 @@
 package com.example.tbdapp.models;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
-public class Advisor implements Serializable {
-    public String advisorName;
+public class Advisor extends Author implements Serializable {
     public String advisorType;
     public String advisorDescription;
     public String advisorSkills;
-    public int advisorImage;
-    public boolean isFavourite;
 
-    public Advisor(String advisorName, String advisorType, String advisorDescription, String advisorSkills, int advisorImage, boolean isFavourite) {
-        this.advisorName = advisorName;
+    public Advisor(String id, String name, String advisorType, String advisorDescription, String advisorSkills, String avatar) {
+        super(id, name, avatar);
         this.advisorType = advisorType;
         this.advisorDescription = advisorDescription;
         this.advisorSkills = advisorSkills;
-        this.advisorImage = advisorImage;
-        this.isFavourite = isFavourite;
     }
 }

@@ -1,8 +1,12 @@
 package com.example.tbdapp.models;
 
+import android.net.Uri;
+
 import com.stfalcon.chatkit.commons.models.IUser;
 
-public class Author implements IUser {
+import java.io.Serializable;
+
+public class Author implements IUser, Serializable {
     public String id;
     public String name;
     public String avatar;
@@ -23,6 +27,6 @@ public class Author implements IUser {
     }
     @Override
     public String getAvatar() {
-        return avatar;
+        return avatar.toString();
     }
 }

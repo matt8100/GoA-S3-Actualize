@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tbdapp.R;
 import com.example.tbdapp.activities.ChatActivity;
 import com.example.tbdapp.models.Advisor;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -53,8 +54,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         final Advisor currentItem =  mContactList.get(position);
 
-        holder.mImageView.setImageResource(currentItem.advisorImage);
-        holder.mTextView.setText(currentItem.advisorName);
+        Picasso.get().load(currentItem.avatar).into(holder.mImageView);
+        holder.mTextView.setText(currentItem.name);
         holder.mFirstLetter.setText(currentItem.advisorDescription);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
