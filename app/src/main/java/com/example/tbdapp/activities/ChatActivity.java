@@ -37,7 +37,7 @@ public class ChatActivity extends AppCompatActivity {
         mMessagesList = findViewById(R.id.messagesList);
         mMessageInput = findViewById(R.id.input);
         mReceiver = new Author("0", "Matthew", null);
-        mSender = new Author("1", contact.advisorName, null);
+        mSender = new Author("1", contact.name, null);
         mDate = new Date();
         mAdapter = new MessagesListAdapter<Message>(mSender.getId(), null);
         mMessageArrayList = new ArrayList<>();
