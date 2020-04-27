@@ -10,9 +10,18 @@ public class Dialog implements IDialog {
     private String id;
     private String dialogPhoto;
     private String dialogName;
-    private ArrayList<IUser> users;
+    private ArrayList<Author> users;
     private IMessage lastMessage;
     private int unreadCount;
+
+    public Dialog(String id, String dialogPhoto, String dialogName, ArrayList<Author> users, IMessage lastMessage, int unreadCount) {
+        this.id = id;
+        this.dialogPhoto = dialogPhoto;
+        this.dialogName = dialogName;
+        this.users = users;
+        this.lastMessage = lastMessage;
+        this.unreadCount = unreadCount;
+    }
 
     @Override
     public String getId() {
@@ -30,7 +39,7 @@ public class Dialog implements IDialog {
     }
 
     @Override
-    public ArrayList<IUser> getUsers() {
+    public ArrayList<Author> getUsers() {
         return users;
     }
 
