@@ -17,53 +17,107 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <VideoView
-        android:id="@+id/secondaryVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/secondaryVideoContainer"
+        android:layout_width="200dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:elevation="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainVideo" />
+        app:layout_constraintTop_toTopOf="@+id/mainVideo"
+        android:background="@drawable/shadow_rectangle"
+        >
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_hangUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:clickable="true"
-        android:tint="#FFFFFF"
-        app:backgroundTint="#FF0000"
-        app:fabCustomSize="80dp"
+        <VideoView
+            android:id="@+id/secondaryVideo"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/mainVideo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:maxImageSize="60dp"
-        app:srcCompat="@drawable/ic_call_end" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_mic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        android:clickable="true"
-        android:tint="#000000"
-        app:backgroundTint="#80FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fab_hangUp"
-        app:srcCompat="@drawable/ic_unmute" />
+        <ImageButton
+            android:id="@+id/fab_mic"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_unmute"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="606dp"
+            android:background="@null"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:tint="@color/white"
+            />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="40dp"
-        android:clickable="true"
-        android:tint="#000000"
-        app:backgroundTint="#80FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fab_hangUp"
-        app:srcCompat="@drawable/ic_camera_on" />
+        <ImageButton
+            android:id="@+id/fab_camera"
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_camera_on"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="606dp"
+            android:background="@null"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:tint="@color/white"
+            />
+
+        <ImageButton
+            android:id="@+id/fab_record"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_record"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="606dp"
+            android:background="@null"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:tint="#FF0000"
+            />
+
+        <ImageButton
+            android:id="@+id/fab_switch_camera"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_switch_camera"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="606dp"
+            android:background="@null"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:tint="@color/white"
+            />
+
+        <ImageButton
+            android:id="@+id/fab_hangUp"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_call_end"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="606dp"
+            android:background="@null"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:tint="@color/white"
+            />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

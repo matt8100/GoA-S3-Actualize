@@ -3,6 +3,7 @@ package com.example.tbdapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabLayout();
         loadFragment(0); //load fragment for first tab layout item
+
+        //TEMP INTENT FOR VIDEO CALL
+        Intent intent = new Intent(this, VideoCallActivity.class);
+        startActivity(intent);
     }
 
     private void loadContactsFragment() {

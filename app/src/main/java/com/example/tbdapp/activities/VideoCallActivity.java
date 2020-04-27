@@ -4,14 +4,12 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.MediaController;
+import android.widget.ImageButton;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.models.Advisor;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class VideoCallActivity extends AppCompatActivity {
     //Default mic and camera options
@@ -48,10 +46,12 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
-        //references to fabs
-        final FloatingActionButton microphone = findViewById(R.id.fab_mic);
-        final FloatingActionButton camera = findViewById(R.id.fab_camera);
-        final FloatingActionButton endCallButton = findViewById(R.id.fab_hangUp);
+        //references to buttons
+        final ImageButton microphone = findViewById(R.id.fab_mic);
+        final ImageButton camera = findViewById(R.id.fab_camera);
+        final ImageButton recordButton = findViewById(R.id.fab_record);
+        final ImageButton switchCamera = findViewById(R.id.fab_switch_camera);
+        final ImageButton endCallButton = findViewById(R.id.fab_hangUp);
 
         //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +87,21 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
+        //Record
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Do something that records the conversation
+            }
+        });
+
+        //switch camera
+        switchCamera.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Do something when camera is switched
+            }
+        });
+
+        //end call
         endCallButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Do something that ends the call
