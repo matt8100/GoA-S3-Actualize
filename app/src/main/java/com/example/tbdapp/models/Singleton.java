@@ -1,11 +1,15 @@
 package com.example.tbdapp.models;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 public class Singleton {
     public ArrayList<Advisor> advisors;
     public User user;
-    private ArrayList<Message> chatHistory1;
+    private ArrayList<Message> messageList1;
+    public HashMap<String, ArrayList<Message>> chatHistory;
 
     private String placeholderText = "This text is placeholder text.";
     private String placeholderImage = "https://www.misemacau.org/wp-content/uploads/2015/11/avatar-placeholder-01-300x250.png";
@@ -17,7 +21,13 @@ public class Singleton {
         createAdvisorProfiles();
 
         user = new User("Jane Foster", placeholderImage, "Jane", "1996-09-04", "janefoster@tbd.com", "Ontario", "Permanent Resident", "Unemployed", "$10,000", "Tenant", "None", "A financial advisor");
-        
+
+        messageList1 = new ArrayList<>();
+        chatHistory = new HashMap<>();
+
+        createMessageList();
+        createChatHistories();
+
     }
 
     public static Singleton getInstance() {
@@ -43,4 +53,13 @@ public class Singleton {
         advisors.add(new Advisor("13", "Grzegorz Brzęczyszczykiewicz", "Financial", placeholderText, placeholderText, placeholderImage));
     }
 
+    private void createMessageList() {
+        for (int i=0;i<10;i++) {
+            messageList1.add(new Message("1", "test", advisors.get(0), new Date()));
+        }
+    }
+
+    private void createChatHistories() {
+        chatHistory.put("0",messageList1);
+    }
 }
