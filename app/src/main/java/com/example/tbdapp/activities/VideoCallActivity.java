@@ -15,16 +15,28 @@ public class VideoCallActivity extends AppCompatActivity {
     //Default mic and camera options
     boolean micOn = true;
     boolean cameraOn = true;
+    boolean recording = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
 
-
-        //set the video of primary video (advisor's video)
+        //references
+        final ImageButton microphone = findViewById(R.id.fab_mic);
+        final ImageButton camera = findViewById(R.id.fab_camera);
+        final ImageButton recordButton = findViewById(R.id.fab_record);
+        final ImageButton switchCamera = findViewById(R.id.fab_switch_camera);
+        final ImageButton endCallButton = findViewById(R.id.fab_hangUp);
         final VideoView mainVideo = findViewById(R.id.mainVideo);
         final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
+        final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
+        final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
+        final MediaPlayer recordingStart = MediaPlayer.create(this, R.raw.recording_start);
+        final MediaPlayer recordingEnd = MediaPlayer.create(this, R.raw.recording_end);
+
+
+        //set the video of primary video (advisor's video)
         mainVideo.setVideoURI(Uri.parse(videoPath));
         mainVideo.start();
         mainVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -35,8 +47,6 @@ public class VideoCallActivity extends AppCompatActivity {
         });
 
         //set the video of secondary video (client's video)
-        final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
-        final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
         secondaryVideo.setVideoURI(Uri.parse(videoPath2));
         secondaryVideo.start();
         secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -46,12 +56,6 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
-        //references to buttons
-        final ImageButton microphone = findViewById(R.id.fab_mic);
-        final ImageButton camera = findViewById(R.id.fab_camera);
-        final ImageButton recordButton = findViewById(R.id.fab_record);
-        final ImageButton switchCamera = findViewById(R.id.fab_switch_camera);
-        final ImageButton endCallButton = findViewById(R.id.fab_hangUp);
 
         //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +94,14 @@ public class VideoCallActivity extends AppCompatActivity {
         //Record
         recordButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Do something that records the conversation
+                recording = !recording;
+                if(recording) {
+                    recordButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_stop_recording, getTheme()));
+                    recordingStart.start();
+                }else {
+                    recordButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_record, getTheme()));
+                    recordingEnd.start();
+                }
             }
         });
 
