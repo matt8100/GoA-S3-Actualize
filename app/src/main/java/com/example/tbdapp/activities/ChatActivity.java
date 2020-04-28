@@ -6,19 +6,13 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.models.Author;
-import com.example.tbdapp.models.Dialog;
 import com.example.tbdapp.models.Message;
-import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.models.Singleton;
-import com.squareup.picasso.Picasso;
 import com.stfalcon.chatkit.commons.ImageLoader;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ChatActivity extends AppCompatActivity {
@@ -43,7 +37,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void loadImage(ImageView imageView, String url, Object payload) {
                 int image = getApplicationContext().getResources().getIdentifier(url, "drawable", getApplicationContext().getPackageName());
-                Picasso.get().load(image).into(imageView);
+                imageView.setImageResource(image);
             }
         });
 
