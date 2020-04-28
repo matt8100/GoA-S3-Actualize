@@ -17,7 +17,6 @@ import com.example.tbdapp.models.Author;
 import com.example.tbdapp.models.Dialog;
 import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
-import com.squareup.picasso.Picasso;
 import com.stfalcon.chatkit.commons.ImageLoader;
 import com.stfalcon.chatkit.dialogs.DialogsList;
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter;
@@ -46,7 +45,7 @@ public class ContactsFragment extends Fragment {
             @Override
             public void loadImage(ImageView imageView, String url, Object payload) {
                 int image = context.getResources().getIdentifier(url, "drawable", context.getPackageName());
-                Picasso.get().load(image).into(imageView);
+                imageView.setImageResource(image);
             }
         });
         mDialogsListView.setAdapter(mAdapter);

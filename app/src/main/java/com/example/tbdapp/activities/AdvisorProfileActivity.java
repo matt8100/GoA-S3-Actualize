@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Advisor;
-import com.squareup.picasso.Picasso;
 
 public class AdvisorProfileActivity extends AppCompatActivity {
 
@@ -43,7 +42,7 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         // set text
         advisorName.setText(advisor.name);
         advisorType.setText(advisor.advisorType);
-        Picasso.get().load(this.getResources().getIdentifier(advisor.avatar, "drawable", this.getPackageName())).into(advisorImage);
+        advisorImage.setImageResource(getResources().getIdentifier(advisor.avatar, "drawable", this.getPackageName()));
         advisorDescription.setText(advisor.advisorDescription);
         advisorSkills.setText(advisor.advisorSkills);
 

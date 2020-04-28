@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tbdapp.R;
 import com.example.tbdapp.activities.AdvisorProfileActivity;
 import com.example.tbdapp.models.Advisor;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -53,7 +52,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ExploreV
     public void onBindViewHolder(@NonNull ExploreViewHolder holder, final int position) {
         final Advisor currentAdvisor = advisorList.get(position);
 
-        Picasso.get().load(context.getResources().getIdentifier(currentAdvisor.avatar, "drawable", context.getPackageName())).resize(128,128).into(holder.advisorImage);
+        holder.advisorImage.setImageResource(context.getResources().getIdentifier(currentAdvisor.avatar, "drawable", context.getPackageName()));
         holder.advisorName.setText(currentAdvisor.name);
         holder.advisorType.setText(currentAdvisor.advisorType);
 

@@ -1,20 +1,18 @@
 package com.example.tbdapp.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.squareup.picasso.Picasso;
 
 public class ProfileDisplayFragment extends ProfileFragment {
 
@@ -36,7 +34,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         User user = Singleton.getInstance().user;
 
         profileImageView = v.findViewById(R.id.profile_imageView);
-        Picasso.get().load(this.getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName())).into(profileImageView);
+        profileImageView.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
 
         NameTextView = v.findViewById(R.id.label_name);
         NameTextView.setText(user.name);

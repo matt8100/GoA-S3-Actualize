@@ -1,9 +1,7 @@
 package com.example.tbdapp.fragments;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +20,6 @@ import com.example.tbdapp.R;
 import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.squareup.picasso.Picasso;
-
-import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -78,7 +73,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
 
         User user = Singleton.getInstance().user;
 
-        Picasso.get().load(this.getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName())).into(profileImage);
+        profileImage.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
         editTextName.setText(user.name);
         editTextPreferredName.setText((user.preferredName));
         editTextDateOfBirth.setText(user.dateOfBirth);
