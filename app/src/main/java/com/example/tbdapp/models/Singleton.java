@@ -23,7 +23,7 @@ public class Singleton {
         advisors = new ArrayList<>();
         createAdvisorProfiles();
 
-        user = new User("Jane Foster", placeholderImage, "Jane", "1996-09-04", "janefoster@tbd.com", "Ontario", "Permanent Resident", "Unemployed", "$10,000", "Tenant", "None", "A financial advisor");
+        user = new User("Jane Foster", "profile_picture", "Jane", "1996-09-04", "janefoster@tbd.com", "Ontario", "Permanent Resident", "Unemployed", "$10,000", "Tenant", "None", "A financial advisor");
 
         chatHistory = new HashMap<>();
         populateChatHistories();
