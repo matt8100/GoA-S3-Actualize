@@ -87,6 +87,7 @@ public class ContactsFragment extends Fragment {
 
             Dialog dialog = new Dialog(advisor.id, advisor.avatar, advisor.name, users, Singleton.getLastMessage(Singleton.getInstance().chatHistory.get(advisor.id)), 0);
             mAdapter.upsertItem(dialog);
+            mAdapter.sortByLastMessageDate();
         }
     }
 }
