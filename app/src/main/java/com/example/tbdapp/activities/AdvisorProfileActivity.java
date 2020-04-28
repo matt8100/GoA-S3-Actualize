@@ -43,7 +43,7 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         // set text
         advisorName.setText(advisor.name);
         advisorType.setText(advisor.advisorType);
-        Picasso.get().load(advisor.avatar).into(advisorImage);
+        Picasso.get().load(this.getResources().getIdentifier(advisor.avatar, "drawable", this.getPackageName())).into(advisorImage);
         advisorDescription.setText(advisor.advisorDescription);
         advisorSkills.setText(advisor.advisorSkills);
 

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadContactsFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout, new ContactsFragment(advisorList));
+        ft.replace(R.id.frameLayout, new ContactsFragment(advisorList, this));
         ft.commit();
     }
 

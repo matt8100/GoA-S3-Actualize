@@ -53,7 +53,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ExploreV
     public void onBindViewHolder(@NonNull ExploreViewHolder holder, final int position) {
         final Advisor currentAdvisor = advisorList.get(position);
 
-        Picasso.get().load(currentAdvisor.avatar).resize(128,128).into(holder.advisorImage);
+        Picasso.get().load(context.getResources().getIdentifier(currentAdvisor.avatar, "drawable", context.getPackageName())).resize(128,128).into(holder.advisorImage);
         holder.advisorName.setText(currentAdvisor.name);
         holder.advisorType.setText(currentAdvisor.advisorType);
 

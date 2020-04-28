@@ -36,7 +36,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         User user = Singleton.getInstance().user;
 
         profileImageView = v.findViewById(R.id.profile_imageView);
-        Picasso.get().load(user.avatar).into(profileImageView);
+        Picasso.get().load(this.getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName())).into(profileImageView);
 
         NameTextView = v.findViewById(R.id.label_name);
         NameTextView.setText(user.name);
@@ -89,7 +89,6 @@ public class ProfileDisplayFragment extends ProfileFragment {
                 myUser.housingStatusText = housingStatusTextView.getText().toString();
                 myUser.healthConditionText = healthConditionTextView.getText().toString();
                 myUser.lookingForText = lookingForTextView.getText().toString();
-                myUser.avatar = imageUri.toString();
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);

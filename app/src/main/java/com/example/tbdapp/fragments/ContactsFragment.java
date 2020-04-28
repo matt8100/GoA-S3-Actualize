@@ -1,15 +1,17 @@
 package com.example.tbdapp.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.activities.ChatActivity;
 import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.models.Author;
 import com.example.tbdapp.models.Dialog;
@@ -24,29 +26,42 @@ import java.util.ArrayList;
 
 public class ContactsFragment extends Fragment {
     ArrayList<Advisor> advisorList;
+    Context context;
 
-    public ContactsFragment(ArrayList<Advisor> advisors) {
-        advisorList = advisors;
+    public ContactsFragment(ArrayList<Advisor> advisorList, Context context) {
+        this.advisorList = advisorList;
+        this.context = context;
+
     }
 
     private DialogsList mDialogsListView;
     private DialogsListAdapter mAdapter;
-    private ArrayList<Dialog> mDialogs;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_contacts, container, false);
-
         mDialogsListView = root.findViewById(R.id.dialogsList);
-        mDialogs = new ArrayList<>();
-        createDialogs();
 
-        mAdapter = new DialogsListAdapter<>(null);
-
+        mAdapter = new DialogsListAdapter<>(new ImageLoader() {
+            @Override
+            public void loadImage(ImageView imageView, String url, Object payload) {
+                int image = context.getResources().getIdentifier(url, "drawable", context.getPackageName());
+                Picasso.get().load(image).into(imageView);
+            }
+        });
         mDialogsListView.setAdapter(mAdapter);
-        mAdapter.setItems(mDialogs);
 
+        loadDialogs();
 
+        mAdapter.setOnDialogClickListener(new DialogsListAdapter.OnDialogClickListener<Dialog>() {
+            @Override
+            public void onDialogClick(Dialog dialog) {
+                Intent intent = new Intent(context, ChatActivity.class);
+                intent.putExtra("contactId", dialog.getId());
+
+                startActivity(intent);
+            }
+        });
         return root;
     }
 
@@ -56,12 +71,23 @@ public class ContactsFragment extends Fragment {
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
     }
 
-    private void createDialogs() {
-        Advisor advisor = Singleton.getInstance().advisors.get(0);
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadDialogs();
+    }
+
+    private void loadDialogs() {
         User user = Singleton.getInstance().user;
-        ArrayList<Author> users = new ArrayList<>();
-        users.add(advisor);
-        users.add(user);
-        mDialogs.add(new Dialog(advisor.id, advisor.avatar, advisor.name, users, Singleton.getInstance().chatHistory.get("0").get(Singleton.getInstance().chatHistory.get("0").size()-1), 0));
+
+        for(int i=0;i<advisorList.size();i++){
+            ArrayList<Author> users = new ArrayList<>();
+            Advisor advisor = advisorList.get(i);
+            users.add(user);
+            users.add(advisor);
+
+            Dialog dialog = new Dialog(advisor.id, advisor.avatar, advisor.name, users, Singleton.getLastMessage(Singleton.getInstance().chatHistory.get(advisor.id)), 0);
+            mAdapter.upsertItem(dialog);
+        }
     }
 }

@@ -1,5 +1,9 @@
 package com.example.tbdapp.models;
 
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,11 +12,10 @@ import java.util.HashMap;
 public class Singleton {
     public ArrayList<Advisor> advisors;
     public User user;
-    private ArrayList<Message> messageList1;
     public HashMap<String, ArrayList<Message>> chatHistory;
 
     private String placeholderText = "This text is placeholder text.";
-    private String placeholderImage = "https://www.misemacau.org/wp-content/uploads/2015/11/avatar-placeholder-01-300x250.png";
+    private String placeholderImage = "profile_photo";
 
     private static Singleton instance;
 
@@ -22,12 +25,9 @@ public class Singleton {
 
         user = new User("Jane Foster", placeholderImage, "Jane", "1996-09-04", "janefoster@tbd.com", "Ontario", "Permanent Resident", "Unemployed", "$10,000", "Tenant", "None", "A financial advisor");
 
-        messageList1 = new ArrayList<>();
         chatHistory = new HashMap<>();
-
-        createMessageList();
-        createChatHistories();
-
+        populateChatHistories();
+        populateMessageList();
     }
 
     public static Singleton getInstance() {
@@ -35,6 +35,13 @@ public class Singleton {
             instance = new Singleton();
         }
         return instance;
+    }
+
+    public static Message getLastMessage(ArrayList<Message> messageList) {
+        if(messageList.size() == 0) {
+            return null;
+        }
+        return messageList.get(0);
     }
 
     private void createAdvisorProfiles() {
@@ -53,13 +60,21 @@ public class Singleton {
         advisors.add(new Advisor("13", "Grzegorz Brzęczyszczykiewicz", "Financial", placeholderText, placeholderText, placeholderImage));
     }
 
-    private void createMessageList() {
-        for (int i=0;i<10;i++) {
-            messageList1.add(new Message("1", "test", advisors.get(0), new Date()));
+    private void populateChatHistories() {
+        for(int i=0;i<advisors.size();i++) {
+            chatHistory.put(advisors.get(i).id, new ArrayList<Message>());
         }
     }
 
-    private void createChatHistories() {
-        chatHistory.put("0",messageList1);
+    private void populateMessageList() {
+        for(int i=0;i<advisors.size();i++) {
+            for(int j=1;j<11;j++) {
+                if(j%2==0) {
+                    chatHistory.get(String.valueOf(i+1)).add(new Message("0","test", user, new Date()));
+                } else {
+                    chatHistory.get(String.valueOf(i+1)).add(new Message("1","test", advisors.get(i), new Date()));
+                }
+            }
+        }
     }
 }
