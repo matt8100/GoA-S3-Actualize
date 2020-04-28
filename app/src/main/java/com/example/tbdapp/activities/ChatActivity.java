@@ -1,13 +1,18 @@
 package com.example.tbdapp.activities;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Author;
+import com.example.tbdapp.models.Dialog;
 import com.example.tbdapp.models.Message;
 import com.example.tbdapp.models.Advisor;
+import com.example.tbdapp.models.Singleton;
+import com.squareup.picasso.Picasso;
+import com.stfalcon.chatkit.commons.ImageLoader;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
@@ -20,11 +25,9 @@ public class ChatActivity extends AppCompatActivity {
 
     private MessagesList mMessagesList;
     private MessageInput mMessageInput;
-    private Author mReceiver;
-    private Author mSender;
-    private Date mDate;
     private MessagesListAdapter<Message> mAdapter;
-    private ArrayList<Message> mMessageArrayList;
+    private Date mDate;
+    private String mContactId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,40 +35,38 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_messaging);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Advisor contact = (Advisor) getIntent().getSerializableExtra("contact");
         mMessagesList = findViewById(R.id.messagesList);
         mMessageInput = findViewById(R.id.input);
-        mReceiver = new Author("0", "Matthew", null);
-        mSender = new Author("1", contact.name, null);
-        mDate = new Date();
-        mAdapter = new MessagesListAdapter<Message>(mSender.getId(), null);
-        mMessageArrayList = new ArrayList<>();
 
-        setTitle(mSender.getName());
+        mContactId = getIntent().getStringExtra("contactId");
+        mAdapter = new MessagesListAdapter<>("0", new ImageLoader() {
+            @Override
+            public void loadImage(ImageView imageView, String url, Object payload) {
+                int image = getApplicationContext().getResources().getIdentifier(url, "drawable", getApplicationContext().getPackageName());
+                Picasso.get().load(image).into(imageView);
+            }
+        });
+
+        setTitle(Singleton.getInstance().advisors.get(Integer.parseInt(mContactId)-1).name);
         mMessagesList.setAdapter(mAdapter);
 
-        createMessages();
         loadMessages();
 
         mMessageInput.setInputListener(new MessageInput.InputListener() {
             @Override
             public boolean onSubmit(CharSequence input) {
                 //validate and send message
-                mAdapter.addToStart(new Message("0", input.toString(), mSender, mDate), true);
+                mDate = new Date();
+                Message message = new Message("0", input.toString(), Singleton.getInstance().user, mDate);
+                mAdapter.addToStart(message, true);
+                Singleton.getInstance().chatHistory.get(mContactId).add(0, message);
                 return true;
             }
         });
     }
 
-    private void createMessages() {
-        mMessageArrayList.add(new Message("0","Hi, how are you doing?", mSender, mDate));
-        mMessageArrayList.add(new Message("1","I'm doing great, how are you?", mReceiver, mDate));
-        mMessageArrayList.add(new Message("0","I'm doing fine as well.", mSender, mDate));
-    }
-
     private void loadMessages() {
-        mAdapter.addToEnd(mMessageArrayList, true);
+        mAdapter.addToEnd(Singleton.getInstance().chatHistory.get(mContactId), false);
     }
 }
 
