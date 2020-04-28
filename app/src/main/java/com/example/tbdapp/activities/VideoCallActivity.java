@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.VideoView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
@@ -75,7 +74,7 @@ public class VideoCallActivity extends AppCompatActivity {
                 cameraOn = !cameraOn;
                 if(cameraOn) {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
-                    findViewById(R.id.secondaryVideo).setVisibility(View.VISIBLE);
+                    findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
                     secondaryVideo.setVideoURI(Uri.parse(videoPath2));
                     secondaryVideo.start();
                     secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -86,7 +85,7 @@ public class VideoCallActivity extends AppCompatActivity {
                     });
                 }else {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
-                    findViewById(R.id.secondaryVideo).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.secondaryVideoContainer).setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -115,7 +114,8 @@ public class VideoCallActivity extends AppCompatActivity {
         //end call
         endCallButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Do something that ends the call
+                //Close activity and return to previous activity
+                finish();
             }
         });
     }
