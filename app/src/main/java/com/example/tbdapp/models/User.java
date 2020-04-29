@@ -1,24 +1,19 @@
 package com.example.tbdapp.models;
 
-import android.net.Uri;
+public class User extends Author{
+    public String preferredName;
+    public String dateOfBirth;
+    public String email;
+    public String provinceText;
+    public String citizenshipText;
+    public String employmentStatusText;
+    public String expectedIncomeText;
+    public String housingStatusText;
+    public String healthConditionText;
+    public String lookingForText;
 
-public class User {
-    public Uri photo ;
-    public String name = "Jane Foster";
-    public String preferredName = "Jane";
-    public String dateOfBirth = "1996-09-04";
-    public String email = "Janefoster@tdb.com" ;
-    public String provinceText = "Ontario";
-    public String citizenshipText = "Permanent Resident";
-    public String employmentStatusText = "Unemployed";
-    public String expectedIncomeText = "$10,000";
-    public String housingStatusText = "Tenant" ;
-    public String healthConditionText = "None";
-    public String lookingForText = "A financial adviser";
-
-    public User(Uri photo, String name, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
-        this.photo = photo;
-        this.name = name;
+    public User(String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
+        super("0", name, avatar);
         this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
@@ -29,8 +24,5 @@ public class User {
         this.housingStatusText = housingStatus;
         this.lookingForText = lookingFor;
         this.expectedIncomeText = expectedIncome;
-    }
-
-    User() {
     }
 }

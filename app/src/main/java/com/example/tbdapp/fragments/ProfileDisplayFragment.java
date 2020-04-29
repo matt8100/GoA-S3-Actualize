@@ -1,14 +1,13 @@
 package com.example.tbdapp.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Singleton;
@@ -35,7 +34,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         User user = Singleton.getInstance().user;
 
         profileImageView = v.findViewById(R.id.profile_imageView);
-        profileImageView.setImageURI(user.photo);
+        profileImageView.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
 
         NameTextView = v.findViewById(R.id.label_name);
         NameTextView.setText(user.name);
@@ -88,7 +87,6 @@ public class ProfileDisplayFragment extends ProfileFragment {
                 myUser.housingStatusText = housingStatusTextView.getText().toString();
                 myUser.healthConditionText = healthConditionTextView.getText().toString();
                 myUser.lookingForText = lookingForTextView.getText().toString();
-                myUser.photo = imageUri;
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);

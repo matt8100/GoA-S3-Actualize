@@ -52,8 +52,8 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ExploreV
     public void onBindViewHolder(@NonNull ExploreViewHolder holder, final int position) {
         final Advisor currentAdvisor = advisorList.get(position);
 
-        holder.advisorImage.setImageResource(currentAdvisor.advisorImage);
-        holder.advisorName.setText(currentAdvisor.advisorName);
+        holder.advisorImage.setImageResource(context.getResources().getIdentifier(currentAdvisor.avatar, "drawable", context.getPackageName()));
+        holder.advisorName.setText(currentAdvisor.name);
         holder.advisorType.setText(currentAdvisor.advisorType);
 
         //OnClick listener for when an advisor is tapped to launch AdvisorProfileActivity

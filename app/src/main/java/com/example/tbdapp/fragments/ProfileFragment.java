@@ -1,9 +1,7 @@
 package com.example.tbdapp.fragments;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +21,6 @@ import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static android.app.Activity.RESULT_OK;
-
 public class ProfileFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private EditText editTextName;
@@ -35,7 +31,6 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
     private ImageView profileImage;
     private CheckBox healthCondition1, healthCondition2, healthCondition3;
     private static final int SELECT_IMAGE = 1;
-    public Uri imageUri;
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -78,7 +73,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
 
         User user = Singleton.getInstance().user;
 
-        profileImage.setImageURI(user.photo);
+        profileImage.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
         editTextName.setText(user.name);
         editTextPreferredName.setText((user.preferredName));
         editTextDateOfBirth.setText(user.dateOfBirth);
@@ -236,7 +231,6 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
                }
 
                 myUser.lookingForText = lookingFor.getSelectedItem().toString();
-                myUser.photo = imageUri;
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, profileDisplayFragment);
@@ -248,19 +242,5 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
         // Inflate the layout for this fragment
         return v;
     }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == SELECT_IMAGE){
-            imageUri = data.getData();
-            profileImage.setImageURI(imageUri);
-        }
-    }
-
-
-
-
 }
 

@@ -1,110 +1,66 @@
 package com.example.tbdapp.fragments;
 
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.activities.ChatActivity;
 import com.example.tbdapp.models.Advisor;
-import com.example.tbdapp.views.adapters.ContactAdapter;
+import com.example.tbdapp.models.Author;
+import com.example.tbdapp.models.Dialog;
+import com.example.tbdapp.models.Singleton;
+import com.example.tbdapp.models.User;
+import com.stfalcon.chatkit.commons.ImageLoader;
+import com.stfalcon.chatkit.dialogs.DialogsList;
+import com.stfalcon.chatkit.dialogs.DialogsListAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class ContactsFragment extends Fragment {
     ArrayList<Advisor> advisorList;
+    Context context;
 
-    public ContactsFragment(ArrayList<Advisor> advisors) {
-        advisorList = advisors;
+    public ContactsFragment(ArrayList<Advisor> advisorList, Context context) {
+        this.advisorList = advisorList;
+        this.context = context;
+
     }
 
-    final FragmentActivity thisActivity = getActivity();
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private LinearLayoutManager mLinearLayoutManager;
+    private DialogsList mDialogsListView;
+    private DialogsListAdapter mAdapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Advisor lists are temp storage of type Advisor object
-        ArrayList<Advisor> starredAdvisorList = new ArrayList<>();
-        ArrayList<Advisor> normalAdvisorList = new ArrayList<>();
-        ArrayList<Advisor> starredContactsList = new ArrayList<>();
-        ArrayList<Advisor> normalContactsList = new ArrayList<>();
-
-        //Put all advisor names in an array, sort the array
-        ArrayList<String> advisorNames = new ArrayList<>();
-        for(int i=0;i<advisorList.size();i++) {
-            advisorNames.add(advisorList.get(i).advisorName);
-        }
-        Collections.sort(advisorNames);
-
-        //For each name, find the corresponding object through its index, then sort favourites out
-        for(int i=0;i<advisorNames.size();i++) {
-            int indexOfAdvisor = 0;
-            for (int j=0; j<advisorList.size();j++) {
-                if (advisorList.get(j).advisorName == advisorNames.get(i)) {
-                    //therefore: advisorName[i] corresponds to normalAdvisorList[j]
-                    indexOfAdvisor = j;
-                    break;
-                }
-            }
-            if(advisorList.get(indexOfAdvisor).isFavourite) {
-                starredAdvisorList.add(advisorList.get(indexOfAdvisor));
-            }else {
-                normalAdvisorList.add(advisorList.get(indexOfAdvisor));
-            }
-        }
-
-        //For all favourited advisors
-        for(int i=0;i<starredAdvisorList.size();i++) {
-            int image = starredAdvisorList.get(i).advisorImage;
-            String name = starredAdvisorList.get(i).advisorName;
-            String star = "★";
-            if(i > 0) {
-                star = "";
-            }
-            starredContactsList.add(new Advisor(name, "", star, "", image, false));
-        }
-
-        //For all normal advisors
-        ArrayList<String> usedLetters = new ArrayList<>();
-        for(int i=0;i<normalAdvisorList.size();i++) {
-            int image1 = normalAdvisorList.get(i).advisorImage;
-            String name1 = normalAdvisorList.get(i).advisorName;
-            String letter1 = "";
-            if(usedLetters.indexOf(Character.toString(normalAdvisorList.get(i).advisorName.charAt(0)).toUpperCase()) == -1) {
-                letter1 = Character.toString(normalAdvisorList.get(i).advisorName.charAt(0)).toUpperCase();
-                usedLetters.add(letter1);
-            }
-            normalContactsList.add(new Advisor(name1, "", letter1, "", image1, false));
-        }
-
-        //Put all the contact items in the same array list
-        ArrayList<Advisor> allContactItems = new ArrayList<>();
-        for(int i=0;i<starredContactsList.size();i++) {
-            allContactItems.add(starredContactsList.get(i));
-        }
-        for(int i=0;i<normalContactsList.size();i++) {
-            allContactItems.add(normalContactsList.get(i));
-        }
-
 
         View root = inflater.inflate(R.layout.fragment_contacts, container, false);
-        mRecyclerView = root.findViewById(R.id.contactsRecyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLinearLayoutManager = new LinearLayoutManager(thisActivity);
+        mDialogsListView = root.findViewById(R.id.dialogsList);
 
-        //Put the array contents into the recyclerview via the adapter
-        mAdapter = new ContactAdapter(getContext(), allContactItems);
+        mAdapter = new DialogsListAdapter<>(new ImageLoader() {
+            @Override
+            public void loadImage(ImageView imageView, String url, Object payload) {
+                int image = context.getResources().getIdentifier(url, "drawable", context.getPackageName());
+                imageView.setImageResource(image);
+            }
+        });
+        mDialogsListView.setAdapter(mAdapter);
 
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        loadDialogs();
 
+        mAdapter.setOnDialogClickListener(new DialogsListAdapter.OnDialogClickListener<Dialog>() {
+            @Override
+            public void onDialogClick(Dialog dialog) {
+                Intent intent = new Intent(context, ChatActivity.class);
+                intent.putExtra("contactId", dialog.getId());
+
+                startActivity(intent);
+            }
+        });
         return root;
     }
 
@@ -112,5 +68,26 @@ public class ContactsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadDialogs();
+    }
+
+    private void loadDialogs() {
+        User user = Singleton.getInstance().user;
+
+        for(int i=0;i<advisorList.size();i++){
+            ArrayList<Author> users = new ArrayList<>();
+            Advisor advisor = advisorList.get(i);
+            users.add(user);
+            users.add(advisor);
+
+            Dialog dialog = new Dialog(advisor.id, advisor.avatar, advisor.name, users, Singleton.getLastMessage(Singleton.getInstance().chatHistory.get(advisor.id)), 0);
+            mAdapter.upsertItem(dialog);
+            mAdapter.sortByLastMessageDate();
+        }
     }
 }

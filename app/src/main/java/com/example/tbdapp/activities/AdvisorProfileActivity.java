@@ -40,9 +40,9 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         Advisor advisor = (Advisor) getIntent().getSerializableExtra("advisor");
 
         // set text
-        advisorName.setText(advisor.advisorName);
+        advisorName.setText(advisor.name);
         advisorType.setText(advisor.advisorType);
-        advisorImage.setImageResource(advisor.advisorImage);
+        advisorImage.setImageResource(getResources().getIdentifier(advisor.avatar, "drawable", this.getPackageName()));
         advisorDescription.setText(advisor.advisorDescription);
         advisorSkills.setText(advisor.advisorSkills);
 
