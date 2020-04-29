@@ -20,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tbdapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.lang.reflect.Array;
+
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment implements
@@ -98,122 +100,74 @@ public class ProfileFragment extends Fragment implements
             }
         });
 
-        //Spinner for province
 
-        if (province != null) {
-            province.setOnItemSelectedListener(this);
-        }
+
+        //Spinner code for province
         final ArrayAdapter<CharSequence> adapter_province = ArrayAdapter.createFromResource(getContext(),
                 R.array.labels_province, android.R.layout.simple_spinner_item);
-        adapter_province.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
+        setDropDownViewResource(adapter_province);
+        spinnerCode(province,adapter_province);
 
-
-        if (province != null) {
-            province.setAdapter(adapter_province);
-        }
-
-        int provincePosition ;
+        int provincePosition = 0;
         String provinceString = user.provinceText;
-        provincePosition = adapter_province.getPosition(provinceString);
-        province.setSelection(provincePosition);
+        setPosition(provincePosition,provinceString,province,adapter_province);
 
 
         //Spinner code for citizenship
 
-        if (citizenship != null) {
-            citizenship.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<CharSequence> adapter_citizenship = ArrayAdapter.createFromResource(getContext(),
+        final ArrayAdapter<CharSequence> adapter_citizenship = ArrayAdapter.createFromResource(getContext(),
                 R.array.labels_citizenship, android.R.layout.simple_spinner_item);
-        adapter_citizenship.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
+        setDropDownViewResource(adapter_citizenship);
+        spinnerCode(citizenship,adapter_citizenship);
 
-        if (citizenship != null) {
-            citizenship.setAdapter(adapter_citizenship);
-        }
-
-        int citizenshipPosition ;
+        int citizenshipPosition =0;
         String citizenshipString = user.citizenshipText;
-        citizenshipPosition = adapter_citizenship.getPosition(citizenshipString);
-        citizenship.setSelection(citizenshipPosition);
+        setPosition(citizenshipPosition,citizenshipString,citizenship,adapter_citizenship);
 
         //Spinner code for employment status
 
-        if (employmentStatus != null) {
-            employmentStatus.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<CharSequence> adapter_employmentStatus = ArrayAdapter.createFromResource(getContext(),
+        final ArrayAdapter<CharSequence> adapter_employmentStatus = ArrayAdapter.createFromResource(getContext(),
                 R.array.labels_employmentStatus, android.R.layout.simple_spinner_item);
-        adapter_employmentStatus.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
+        setDropDownViewResource(adapter_employmentStatus);
+        spinnerCode(employmentStatus,adapter_employmentStatus);
 
-        if (employmentStatus != null) {
-            employmentStatus.setAdapter(adapter_employmentStatus);
-        }
 
-        int employmentStatusPosition ;
+        int employmentStatusPosition = 0;
         String employmentStatusString = user.employmentStatusText;
-        employmentStatusPosition = adapter_employmentStatus.getPosition(employmentStatusString);
-        employmentStatus.setSelection(employmentStatusPosition);
+        setPosition(employmentStatusPosition,employmentStatusString,employmentStatus,adapter_employmentStatus);
 
         //Spinner code for expected income
 
-        if (expectedIncome != null) {
-            expectedIncome.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<CharSequence> adapter_expectedIncome = ArrayAdapter.createFromResource(getContext(),
+        final ArrayAdapter<CharSequence> adapter_expectedIncome = ArrayAdapter.createFromResource(getContext(),
                 R.array.labels_expectedIncome, android.R.layout.simple_spinner_item);
-        adapter_expectedIncome.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
+        setDropDownViewResource(adapter_expectedIncome);
+        spinnerCode(expectedIncome,adapter_expectedIncome);
 
-        if (expectedIncome != null) {
-            expectedIncome.setAdapter(adapter_expectedIncome);
-        }
-
-        int expectedIncomePosition ;
+        int expectedIncomePosition = 0;
         String expectedIncomeString = user.expectedIncomeText;
-        expectedIncomePosition = adapter_expectedIncome.getPosition(expectedIncomeString);
-        expectedIncome.setSelection(expectedIncomePosition);
+        setPosition(expectedIncomePosition,expectedIncomeString,expectedIncome,adapter_expectedIncome);
 
         //Spinner code for housing status
 
-        if (housingStatus != null) {
-            housingStatus.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<CharSequence> adapter_housingStatus = ArrayAdapter.createFromResource(getContext(),
+        final ArrayAdapter<CharSequence> adapter_housingStatus = ArrayAdapter.createFromResource(getContext(),
                 R.array.labels_housingStatus, android.R.layout.simple_spinner_item);
-        adapter_housingStatus.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        if (housingStatus != null) {
-            housingStatus.setAdapter(adapter_housingStatus);
-        }
-
-        int housingStatusPosition ;
+        setDropDownViewResource(adapter_housingStatus);
+        spinnerCode(housingStatus,adapter_housingStatus);
+        int housingStatusPosition = 0;
         String housingStatusString = user.housingStatusText;
-        housingStatusPosition = adapter_housingStatus.getPosition(housingStatusString);
-        housingStatus.setSelection(housingStatusPosition);
+        setPosition(housingStatusPosition,housingStatusString,housingStatus,adapter_housingStatus);
 
 
         //Spinner code for looking for
 
-        if (lookingFor != null) {
-            lookingFor.setOnItemSelectedListener(this);
-        }
         ArrayAdapter<CharSequence> adapter_lookingFor = ArrayAdapter.createFromResource(getContext(),
                 R.array.labels_lookingFor, android.R.layout.simple_spinner_item);
-        adapter_lookingFor.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
+        setDropDownViewResource(adapter_lookingFor);
+        spinnerCode(lookingFor,adapter_lookingFor);
 
-        if (lookingFor != null) {
-            lookingFor.setAdapter(adapter_lookingFor);
-        }
-
-        int lookingForPosition ;
+        int lookingForPosition = 0;
         String lookingForString = user.lookingForText;
-        lookingForPosition = adapter_lookingFor.getPosition(lookingForString);
-        lookingFor.setSelection(lookingForPosition);
+        setPosition(lookingForPosition,lookingForString,lookingFor,adapter_lookingFor);
 
         FloatingActionButton doneButton = v.findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
@@ -253,12 +207,11 @@ public class ProfileFragment extends Fragment implements
                 myUser.photo = imageUri;
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container,profileDisplayFragment);
+                fragmentTransaction.replace(R.id.frameLayout,profileDisplayFragment);
                 fragmentTransaction.commit();
 
             }
         });
-
 
         // Inflate the layout for this fragment
         return v;
@@ -274,8 +227,24 @@ public class ProfileFragment extends Fragment implements
         }
     }
 
+    private void spinnerCode (Spinner spinner, ArrayAdapter<CharSequence> adapter) {
+        if (spinner != null) {
+            spinner.setOnItemSelectedListener(this);
+        }
+        if (spinner != null) {
+            spinner.setAdapter(adapter);
+        }
 
+    }
 
+    private void setDropDownViewResource (ArrayAdapter<CharSequence> adapter){
+        adapter.setDropDownViewResource
+                (android.R.layout.simple_spinner_dropdown_item);
+    }
 
+    private  void setPosition(int position,String string,Spinner spinner, ArrayAdapter adapter){
+            position = adapter.getPosition(string);
+            spinner.setSelection(position);
+        }
 }
 
