@@ -55,9 +55,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/bottom_bar"
         android:layout_width="fill_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
+        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/mainVideo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

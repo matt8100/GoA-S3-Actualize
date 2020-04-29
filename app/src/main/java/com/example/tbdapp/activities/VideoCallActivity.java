@@ -7,14 +7,17 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
+
+import java.util.Objects;
 
 public class VideoCallActivity extends AppCompatActivity {
     //Default mic and camera options
@@ -26,6 +29,40 @@ public class VideoCallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions =
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        decorView.setSystemUiVisibility(uiOptions);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
+        final LinearLayout bottomBar = findViewById(R.id.bottom_bar);
+
+        decorView.setOnSystemUiVisibilityChangeListener
+            (new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                        //The system bars are visible.
+
+                        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) bottomBar.getLayoutParams();
+                        p.setMargins(0, 0, 0, 200);
+                        bottomBar.requestLayout();
+
+                    } else {
+                        //The system bars are NOT visible.
+
+                        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) bottomBar.getLayoutParams();
+                        p.setMargins(0, 0, 0, 0);
+                        bottomBar.requestLayout();
+
+                    }
+                }
+            });
+
 
         //references
         final ImageButton microphone = findViewById(R.id.fab_mic);
