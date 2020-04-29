@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.tbdapp.R;
 import com.google.android.material.tabs.TabLayout;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
     private ArrayList<Advisor> advisorList = new ArrayList<>();
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentProfileDisplay = ProfileDisplayFragment.newInstance();
 
         createAdvisorProfiles();
-
+        menu = findViewById(R.id.edit);
         setupTabLayout();
         loadFragment(0); //load fragment for first tab layout item
+
+
     }
 
     private void loadContactsFragment() {
@@ -54,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, fragmentProfileDisplay);
         fragmentTransaction.commit();
         Log.d("TAG","launch profile");
+        onCreateOptionsMenu(menu);
+
     }
 
     private void loadFragment(int position) {
@@ -66,8 +73,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2: //position of third tab bar item (profile screen)
                 loadProfileFragment();
+
                 break;
         }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.edit_menu,menu);
+        return true;
     }
 
     private void setupTabLayout() {
@@ -92,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     public void createAdvisorProfiles() {
         advisorList.add(new Advisor("Brittany Williams", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
         advisorList.add(new Advisor("Thomas Edwards", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
@@ -108,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
         advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
         
         }
+
+    public void launchEdit(MenuItem item) {
+
+    }
 }
 
 
