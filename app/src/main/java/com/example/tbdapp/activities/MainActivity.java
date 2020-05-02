@@ -46,9 +46,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout, new ContactsFragment(advisorList));
         ft.commit();
+
     }
 
     private void loadExploreFragment() {
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout, new ExploreFragment(advisorList));
         ft.commit();
@@ -59,29 +61,28 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, fragmentProfileDisplay);
         fragmentTransaction.commit();
         Log.d("TAG","launch profile");
-        onCreateOptionsMenu(menu);
 
     }
+
+
+
 
     private void loadFragment(int position) {
         switch (position) {
             case 0: //position of first tab bar item (explore screen)
                 loadExploreFragment();
+
                 break;
             case 1: //position of second tab bar item (contacts screen)
                 loadContactsFragment();
+
                 break;
             case 2: //position of third tab bar item (profile screen)
                 loadProfileFragment();
-
                 break;
         }
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.edit_menu,menu);
-        return true;
-    }
 
     private void setupTabLayout() {
         mTabLayout = findViewById(R.id.tabLayout);
@@ -125,7 +126,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
     public void launchEdit(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.edit:
 
+        }
     }
 }
 

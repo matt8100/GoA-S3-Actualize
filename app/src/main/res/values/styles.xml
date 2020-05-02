@@ -10,6 +10,11 @@
     <style name="Theme.AppCompat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:actionOverflowMenuStyle">@style/CustomMenu</item>
+    </style>
+    <style name="CustomMenu" >
+        <item name="android:src">@drawable/edit_button</item>
+
     </style>
 
 </resources>

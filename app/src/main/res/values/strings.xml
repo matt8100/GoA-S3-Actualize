@@ -77,5 +77,6 @@
     <!-- Accessibility -->
     <string name="advisorImage">Advisor Image</string>
     <string name="backButton">Back Button</string>
+    <string name="done">done</string>
 
 </resources>

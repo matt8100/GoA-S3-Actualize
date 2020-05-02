@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -59,7 +62,7 @@ public class ProfileFragment extends Fragment implements
                              final ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        setHasOptionsMenu(true);
 
         profileDisplayFragment = ProfileDisplayFragment.newInstance();
 
@@ -169,54 +172,12 @@ public class ProfileFragment extends Fragment implements
         String lookingForString = user.lookingForText;
         setPosition(lookingForPosition,lookingForString,lookingFor,adapter_lookingFor);
 
-        FloatingActionButton doneButton = v.findViewById(R.id.doneButton);
-        doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UserInformation myUser = User.getUser();
-
-                myUser.name = editTextName.getText().toString();
-                myUser.preferredName = editTextPreferredName.getText().toString();
-                myUser.dateOfBirth= editTextDateOfBirth.getText().toString();
-                myUser.email = editTextEmail.getText().toString();
-                myUser.provinceText = province.getSelectedItem().toString();
-                myUser.citizenshipText = citizenship.getSelectedItem().toString();
-                myUser.employmentStatusText = employmentStatus.getSelectedItem().toString();
-                myUser.expectedIncomeText = expectedIncome.getSelectedItem().toString();
-                myUser.housingStatusText = housingStatus.getSelectedItem().toString();
-
-               if (healthCondition2.isChecked() && healthCondition3.isChecked()&& healthCondition1.isChecked()) {
-                   myUser.healthConditionText = "healthCondition1, healthCondition2, healthCondition3";
-               }else if (healthCondition1.isChecked() && healthCondition2.isChecked()){
-                   myUser.healthConditionText = "healthCondition1, healthCondition2";
-               }else if (healthCondition1.isChecked() && healthCondition3.isChecked()){
-                   myUser.healthConditionText = "healthCondition1, healthCondition3";
-               }else if (healthCondition2.isChecked() && healthCondition3.isChecked()) {
-                   myUser.healthConditionText = "healthCondition2, healthCondition3";
-               }else if (healthCondition1.isChecked()){
-                   myUser.healthConditionText = "healthCondition1";
-               }else if (healthCondition2.isChecked()){
-                   myUser.healthConditionText = "healthCondition2";
-               }else if (healthCondition3.isChecked()) {
-                   myUser.healthConditionText = "healthCondition3";
-               }else{
-                   myUser.healthConditionText = "None";
-               }
-
-                myUser.lookingForText = lookingFor.getSelectedItem().toString();
-                myUser.photo = imageUri;
-
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,profileDisplayFragment);
-                fragmentTransaction.commit();
-
-            }
-        });
-
-        // Inflate the layout for this fragment
         return v;
     }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        inflater.inflate(R.menu.done_menu, menu);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -246,5 +207,54 @@ public class ProfileFragment extends Fragment implements
             position = adapter.getPosition(string);
             spinner.setSelection(position);
         }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.done){
+            UserInformation myUser = User.getUser();
+
+            myUser.name = editTextName.getText().toString();
+            myUser.preferredName = editTextPreferredName.getText().toString();
+            myUser.dateOfBirth= editTextDateOfBirth.getText().toString();
+            myUser.email = editTextEmail.getText().toString();
+            myUser.provinceText = province.getSelectedItem().toString();
+            myUser.citizenshipText = citizenship.getSelectedItem().toString();
+            myUser.employmentStatusText = employmentStatus.getSelectedItem().toString();
+            myUser.expectedIncomeText = expectedIncome.getSelectedItem().toString();
+            myUser.housingStatusText = housingStatus.getSelectedItem().toString();
+
+            if (healthCondition2.isChecked() && healthCondition3.isChecked()&& healthCondition1.isChecked()) {
+                myUser.healthConditionText = "healthCondition1, healthCondition2, healthCondition3";
+            }else if (healthCondition1.isChecked() && healthCondition2.isChecked()){
+                myUser.healthConditionText = "healthCondition1, healthCondition2";
+            }else if (healthCondition1.isChecked() && healthCondition3.isChecked()){
+                myUser.healthConditionText = "healthCondition1, healthCondition3";
+            }else if (healthCondition2.isChecked() && healthCondition3.isChecked()) {
+                myUser.healthConditionText = "healthCondition2, healthCondition3";
+            }else if (healthCondition1.isChecked()){
+                myUser.healthConditionText = "healthCondition1";
+            }else if (healthCondition2.isChecked()){
+                myUser.healthConditionText = "healthCondition2";
+            }else if (healthCondition3.isChecked()) {
+                myUser.healthConditionText = "healthCondition3";
+            }else{
+                myUser.healthConditionText = "None";
+            }
+
+            myUser.lookingForText = lookingFor.getSelectedItem().toString();
+            myUser.photo = imageUri;
+
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameLayout,profileDisplayFragment);
+            fragmentTransaction.commit();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
+
+
 

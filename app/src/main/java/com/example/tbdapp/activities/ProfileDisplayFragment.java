@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,7 +43,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
         fragmentProfile = ProfileFragment.newInstance();
-
+        setHasOptionsMenu(true);
         UserInformation user = User.getUser();
 
         profileImageView = v.findViewById(R.id.profile_imageView);
@@ -88,36 +90,41 @@ public class ProfileDisplayFragment extends ProfileFragment {
         lookingForTextView = v.findViewById(R.id.label_lookingFor);
         lookingForTextView.setText(user.lookingForText);
 
-        FloatingActionButton editButton = v.findViewById(R.id.editButton);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                UserInformation myUser = User.getUser();
-
-                myUser.name = NameTextView.getText().toString();
-                myUser.preferredName = preferredNameTextView.getText().toString();
-                myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
-                myUser.email = emailTextView.getText().toString();
-                myUser.provinceText = provinceTextView.getText().toString();
-                myUser.citizenshipText = citizenshipTextView.getText().toString();
-                myUser.employmentStatusText = employmentStatusTextView.getText().toString();
-                myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
-                myUser.housingStatusText = housingStatusTextView.getText().toString();
-                myUser.healthConditionText = healthConditionTextView.getText().toString();
-                myUser.lookingForText = lookingForTextView.getText().toString();
-                myUser.photo = imageUri;
-
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
-                fragmentTransaction.commit();
-            }
-        });
         return v;
+
+
         }
 
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        inflater.inflate(R.menu.edit_menu, menu);
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.edit){
+            UserInformation myUser = User.getUser();
 
+            myUser.name = NameTextView.getText().toString();
+            myUser.preferredName = preferredNameTextView.getText().toString();
+            myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
+            myUser.email = emailTextView.getText().toString();
+            myUser.provinceText = provinceTextView.getText().toString();
+            myUser.citizenshipText = citizenshipTextView.getText().toString();
+            myUser.employmentStatusText = employmentStatusTextView.getText().toString();
+            myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
+            myUser.housingStatusText = housingStatusTextView.getText().toString();
+            myUser.healthConditionText = healthConditionTextView.getText().toString();
+            myUser.lookingForText = lookingForTextView.getText().toString();
+            myUser.photo = imageUri;
+
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
+            fragmentTransaction.commit();
+            return true;
+        }
+
+        return onOptionsItemSelected(item);
+    }
 
 }
