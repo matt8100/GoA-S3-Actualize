@@ -57,8 +57,10 @@
 
     <string-array name="labels_lookingFor">
 
-        <item>A career adviser</item>
-        <item>A financial adviser</item>
+        <item>Stable Employment</item>
+        <item>Part-time Employment</item>
+        <item>Career Advice</item>
+        <item>Financial Advice</item>
 
     </string-array>
 

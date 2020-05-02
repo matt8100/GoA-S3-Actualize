@@ -1,6 +1,7 @@
 package com.example.tbdapp.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -42,10 +44,6 @@ public class ProfileFragment extends Fragment implements
 
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String spinnerLabel_province = adapterView.getItemAtPosition(i).toString();
-    }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -172,8 +170,17 @@ public class ProfileFragment extends Fragment implements
         String lookingForString = user.lookingForText;
         setPosition(lookingForPosition,lookingForString,lookingFor,adapter_lookingFor);
 
+
+
         return v;
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.done_menu, menu);
@@ -249,7 +256,10 @@ public class ProfileFragment extends Fragment implements
             fragmentTransaction.commit();
 
             return true;
+
+
         }
+
 
         return super.onOptionsItemSelected(item);
     }
