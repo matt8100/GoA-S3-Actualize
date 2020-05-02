@@ -44,7 +44,6 @@ public class ProfileFragment extends Fragment implements
 
 
 
-
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -182,7 +181,6 @@ public class ProfileFragment extends Fragment implements
 
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
         inflater.inflate(R.menu.done_menu, menu);
     }
 
@@ -257,9 +255,7 @@ public class ProfileFragment extends Fragment implements
 
             return true;
 
-
         }
-
 
         return super.onOptionsItemSelected(item);
     }

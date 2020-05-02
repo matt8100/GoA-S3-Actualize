@@ -5,15 +5,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.example.tbdapp.R;
 import com.google.android.material.tabs.TabLayout;
 import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.fragments.ContactsFragment;
 import com.example.tbdapp.fragments.ExploreFragment;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
@@ -25,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
     private ArrayList<Advisor> advisorList = new ArrayList<>();
-    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentProfileDisplay = ProfileDisplayFragment.newInstance();
 
         createAdvisorProfiles();
-        menu = findViewById(R.id.edit);
         setupTabLayout();
         loadFragment(0); //load fragment for first tab layout item
 
@@ -125,12 +120,7 @@ public class MainActivity extends AppCompatActivity {
         
         }
 
-    public void launchEdit(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.edit:
-
-        }
     }
-}
+
 
 
