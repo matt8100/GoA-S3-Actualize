@@ -15,10 +15,13 @@ public class User extends Author{
     public String lookingForText;
     public Uri photo;
 
-    private static User user;
-    public User(Uri photo, String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
+    private static User myUser = new User("Jane Foster", "profile_picture", "Jane", "1996-09-04", "janefoster@tbd.com", "Ontario", "Permanent Resident", "Unemployed", "$10,000", "Tenant", "None", "A financial advisor");
+
+    public static User getUser(){
+        return myUser;
+    }
+    public User( String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
         super("0", name, avatar);
-        this.photo = photo;
         this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
@@ -31,7 +34,5 @@ public class User extends Author{
         this.expectedIncomeText = expectedIncome;
     }
 
-    public static User getUser(){
-        return user;
-    }
+
 }
