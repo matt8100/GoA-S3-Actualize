@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentProfileDisplay = new ProfileDisplayFragment();
-        
+
         setupTabLayout();
         loadFragment(0); //load fragment for first tab layout item
     }
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-               // Log.d(//TAG, "TabLayout Tab selected: " + position);
+                // Log.d(//TAG, "TabLayout Tab selected: " + position);
                 loadFragment(position);
             }
 
@@ -90,5 +90,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
 
 

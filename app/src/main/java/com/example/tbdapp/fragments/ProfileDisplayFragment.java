@@ -1,36 +1,51 @@
 package com.example.tbdapp.fragments;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.FragmentTransaction;
-
 import com.example.tbdapp.R;
 import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+
+
 
 public class ProfileDisplayFragment extends ProfileFragment {
 
-    private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView, expectedIncomeTextView, housingStatusTextView, lookingForTextView, healthConditionTextView;
+    private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
+            expectedIncomeTextView, housingStatusTextView, lookingForTextView, healthConditionTextView;
     private ImageView profileImageView;
+
 
     public ProfileDisplayFragment() {
         // Required empty public constructor
     }
+
+    public static ProfileDisplayFragment newInstance() {
+
+        return new ProfileDisplayFragment();
+    }
+
     private ProfileFragment fragmentProfile;
+
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
-        fragmentProfile = new ProfileFragment();
-
+        fragmentProfile = ProfileFragment.newInstance();
+        setHasOptionsMenu(true);
         User user = Singleton.getInstance().user;
 
         profileImageView = v.findViewById(R.id.profile_imageView);
@@ -69,33 +84,40 @@ public class ProfileDisplayFragment extends ProfileFragment {
         lookingForTextView = v.findViewById(R.id.label_lookingFor);
         lookingForTextView.setText(user.lookingForText);
 
-        FloatingActionButton editButton = v.findViewById(R.id.editButton);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                User myUser = Singleton.getInstance().user;
-
-                myUser.name = NameTextView.getText().toString();
-                myUser.preferredName = preferredNameTextView.getText().toString();
-                myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
-                myUser.email = emailTextView.getText().toString();
-                myUser.provinceText = provinceTextView.getText().toString();
-                myUser.citizenshipText = citizenshipTextView.getText().toString();
-                myUser.employmentStatusText = employmentStatusTextView.getText().toString();
-                myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
-                myUser.housingStatusText = housingStatusTextView.getText().toString();
-                myUser.healthConditionText = healthConditionTextView.getText().toString();
-                myUser.lookingForText = lookingForTextView.getText().toString();
-
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
-                fragmentTransaction.commit();
-            }
-        });
         return v;
+    }
+
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.edit_menu, menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.edit) {
+            User myUser = Singleton.getInstance().user;
+
+            myUser.name = NameTextView.getText().toString();
+            myUser.preferredName = preferredNameTextView.getText().toString();
+            myUser.dateOfBirth = dateOfBirthTextView.getText().toString();
+            myUser.email = emailTextView.getText().toString();
+            myUser.provinceText = provinceTextView.getText().toString();
+            myUser.citizenshipText = citizenshipTextView.getText().toString();
+            myUser.employmentStatusText = employmentStatusTextView.getText().toString();
+            myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
+            myUser.housingStatusText = housingStatusTextView.getText().toString();
+            myUser.healthConditionText = healthConditionTextView.getText().toString();
+            myUser.lookingForText = lookingForTextView.getText().toString();
+
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
+            fragmentTransaction.commit();
+            return true;
         }
 
+        return onOptionsItemSelected(item);
+    }
 
 
 }
+

@@ -12,7 +12,8 @@ public class User extends Author{
     public String healthConditionText;
     public String lookingForText;
 
-    public User(String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
+
+    public User( String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
         super("0", name, avatar);
         this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
@@ -25,4 +26,6 @@ public class User extends Author{
         this.lookingForText = lookingFor;
         this.expectedIncomeText = expectedIncome;
     }
+
+
 }

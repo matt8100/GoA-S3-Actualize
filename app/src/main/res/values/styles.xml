@@ -12,4 +12,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+            <item name="android:paddingStart">0dp</item>
+            <item name="android:paddingEnd">0dp</item>
+            <item name="android:textColor">#232336</item>
+            <item name="android:textSize">18sp</item>
+            <item name="android:background">#5F92D6</item>
+            <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
 </resources>
