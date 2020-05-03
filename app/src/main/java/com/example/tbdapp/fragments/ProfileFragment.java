@@ -1,8 +1,6 @@
 package com.example.tbdapp.fragments;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -22,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 
 
@@ -38,9 +37,8 @@ public class ProfileFragment extends Fragment implements
     private ImageView profileImage;
     private CheckBox healthCondition1, healthCondition2, healthCondition3;
     private static final int SELECT_IMAGE = 1;
-    Uri imageUri;
 
-
+    View v;
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -56,7 +54,7 @@ public class ProfileFragment extends Fragment implements
     public View onCreateView(final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        v = inflater.inflate(R.layout.fragment_profile, container, false);
         setHasOptionsMenu(true);
 
         profileDisplayFragment = ProfileDisplayFragment.newInstance();
@@ -81,10 +79,9 @@ public class ProfileFragment extends Fragment implements
         healthCondition3 = v.findViewById(R.id.healthCondition_3);
         lookingFor = v.findViewById(R.id.spinner_lookingFor);
 
+        User user = Singleton.getInstance().user;
 
-        User user = User.getUser();
-
-        profileImage.setImageURI(user.photo);
+        profileImage.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
         editTextName.setText(user.name);
         editTextPreferredName.setText((user.preferredName));
         editTextDateOfBirth.setText(user.dateOfBirth);
@@ -99,75 +96,12 @@ public class ProfileFragment extends Fragment implements
         });
 
 
-
-        //Spinner code for province
-        final ArrayAdapter<CharSequence> adapter_province = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_province, android.R.layout.simple_spinner_item);
-        setDropDownViewResource(adapter_province);
-        spinnerCode(province,adapter_province);
-
-        int provincePosition = 0;
-        String provinceString = user.provinceText;
-        setPosition(provincePosition,provinceString,province,adapter_province);
-
-
-        //Spinner code for citizenship
-
-        final ArrayAdapter<CharSequence> adapter_citizenship = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_citizenship, android.R.layout.simple_spinner_item);
-        setDropDownViewResource(adapter_citizenship);
-        spinnerCode(citizenship,adapter_citizenship);
-
-        int citizenshipPosition =0;
-        String citizenshipString = user.citizenshipText;
-        setPosition(citizenshipPosition,citizenshipString,citizenship,adapter_citizenship);
-
-        //Spinner code for employment status
-
-        final ArrayAdapter<CharSequence> adapter_employmentStatus = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_employmentStatus, android.R.layout.simple_spinner_item);
-        setDropDownViewResource(adapter_employmentStatus);
-        spinnerCode(employmentStatus,adapter_employmentStatus);
-
-
-        int employmentStatusPosition = 0;
-        String employmentStatusString = user.employmentStatusText;
-        setPosition(employmentStatusPosition,employmentStatusString,employmentStatus,adapter_employmentStatus);
-
-        //Spinner code for expected income
-
-        final ArrayAdapter<CharSequence> adapter_expectedIncome = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_expectedIncome, android.R.layout.simple_spinner_item);
-        setDropDownViewResource(adapter_expectedIncome);
-        spinnerCode(expectedIncome,adapter_expectedIncome);
-
-        int expectedIncomePosition = 0;
-        String expectedIncomeString = user.expectedIncomeText;
-        setPosition(expectedIncomePosition,expectedIncomeString,expectedIncome,adapter_expectedIncome);
-
-        //Spinner code for housing status
-
-        final ArrayAdapter<CharSequence> adapter_housingStatus = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_housingStatus, android.R.layout.simple_spinner_item);
-        setDropDownViewResource(adapter_housingStatus);
-        spinnerCode(housingStatus,adapter_housingStatus);
-        int housingStatusPosition = 0;
-        String housingStatusString = user.housingStatusText;
-        setPosition(housingStatusPosition,housingStatusString,housingStatus,adapter_housingStatus);
-
-
-        //Spinner code for looking for
-
-        ArrayAdapter<CharSequence> adapter_lookingFor = ArrayAdapter.createFromResource(getContext(),
-                R.array.labels_lookingFor, android.R.layout.simple_spinner_item);
-        setDropDownViewResource(adapter_lookingFor);
-        spinnerCode(lookingFor,adapter_lookingFor);
-
-        int lookingForPosition = 0;
-        String lookingForString = user.lookingForText;
-        setPosition(lookingForPosition,lookingForString,lookingFor,adapter_lookingFor);
-
-
+        setupSpinner(R.id.spinner_province, R.array.labels_province, false);
+        setupSpinner(R.id.spinner_citizenship, R.array.labels_citizenship, false);
+        setupSpinner(R.id.spinner_employmentStatus, R.array.labels_employmentStatus, true);
+        setupSpinner(R.id.spinner_expectedIncome, R.array.labels_expectedIncome, true);
+        setupSpinner(R.id.spinner_housingStatus, R.array.labels_housingStatus, true);
+        setupSpinner(R.id.spinner_lookingFor, R.array.labels_lookingFor, true);
 
         return v;
     }
@@ -182,39 +116,20 @@ public class ProfileFragment extends Fragment implements
         inflater.inflate(R.menu.done_menu, menu);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(resultCode == RESULT_OK && requestCode == SELECT_IMAGE){
-            imageUri = data.getData();
-            profileImage.setImageURI(imageUri);
-        }
+    private void setupSpinner(int id, int array, boolean enabled) {
+        Spinner spinner = v.findViewById(id);
+        spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getActivity(), array, android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setEnabled(enabled);
     }
-
-    private void spinnerCode (Spinner spinner, ArrayAdapter<CharSequence> adapter) {
-        if (spinner != null) {
-            spinner.setOnItemSelectedListener(this);
-        }
-        if (spinner != null) {
-            spinner.setAdapter(adapter);
-        }
-
-    }
-
-    private void setDropDownViewResource (ArrayAdapter<CharSequence> adapter){
-        adapter.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-    }
-
-    private  void setPosition(int position,String string,Spinner spinner, ArrayAdapter adapter){
-            position = adapter.getPosition(string);
-            spinner.setSelection(position);
-        }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.done){
-            User myUser = User.getUser();
+            User myUser = Singleton.getInstance().user;
 
             myUser.name = editTextName.getText().toString();
             myUser.preferredName = editTextPreferredName.getText().toString();
@@ -245,7 +160,6 @@ public class ProfileFragment extends Fragment implements
             }
 
             myUser.lookingForText = lookingFor.getSelectedItem().toString();
-            myUser.photo = imageUri;
 
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout,profileDisplayFragment);
@@ -257,6 +171,8 @@ public class ProfileFragment extends Fragment implements
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
 }
 

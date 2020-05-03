@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 
 
@@ -45,10 +46,10 @@ public class ProfileDisplayFragment extends ProfileFragment {
         View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
         fragmentProfile = ProfileFragment.newInstance();
         setHasOptionsMenu(true);
-        User user = User.getUser();
+        User user = Singleton.getInstance().user;
 
         profileImageView = v.findViewById(R.id.profile_imageView);
-        profileImageView.setImageURI(user.photo);
+        profileImageView.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
 
         NameTextView = v.findViewById(R.id.label_name);
         NameTextView.setText(user.name);
@@ -56,34 +57,26 @@ public class ProfileDisplayFragment extends ProfileFragment {
         preferredNameTextView = v.findViewById(R.id.label_preferredName);
         preferredNameTextView.setText(user.preferredName);
 
-
         dateOfBirthTextView = v.findViewById(R.id.label_dateOfBirth);
         dateOfBirthTextView.setText(user.dateOfBirth);
-
 
         emailTextView = v.findViewById(R.id.label_email);
         emailTextView.setText(user.email);
 
-
         provinceTextView = v.findViewById(R.id.label_province);
         provinceTextView.setText(user.provinceText);
-
 
         citizenshipTextView = v.findViewById(R.id.label_citizenship);
         citizenshipTextView.setText(user.citizenshipText);
 
-
         employmentStatusTextView = v.findViewById(R.id.label_employmentStatus);
         employmentStatusTextView.setText(user.employmentStatusText);
-
 
         housingStatusTextView = v.findViewById(R.id.label_housingStatus);
         housingStatusTextView.setText(user.housingStatusText);
 
-
         expectedIncomeTextView = v.findViewById(R.id.label_expectedIncome);
         expectedIncomeTextView.setText(user.expectedIncomeText);
-
 
         healthConditionTextView = v.findViewById(R.id.label_healthCondition);
         healthConditionTextView.setText(user.healthConditionText);
@@ -92,8 +85,6 @@ public class ProfileDisplayFragment extends ProfileFragment {
         lookingForTextView.setText(user.lookingForText);
 
         return v;
-
-
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -104,7 +95,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.edit) {
-            User myUser = User.getUser();
+            User myUser = Singleton.getInstance().user;
 
             myUser.name = NameTextView.getText().toString();
             myUser.preferredName = preferredNameTextView.getText().toString();
@@ -117,7 +108,6 @@ public class ProfileDisplayFragment extends ProfileFragment {
             myUser.housingStatusText = housingStatusTextView.getText().toString();
             myUser.healthConditionText = healthConditionTextView.getText().toString();
             myUser.lookingForText = lookingForTextView.getText().toString();
-            myUser.photo = imageUri;
 
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
@@ -127,5 +117,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
 
         return onOptionsItemSelected(item);
     }
+
+
 }
 
