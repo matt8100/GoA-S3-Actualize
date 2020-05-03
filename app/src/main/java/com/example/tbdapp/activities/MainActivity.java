@@ -3,12 +3,12 @@ package com.example.tbdapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.fragments.ProfileDisplayFragment;
+import com.example.tbdapp.models.Singleton;
 import com.google.android.material.tabs.TabLayout;
 import com.example.tbdapp.models.Advisor;
 import com.example.tbdapp.fragments.ContactsFragment;
@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ProfileDisplayFragment fragmentProfileDisplay;
     private TabLayout mTabLayout;
 
-    private static final String TAG = "MyActivity";
-    private ArrayList<Advisor> advisorList = new ArrayList<>();
+    private ArrayList<Advisor> advisorList = Singleton.getInstance().advisors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +31,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fragmentProfileDisplay = new ProfileDisplayFragment();
 
-        createAdvisorProfiles();
-
         setupTabLayout();
         loadFragment(0); //load fragment for first tab layout item
-
-        //TEMP INTENT FOR VIDEO CALL
-        Intent intent = new Intent(this, VideoCallActivity.class);
-        startActivity(intent);
     }
 
     private void loadContactsFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout, new ContactsFragment(advisorList));
+        ft.replace(R.id.frameLayout, new ContactsFragment(advisorList, this));
         ft.commit();
     }
 
@@ -81,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-               // Log.d(//TAG, "TabLayout Tab selected: " + position);
+                // Log.d(//TAG, "TabLayout Tab selected: " + position);
                 loadFragment(position);
             }
 
@@ -96,22 +89,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void createAdvisorProfiles() {
-        advisorList.add(new Advisor("Brittany Williams", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
-        advisorList.add(new Advisor("Thomas Edwards", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
-        advisorList.add(new Advisor("Daniel Wilson", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Jaimie Miller", "Career", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Raiqah Johal", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Chris Peacock", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("George London", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Alexei Dubrivonich", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, true));
-        advisorList.add(new Advisor("Aetherbald the Great", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Pyńęł Rziąćic", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Cornelius II of Rome", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Rünerig Pfochmännördt", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        advisorList.add(new Advisor("Grzegorz Brzęczyszczykiewicz", "Financial", getString(R.string.placeholderText), getString(R.string.placeholderText), R.drawable.ic_face, false));
-        }
 }
+
+
+
 
 
