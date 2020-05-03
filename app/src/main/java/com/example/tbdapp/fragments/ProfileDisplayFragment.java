@@ -1,5 +1,4 @@
-<<<<<<< HEAD:app/src/main/java/com/example/tbdapp/activities/ProfileDisplayFragment.java
-package com.example.tbdapp.activities;
+package com.example.tbdapp.fragments;
 
 import android.os.Bundle;
 
@@ -15,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.models.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ProfileDisplayFragment extends ProfileFragment {
 
     private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
-            expectedIncomeTextView,housingStatusTextView,lookingForTextView,healthConditionTextView;
+            expectedIncomeTextView, housingStatusTextView, lookingForTextView, healthConditionTextView;
     private ImageView profileImageView;
 
 
@@ -30,7 +30,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         // Required empty public constructor
     }
 
-    static ProfileDisplayFragment newInstance() {
+    public static ProfileDisplayFragment newInstance() {
 
         return new ProfileDisplayFragment();
     }
@@ -45,7 +45,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
         fragmentProfile = ProfileFragment.newInstance();
         setHasOptionsMenu(true);
-        UserInformation user = User.getUser();
+        User user = User.getUser();
 
         profileImageView = v.findViewById(R.id.profile_imageView);
         profileImageView.setImageURI(user.photo);
@@ -94,7 +94,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         return v;
 
 
-        }
+    }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
@@ -103,12 +103,12 @@ public class ProfileDisplayFragment extends ProfileFragment {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.edit){
-            UserInformation myUser = User.getUser();
+        if (id == R.id.edit) {
+            User myUser = User.getUser();
 
             myUser.name = NameTextView.getText().toString();
             myUser.preferredName = preferredNameTextView.getText().toString();
-            myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
+            myUser.dateOfBirth = dateOfBirthTextView.getText().toString();
             myUser.email = emailTextView.getText().toString();
             myUser.provinceText = provinceTextView.getText().toString();
             myUser.citizenshipText = citizenshipTextView.getText().toString();
@@ -127,107 +127,5 @@ public class ProfileDisplayFragment extends ProfileFragment {
 
         return onOptionsItemSelected(item);
     }
-
-=======
-package com.example.tbdapp.fragments;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.fragment.app.FragmentTransaction;
-
-import com.example.tbdapp.R;
-import com.example.tbdapp.models.Singleton;
-import com.example.tbdapp.models.User;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-public class ProfileDisplayFragment extends ProfileFragment {
-
-    private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView, expectedIncomeTextView, housingStatusTextView, lookingForTextView, healthConditionTextView;
-    private ImageView profileImageView;
-
-    public ProfileDisplayFragment() {
-        // Required empty public constructor
-    }
-    private ProfileFragment fragmentProfile;
-
-    @Override
-    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profile_display, container, false);
-        fragmentProfile = new ProfileFragment();
-
-        User user = Singleton.getInstance().user;
-
-        profileImageView = v.findViewById(R.id.profile_imageView);
-        profileImageView.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
-
-        NameTextView = v.findViewById(R.id.label_name);
-        NameTextView.setText(user.name);
-
-        preferredNameTextView = v.findViewById(R.id.label_preferredName);
-        preferredNameTextView.setText(user.preferredName);
-
-        dateOfBirthTextView = v.findViewById(R.id.label_dateOfBirth);
-        dateOfBirthTextView.setText(user.dateOfBirth);
-
-        emailTextView = v.findViewById(R.id.label_email);
-        emailTextView.setText(user.email);
-
-        provinceTextView = v.findViewById(R.id.label_province);
-        provinceTextView.setText(user.provinceText);
-
-        citizenshipTextView = v.findViewById(R.id.label_citizenship);
-        citizenshipTextView.setText(user.citizenshipText);
-
-        employmentStatusTextView = v.findViewById(R.id.label_employmentStatus);
-        employmentStatusTextView.setText(user.employmentStatusText);
-
-        housingStatusTextView = v.findViewById(R.id.label_housingStatus);
-        housingStatusTextView.setText(user.housingStatusText);
-
-        expectedIncomeTextView = v.findViewById(R.id.label_expectedIncome);
-        expectedIncomeTextView.setText(user.expectedIncomeText);
-
-        healthConditionTextView = v.findViewById(R.id.label_healthCondition);
-        healthConditionTextView.setText(user.healthConditionText);
-
-        lookingForTextView = v.findViewById(R.id.label_lookingFor);
-        lookingForTextView.setText(user.lookingForText);
-
-        FloatingActionButton editButton = v.findViewById(R.id.editButton);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                User myUser = Singleton.getInstance().user;
-
-                myUser.name = NameTextView.getText().toString();
-                myUser.preferredName = preferredNameTextView.getText().toString();
-                myUser.dateOfBirth= dateOfBirthTextView.getText().toString();
-                myUser.email = emailTextView.getText().toString();
-                myUser.provinceText = provinceTextView.getText().toString();
-                myUser.citizenshipText = citizenshipTextView.getText().toString();
-                myUser.employmentStatusText = employmentStatusTextView.getText().toString();
-                myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
-                myUser.housingStatusText = housingStatusTextView.getText().toString();
-                myUser.healthConditionText = healthConditionTextView.getText().toString();
-                myUser.lookingForText = lookingForTextView.getText().toString();
-
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
-                fragmentTransaction.commit();
-            }
-        });
-        return v;
-        }
-
-
-
->>>>>>> remotes/origin/dev:app/src/main/java/com/example/tbdapp/fragments/ProfileDisplayFragment.java
 }
+

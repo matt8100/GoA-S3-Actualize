@@ -1,5 +1,7 @@
 package com.example.tbdapp.models;
 
+import android.net.Uri;
+
 public class User extends Author{
     public String preferredName;
     public String dateOfBirth;
@@ -11,9 +13,12 @@ public class User extends Author{
     public String housingStatusText;
     public String healthConditionText;
     public String lookingForText;
+    public Uri photo;
 
-    public User(String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
+    private static User user;
+    public User(Uri photo, String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
         super("0", name, avatar);
+        this.photo = photo;
         this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
@@ -24,5 +29,9 @@ public class User extends Author{
         this.housingStatusText = housingStatus;
         this.lookingForText = lookingFor;
         this.expectedIncomeText = expectedIncome;
+    }
+
+    public static User getUser(){
+        return user;
     }
 }
