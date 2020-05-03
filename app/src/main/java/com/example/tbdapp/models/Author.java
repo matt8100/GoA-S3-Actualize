@@ -2,7 +2,9 @@ package com.example.tbdapp.models;
 
 import com.stfalcon.chatkit.commons.models.IUser;
 
-public class Author implements IUser {
+import java.io.Serializable;
+
+public class Author implements IUser, Serializable {
     public String id;
     public String name;
     public String avatar;
