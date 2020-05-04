@@ -1,32 +1,85 @@
 package com.example.tbdapp.activities;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.MediaController;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
-import com.example.tbdapp.models.Advisor;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Objects;
 
 public class VideoCallActivity extends AppCompatActivity {
     //Default mic and camera options
     boolean micOn = true;
     boolean cameraOn = true;
+    boolean recording = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
 
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions =
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        decorView.setSystemUiVisibility(uiOptions);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
+        final LinearLayout bottomBar = findViewById(R.id.bottom_bar);
+
+        decorView.setOnSystemUiVisibilityChangeListener
+            (new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                        //The system bars are visible.
+
+                        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) bottomBar.getLayoutParams();
+                        p.setMargins(0, 0, 0, 200);
+                        bottomBar.requestLayout();
+
+                    } else {
+                        //The system bars are NOT visible.
+
+                        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) bottomBar.getLayoutParams();
+                        p.setMargins(0, 0, 0, 0);
+                        bottomBar.requestLayout();
+
+                    }
+                }
+            });
+
+
+        //references
+        final ImageButton microphone = findViewById(R.id.fab_mic);
+        final ImageButton camera = findViewById(R.id.fab_camera);
+        final ImageButton recordButton = findViewById(R.id.fab_record);
+        final ImageButton switchCamera = findViewById(R.id.fab_switch_camera);
+        final ImageButton endCallButton = findViewById(R.id.fab_hangUp);
+        final VideoView mainVideo = findViewById(R.id.mainVideo);
+        final TextView recordingIndicator = findViewById(R.id.recording_indicator);
+        final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
+        final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
+        final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
+        final MediaPlayer recordingStart = MediaPlayer.create(this, R.raw.recording_start);
+        final MediaPlayer recordingEnd = MediaPlayer.create(this, R.raw.recording_end);
+
 
         //set the video of primary video (advisor's video)
-        final VideoView mainVideo = findViewById(R.id.mainVideo);
-        final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
         mainVideo.setVideoURI(Uri.parse(videoPath));
         mainVideo.start();
         mainVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -37,8 +90,6 @@ public class VideoCallActivity extends AppCompatActivity {
         });
 
         //set the video of secondary video (client's video)
-        final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
-        final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
         secondaryVideo.setVideoURI(Uri.parse(videoPath2));
         secondaryVideo.start();
         secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -48,10 +99,6 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
-        //references to fabs
-        final FloatingActionButton microphone = findViewById(R.id.fab_mic);
-        final FloatingActionButton camera = findViewById(R.id.fab_camera);
-        final FloatingActionButton endCallButton = findViewById(R.id.fab_hangUp);
 
         //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +118,7 @@ public class VideoCallActivity extends AppCompatActivity {
                 cameraOn = !cameraOn;
                 if(cameraOn) {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
-                    findViewById(R.id.secondaryVideo).setVisibility(View.VISIBLE);
+                    findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
                     secondaryVideo.setVideoURI(Uri.parse(videoPath2));
                     secondaryVideo.start();
                     secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -82,14 +129,68 @@ public class VideoCallActivity extends AppCompatActivity {
                     });
                 }else {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
-                    findViewById(R.id.secondaryVideo).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.secondaryVideoContainer).setVisibility(View.INVISIBLE);
                 }
             }
         });
 
+        //Record
+        final ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                recordButton,
+                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.2f));
+        scaleDown.setDuration(930);
+        scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
+        scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+
+        final ObjectAnimator resetAnimation = ObjectAnimator.ofPropertyValuesHolder(
+                recordButton,
+                PropertyValuesHolder.ofFloat("scaleX", 1f),
+                PropertyValuesHolder.ofFloat("scaleY", 1f));
+        resetAnimation.setDuration(100);
+
+        recordingIndicator.setVisibility(View.INVISIBLE);
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                recording = !recording;
+
+                if(recording) {
+                    recordingIndicator.setVisibility(View.VISIBLE);
+                    recordButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_stop_recording, getTheme()));
+                    recordingStart.start();
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "Now Recording – Visible to Advisor";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                    resetAnimation.cancel();
+                    scaleDown.start();
+
+                }else {
+                    recordingIndicator.setVisibility(View.INVISIBLE);
+                    recordButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_record, getTheme()));
+                    recordingEnd.start();
+
+                    scaleDown.cancel();
+                    resetAnimation.start();
+                }
+            }
+        });
+
+        //switch camera
+        switchCamera.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Do something when camera is switched
+            }
+        });
+
+        //end call
         endCallButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Do something that ends the call
+                //Close activity and return to previous activity
+                finish();
             }
         });
     }
