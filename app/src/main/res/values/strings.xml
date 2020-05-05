@@ -71,7 +71,7 @@
     <string name="healthCondition3" />
     <string name="healthCondition">healthCondition1</string>
     
-        <!-- Advisor Profile -->
+    <!-- Advisor Profile -->
     <string name="advisorProfile_header1">Description</string>
     <string name="advisorProfile_header2">Skills</string>
     <string name="advisorProfile_requestButton">Request</string>
@@ -80,5 +80,9 @@
     <string name="advisorImage">Advisor Image</string>
     <string name="backButton">Back Button</string>
     <string name="done">done</string>
+
+    <!-- Chat Activity -->
+    <string name="voiceCall">Voice Call</string>
+    <string name="videoCall">Video Call</string>
 
 </resources>
