@@ -8,16 +8,31 @@
     android:layout_height="match_parent">
 
 
+    <ImageView
+        android:id="@+id/profile_imageView"
+        android:layout_width="411dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:background="@drawable/ic_main_page_top_bar"
+        android:cropToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile_picture" />
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="675dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="120dp"
+        android:id="@+id/scrollView3"
+        android:layout_width="399dp"
+        android:layout_height="462dp"
+        android:layout_marginTop="20dp"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/profile_imageView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,72 +40,62 @@
             android:layout_marginBottom="100dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/profile_imageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="80dp"
-                android:adjustViewBounds="true"
-                android:cropToPadding="false"
-                app:srcCompat="@drawable/profile_picture"
-                />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/layout_bg"
-            android:orientation="vertical">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:text="Name"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp">
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
 
-            </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:text="Name"
+                    android:textColor="#BA000000"
+                    android:textSize="20sp">
 
-            <TextView
-                android:id="@+id/label_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:background="@null"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/roboto"
-                android:layout_marginBottom="10dp"
-                android:textSize="18sp"
-                />
+                </TextView>
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/label_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferred Name"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    >
+                    android:text="Preferred Name"
+                    android:textColor="#BA000000"
+                    android:textSize="20sp">
 
                 </TextView>
 
@@ -98,13 +103,13 @@
                     android:id="@+id/label_preferredName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -112,22 +117,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
 
-                    android:text="Date Of Birth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    >
+                    android:text="Date Of Birth"
+                    android:textColor="#BA000000"
+                    android:textSize="20sp">
 
                 </TextView>
 
@@ -135,81 +143,90 @@
                     android:id="@+id/label_dateOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
             </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/layout_bg"
-            android:orientation="vertical">
-
-            <TextView
-                android:text="Email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/label_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:background="@null"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/roboto"
-                android:layout_marginBottom="10dp"
-                android:textSize="18sp" />
-
-        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
+
                 <TextView
-                    android:text="Province"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Email"
+                    android:textColor="#BA000000"
+                    android:textSize="20sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/label_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:text="Province"
+                    android:textColor="#BA000000"
                     android:textSize="20sp"></TextView>
 
                 <TextView
                     android:id="@+id/label_province"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
@@ -217,51 +234,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Citizenship"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Citizenship"
+                    android:textColor="#BA000000"
                     android:textSize="20sp"></TextView>
 
                 <TextView
                     android:id="@+id/label_citizenship"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Employment Status"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Employment Status"
+                    android:textColor="#BA000000"
                     android:textSize="20sp">
 
                 </TextView>
@@ -270,13 +297,13 @@
                     android:id="@+id/label_employmentStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
@@ -284,19 +311,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Expected Income"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Expected Income"
+                    android:textColor="#BA000000"
                     android:textSize="20sp"></TextView>
 
 
@@ -304,13 +335,13 @@
                     android:id="@+id/label_expectedIncome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
@@ -318,19 +349,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Housing Status"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Housing Status"
+                    android:textColor="#BA000000"
                     android:textSize="20sp"></TextView>
 
 
@@ -338,45 +374,49 @@
                     android:id="@+id/label_housingStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Health Condition"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Health Condition"
+                    android:textColor="#BA000000"
                     android:textSize="20sp"></TextView>
 
                 <TextView
                     android:id="@+id/label_healthCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:background="@null"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -384,33 +424,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="50dp"
-                android:background="@drawable/layout_bg"
                 android:orientation="vertical">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#BEC2C4"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Looking For..."
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:textColor="#FFFFFF"
+                    android:text="Looking For..."
+                    android:textColor="#BA000000"
                     android:textSize="20sp"></TextView>
 
                 <TextView
                     android:id="@+id/label_lookingFor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:background="@null"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
                     android:fontFamily="@font/roboto"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="10dp"/>
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
