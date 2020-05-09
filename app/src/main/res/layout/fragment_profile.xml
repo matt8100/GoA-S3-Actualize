@@ -2,41 +2,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/profile_imageView"
-        android:layout_width="411dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_main_page_top_bar"
-        android:cropToPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile_picture" />
-
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="399dp"
-        android:layout_height="462dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
         android:background="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_imageView">
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
             android:orientation="vertical">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:background="#5F92D6">
+
+            </View>
+
+
+        <ImageView
+            android:id="@+id/profile_imageView"
+            android:layout_width="411dp"
+            android:layout_height="162dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_main_page_top_bar"
+            android:cropToPadding="true"
+            app:srcCompat="@drawable/profile_picture" />
+
 
 
             <LinearLayout
@@ -485,7 +487,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="50dp"
                 android:orientation="vertical">
 
                 <View
