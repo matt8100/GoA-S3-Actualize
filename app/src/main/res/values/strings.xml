@@ -3,6 +3,12 @@
     <string name="placeholderText">This text is placeholder text.</string>
     <string name="app_name">TBD App</string>
 
+    <string name="clear_text">Clear Text</string>
+    <string name="search">Search</string>
+    <string name="all">All</string>
+    <string name="financial">Financial</string>
+    <string name="career">Career</string>
+
     <!-- Tab Bar -->
     <string name="tab_item_explore">Explore</string>
     <string name="tab_item_messaging">Messaging</string>
