@@ -148,7 +148,7 @@ public class ProfileFragment extends Fragment implements
             }else if (healthCondition1.isChecked() && healthCondition3.isChecked()){
                 myUser.healthConditionText = "Living with a mental or physical disability, In need of medical equipment or other assistance";
             }else if (healthCondition2.isChecked() && healthCondition3.isChecked()) {
-                myUser.healthConditionText = "Living with an addiction, healthCondition3";
+                myUser.healthConditionText = "Living with an addiction, In need of medical equipment or other assistance";
             }else if (healthCondition1.isChecked()){
                 myUser.healthConditionText = "Living with a mental or physical disability";
             }else if (healthCondition2.isChecked()){
