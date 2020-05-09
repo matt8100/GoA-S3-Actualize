@@ -1,7 +1,7 @@
 <resources>
 
     <string name="placeholderText">This text is placeholder text.</string>
-    <string name="app_name">TBD App</string>
+    <string name="app_name">Actualize</string>
 
     <!-- Tab Bar -->
     <string name="tab_item_explore">Explore</string>
@@ -70,7 +70,7 @@
     <string name="healthCondition2" />
     <string name="healthCondition3" />
     <string name="healthCondition">healthCondition1</string>
-    
+
     <!-- Advisor Profile -->
     <string name="advisorProfile_header1">Description</string>
     <string name="advisorProfile_header2">Skills</string>
@@ -80,6 +80,7 @@
     <string name="advisorImage">Advisor Image</string>
     <string name="backButton">Back Button</string>
     <string name="done">done</string>
+    <string name="logo">Logo</string>
 
     <!-- Chat Activity -->
     <string name="voiceCall">Voice Call</string>
