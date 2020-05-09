@@ -40,19 +40,19 @@ public class Singleton {
     }
 
     private void createAdvisorProfiles() {
-        advisors.add(new Advisor("1", "Brittany Williams", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("2", "Thomas Edwards", "Career", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("3", "Daniel Wilson", "Career", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("4", "Jaimie Miller", "Career", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("5", "Raiqah Johal", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("6", "Chris Peacock", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("7", "George London", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("8", "Alexei Dubrivonich", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("9", "Aetherbald the Great", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("10", "Pyńęł Rziąćic", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("11", "Cornelius II of Rome", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("12", "Rünerig Pfochmännördt", "Financial", placeholderText, placeholderText, placeholderImage));
-        advisors.add(new Advisor("13", "Grzegorz Brzęczyszczykiewicz", "Financial", placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("1", "Brittany Williams", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("2", "Thomas Edwards", AdvisorType.CAREER, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("3", "Daniel Wilson", AdvisorType.CAREER, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("4", "Jaimie Miller", AdvisorType.CAREER, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("5", "Raiqah Johal", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("6", "Chris Peacock", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("7", "George London", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("8", "Alexei Dubrivonich", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("9", "Aetherbald the Great", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("10", "Pyńęł Rziąćic", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("11", "Cornelius II of Rome", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("12", "Rünerig Pfochmännördt", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
+        advisors.add(new Advisor("13", "Grzegorz Brzęczyszczykiewicz", AdvisorType.FINANCIAL, placeholderText, placeholderText, placeholderImage));
     }
 
     private void populateChatHistories() {

@@ -8,6 +8,9 @@
     <string name="all">All</string>
     <string name="financial">Financial</string>
     <string name="career">Career</string>
+    <string name="advisorType">Advisor Type</string>
+    <string name="career_advisor">Career Advisor</string>
+    <string name="financial_advisor">Financial Advisor</string>
 
     <!-- Tab Bar -->
     <string name="tab_item_explore">Explore</string>
