@@ -142,19 +142,19 @@ public class ProfileFragment extends Fragment implements
             myUser.housingStatusText = housingStatus.getSelectedItem().toString();
 
             if (healthCondition2.isChecked() && healthCondition3.isChecked()&& healthCondition1.isChecked()) {
-                myUser.healthConditionText = "healthCondition1, healthCondition2, healthCondition3";
+                myUser.healthConditionText = "Living with a mental or physical disability, Living with an addiction, In need of medical equipment or other assistance";
             }else if (healthCondition1.isChecked() && healthCondition2.isChecked()){
-                myUser.healthConditionText = "healthCondition1, healthCondition2";
+                myUser.healthConditionText = "Living with a mental or physical disability, Living with an addiction";
             }else if (healthCondition1.isChecked() && healthCondition3.isChecked()){
-                myUser.healthConditionText = "healthCondition1, healthCondition3";
+                myUser.healthConditionText = "Living with a mental or physical disability, In need of medical equipment or other assistance";
             }else if (healthCondition2.isChecked() && healthCondition3.isChecked()) {
-                myUser.healthConditionText = "healthCondition2, healthCondition3";
+                myUser.healthConditionText = "Living with an addiction, healthCondition3";
             }else if (healthCondition1.isChecked()){
-                myUser.healthConditionText = "healthCondition1";
+                myUser.healthConditionText = "Living with a mental or physical disability";
             }else if (healthCondition2.isChecked()){
-                myUser.healthConditionText = "healthCondition2";
+                myUser.healthConditionText = "Living with an addiction";
             }else if (healthCondition3.isChecked()) {
-                myUser.healthConditionText = "healthCondition3";
+                myUser.healthConditionText = "In need of medical equipment or other assistance";
             }else{
                 myUser.healthConditionText = "None";
             }

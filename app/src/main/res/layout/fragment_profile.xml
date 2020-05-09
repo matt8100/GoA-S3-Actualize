@@ -441,7 +441,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="healthCondition_1" />
+                        android:text="Living with a mental or physical disability" />
 
                 </LinearLayout>
 
@@ -458,7 +458,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="healthCondition_2" />
+                        android:text="Living with an addiction" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -475,7 +475,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="healthCondition_3" />
+                        android:text="In need of medical equipment or other assistance" />
                 </LinearLayout>
 
 

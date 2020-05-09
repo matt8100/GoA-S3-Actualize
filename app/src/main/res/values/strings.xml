@@ -69,7 +69,7 @@
     <string name="healthCondition1" />
     <string name="healthCondition2" />
     <string name="healthCondition3" />
-    <string name="healthCondition">healthCondition1</string>
+    <string name="healthCondition">Living with a mental or physical disability</string>
     
         <!-- Advisor Profile -->
     <string name="advisorProfile_header1">Description</string>
