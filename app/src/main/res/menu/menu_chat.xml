@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/miCompose"
+        android:id="@+id/startCall"
         android:icon="@drawable/ic_voice_call"
         app:showAsAction="ifRoom"
         android:title="@string/voiceCall">
     </item>
     <item
-        android:id="@+id/miProfile"
+        android:id="@+id/startVideo"
         android:icon="@drawable/ic_video_call"
         app:showAsAction="ifRoom|withText"
         android:title="@string/videoCall">

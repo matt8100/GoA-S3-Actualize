@@ -1,10 +1,11 @@
 package com.example.tbdapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -81,6 +82,24 @@ public class ChatActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_chat, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.startVideo:
+                Intent intent1 = new Intent(this, VideoCallActivity.class);
+                this.startActivity(intent1);
+                break;
+            case R.id.startCall:
+                Intent intent2 = new Intent(this, VideoCallActivity.class);
+                this.startActivity(intent2);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
         return true;
     }
 
