@@ -129,7 +129,7 @@ public class VideoCallActivity extends AppCompatActivity {
                     });
                 }else {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
-                    findViewById(R.id.secondaryVideoContainer).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.secondaryVideoContainer).setVisibility(View.GONE);
                 }
             }
         });
