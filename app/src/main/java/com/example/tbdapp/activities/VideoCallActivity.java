@@ -90,7 +90,6 @@ public class VideoCallActivity extends AppCompatActivity {
 
         cameraOn = getIntent().getExtras().getBoolean("withCamera");
 
-
         //set the video of primary video (advisor's video)
         mainVideo.setVideoURI(Uri.parse(videoPath));
         mainVideo.start();
@@ -252,3 +251,4 @@ public class VideoCallActivity extends AppCompatActivity {
         });
     }
 }
+
