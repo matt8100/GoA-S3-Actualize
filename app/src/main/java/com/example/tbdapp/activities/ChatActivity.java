@@ -87,21 +87,24 @@ public class ChatActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, VideoCallActivity.class);
         switch(item.getItemId()) {
             case R.id.startVideo:
-                Intent intent1 = new Intent(this, VideoCallActivity.class);
-                intent1.putExtra("withCamera", true);
-                this.startActivity(intent1);
+                intent.putExtra("withCamera", true);
                 break;
             case R.id.startCall:
-                Intent intent2 = new Intent(this, VideoCallActivity.class);
-                intent2.putExtra("withCamera", false);
-                this.startActivity(intent2);
+                intent.putExtra("withCamera", false);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
+
+        //IMPORTANT: Hardcoded value to simulate if call is incoming rather than outgoing
+        final boolean forceCallToBeReceiving = true;
+
+        intent.putExtra("forceCallToBeReceiving", forceCallToBeReceiving);
+        this.startActivity(intent);
         return true;
     }
 

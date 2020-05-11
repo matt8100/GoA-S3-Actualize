@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -31,7 +32,6 @@ public class VideoCallActivity extends AppCompatActivity {
     boolean recording = false;
     boolean micOn = true;
     boolean cameraOn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +71,45 @@ public class VideoCallActivity extends AppCompatActivity {
                 }
             });
 
+        //Show incoming/outgoing call screen
+        if(getIntent().getExtras().getBoolean("withCamera")) {
+            ((TextView) findViewById(R.id.call_type)).setText("Video Call");
+        }else {
+            ((TextView) findViewById(R.id.call_type)).setText("Voice Call");
+        }
+
+        boolean forceCallToBeReceiving = getIntent().getExtras().getBoolean("forceCallToBeReceiving");
+        if(forceCallToBeReceiving) {
+            //Incoming call screen
+            findViewById(R.id.accept_fab).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startCall();
+                }
+            });
+            findViewById(R.id.decline_fab).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
+        }else {
+            //Outgoing call screen
+            findViewById(R.id.accept_fab).setVisibility(View.GONE);
+            findViewById(R.id.accept_text).setVisibility(View.GONE);
+            findViewById(R.id.decline_fab).setVisibility(View.GONE);
+            findViewById(R.id.decline_text).setVisibility(View.GONE);
+
+            //Show incoming/outgoing call screen for a set delay, then show main content
+            new CountDownTimer(5000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                }
+                public void onFinish() {
+                    startCall();
+                }
+            }.start();
+        }
+    }
+    public void startCall() {
         //references
         final ImageButton microphone = findViewById(R.id.fab_mic);
         final ImageButton camera = findViewById(R.id.fab_camera);
@@ -87,8 +126,6 @@ public class VideoCallActivity extends AppCompatActivity {
         final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
         final MediaPlayer recordingStart = MediaPlayer.create(this, R.raw.recording_start);
         final MediaPlayer recordingEnd = MediaPlayer.create(this, R.raw.recording_end);
-
-        cameraOn = getIntent().getExtras().getBoolean("withCamera");
 
         //set the video of primary video (advisor's video)
         mainVideo.setVideoURI(Uri.parse(videoPath));
@@ -114,16 +151,18 @@ public class VideoCallActivity extends AppCompatActivity {
         //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                 micOn = !micOn;
-                 if(micOn) {
-                     microphone.setImageDrawable(getResources().getDrawable(R.drawable.ic_unmute, getTheme()));
-                 }else {
-                     microphone.setImageDrawable(getResources().getDrawable(R.drawable.ic_mute, getTheme()));
-                 }
+                micOn = !micOn;
+                if(micOn) {
+                    microphone.setImageDrawable(getResources().getDrawable(R.drawable.ic_unmute, getTheme()));
+                }else {
+                    microphone.setImageDrawable(getResources().getDrawable(R.drawable.ic_mute, getTheme()));
+                }
             }
         });
 
+
         //Camera state on create
+        cameraOn = getIntent().getExtras().getBoolean("withCamera");
         if(cameraOn) {
             camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
             findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
@@ -249,6 +288,9 @@ public class VideoCallActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        //Show the call screen when everything is loaded
+        findViewById(R.id.main_content).setVisibility(View.VISIBLE);
     }
 }
 
