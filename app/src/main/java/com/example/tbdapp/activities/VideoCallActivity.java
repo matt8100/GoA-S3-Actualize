@@ -3,11 +3,17 @@ package com.example.tbdapp.activities;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +22,7 @@ import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tbdapp.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -70,6 +77,9 @@ public class VideoCallActivity extends AppCompatActivity {
         final ImageButton recordButton = findViewById(R.id.fab_record);
         final ImageButton switchCamera = findViewById(R.id.fab_switch_camera);
         final ImageButton endCallButton = findViewById(R.id.fab_hangUp);
+        final ImageButton addNoteButton = findViewById(R.id.fab_add_notes);
+        final LinearLayout notesOverlay = findViewById(R.id.notes_overlay);
+        final EditText notesText = findViewById(R.id.notes_text);
         final VideoView mainVideo = findViewById(R.id.mainVideo);
         final TextView recordingIndicator = findViewById(R.id.recording_indicator);
         final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
@@ -191,6 +201,34 @@ public class VideoCallActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Close activity and return to previous activity
                 finish();
+            }
+        });
+        addNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                notesOverlay.setVisibility(View.VISIBLE);
+                notesText.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(notesText, InputMethodManager.SHOW_IMPLICIT);
+            }
+        });
+        notesText.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    notesOverlay.setVisibility(View.GONE);
+                    notesText.setText("", TextView.BufferType.EDITABLE);
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(notesText.getWindowToken(), 0);
+//                    Snackbar.make(mainVideo, "Your note has been saved", 3000).show();
+                    Context context = getApplicationContext();
+                    CharSequence text = "Your note has been saved";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    return true;
+                }
+                return false;
             }
         });
     }
