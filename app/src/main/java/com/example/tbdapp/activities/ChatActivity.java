@@ -85,6 +85,10 @@ public class ChatActivity extends AppCompatActivity {
         return true;
     }
 
+    private void loadMessages() {
+        mAdapter.addToEnd(Singleton.getInstance().chatHistory.get(mContactId), false);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, VideoCallActivity.class);
@@ -99,17 +103,15 @@ public class ChatActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
-
         //IMPORTANT: Hardcoded value to simulate if call is incoming rather than outgoing
         final boolean forceCallToBeReceiving = true;
 
+        String advisorName = Singleton.getInstance().advisors.get(Integer.parseInt(getIntent().getStringExtra("contactId"))-1).name;
+
         intent.putExtra("forceCallToBeReceiving", forceCallToBeReceiving);
+        intent.putExtra("caller", advisorName);
         this.startActivity(intent);
         return true;
-    }
-
-    private void loadMessages() {
-        mAdapter.addToEnd(Singleton.getInstance().chatHistory.get(mContactId), false);
     }
 }
 

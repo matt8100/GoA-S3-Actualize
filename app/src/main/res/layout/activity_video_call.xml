@@ -7,25 +7,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--    call start-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="visible"
         android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/call_screen_gradient">
+        android:background="@drawable/call_screen_gradient"
+        android:elevation="10dp">
 
 
         <TextView
             android:id="@+id/recipient_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="384dp"
             android:layout_marginTop="164dp"
-            android:text="First LastName"
+            android:text=""
             android:textColor="#ffffff"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/call_type"
@@ -84,6 +88,23 @@
             app:fabCustomSize="80dp"
             app:maxImageSize="48dp"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/end_prematurely_fab"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ffffff"
+            android:clickable="true"
+            android:scaleType="center"
+            android:tint="#FF0000"
+            app:fabCustomSize="80dp"
+            app:layout_constraintBottom_toTopOf="@+id/end_prematurely_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxImageSize="48dp"
+            app:srcCompat="@drawable/ic_call_end"
+            android:layout_marginBottom="16dp"/>
+
         <TextView
             android:id="@+id/accept_text"
             android:layout_width="80dp"
@@ -107,8 +128,22 @@
             android:layout_marginBottom="128dp"
             android:layout_marginEnd="58dp"
             android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/end_prematurely_text"
+            android:visibility="gone"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="End Call"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="80dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    main content-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="gone"
         android:id="@+id/main_content"
@@ -148,18 +183,40 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/recording_indicator"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="28dp"
             android:layout_marginEnd="10dp"
             android:gravity="end|top"
-            android:padding="8dp"
-            android:text="● Recording"
-            android:textColor="#FF0000"
-            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/recording_background"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/secondaryVideoContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/secondaryVideoContainer">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:translationY="-8dp"
+                android:layout_marginEnd="100dp"
+                android:gravity="end|top"
+                android:text="●"
+                android:textColor="#FF0000"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end|top"
+                android:text="Recording"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
             android:id="@+id/fab_add_notes"
@@ -256,10 +313,11 @@
 
         </LinearLayout>
 
+<!--        notes-->
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             android:gravity="bottom"
             android:id="@+id/notes_overlay"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -268,7 +326,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             android:elevation="5dp"
-            android:background="#55000000">
+            android:background="#55000000"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/notes_overlay_hitbox"
+                android:layout_height="435dp"
+                android:layout_width="match_parent">
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_height="350dp"
@@ -276,18 +343,30 @@
                 android:background="#282828"
                 >
 
-            <EditText
-                android:id="@+id/notes_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textShortMessage"
-                android:hint="Add a note…"
-                android:textColor="#BEC2C4"
-                android:textColorHint="#88BEC2C4"
-                android:textSize="20sp"
-                android:background="@null"
-                android:padding="8dp"/>
+                <EditText
+                    android:id="@+id/notes_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textShortMessage"
+                    android:hint="Add a note…"
+                    android:textColor="#BEC2C4"
+                    android:textColorHint="#88BEC2C4"
+                    android:textSize="20sp"
+                    android:background="@null"
+                    android:padding="8dp"
+                    android:layout_weight="7"/>
+                <ImageButton
+                    android:id="@+id/new_note"
+                    android:layout_height="48dp"
+                    android:layout_width="48dp"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_add"
+                    android:tint="#ffffff"
+                    android:background="@null">
+
+                </ImageButton>
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
