@@ -28,9 +28,10 @@ import java.util.Objects;
 
 public class VideoCallActivity extends AppCompatActivity {
     //Default mic and camera options
-    boolean micOn = true;
-    boolean cameraOn = true;
     boolean recording = false;
+    boolean micOn = true;
+    boolean cameraOn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,6 @@ public class VideoCallActivity extends AppCompatActivity {
                 }
             });
 
-
         //references
         final ImageButton microphone = findViewById(R.id.fab_mic);
         final ImageButton camera = findViewById(R.id.fab_camera);
@@ -87,6 +87,8 @@ public class VideoCallActivity extends AppCompatActivity {
         final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
         final MediaPlayer recordingStart = MediaPlayer.create(this, R.raw.recording_start);
         final MediaPlayer recordingEnd = MediaPlayer.create(this, R.raw.recording_end);
+
+        cameraOn = getIntent().getExtras().getBoolean("withCamera");
 
 
         //set the video of primary video (advisor's video)
@@ -121,6 +123,23 @@ public class VideoCallActivity extends AppCompatActivity {
                  }
             }
         });
+
+        //Camera state on create
+        if(cameraOn) {
+            camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
+            findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
+            secondaryVideo.setVideoURI(Uri.parse(videoPath2));
+            secondaryVideo.start();
+            secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(true);
+                }
+            });
+        }else {
+            camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
+            findViewById(R.id.secondaryVideoContainer).setVisibility(View.GONE);
+        }
 
         //toggle on/off camera
         camera.setOnClickListener(new View.OnClickListener() {
