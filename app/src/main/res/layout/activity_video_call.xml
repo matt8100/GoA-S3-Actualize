@@ -41,8 +41,7 @@
         android:id="@+id/recording_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginRight="10dp"
         android:gravity="right|top"
         android:padding="8dp"
         android:text="● Recording"
@@ -51,6 +50,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondaryVideoContainer" />
 
+    <ImageButton
+        android:id="@+id/fab_add_notes"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_note" />
 
     <LinearLayout
         android:id="@+id/bottom_bar"
@@ -132,6 +143,41 @@
             android:tint="@color/white"
             />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="bottom"
+        android:id="@+id/notes_overlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:elevation="5dp"
+        android:background="#55000000">
+
+        <LinearLayout
+            android:layout_height="350dp"
+            android:layout_width="match_parent"
+            android:background="#282828"
+            >
+
+        <EditText
+            android:id="@+id/notes_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textShortMessage"
+            android:hint="Add a note…"
+            android:textColor="#BEC2C4"
+            android:textColorHint="#88BEC2C4"
+            android:textSize="20sp"
+            android:background="@null"
+            android:padding="8dp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

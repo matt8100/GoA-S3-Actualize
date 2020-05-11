@@ -93,6 +93,7 @@ public class ChatActivity extends AppCompatActivity {
                 this.startActivity(intent1);
                 break;
             case R.id.startCall:
+                //TODO: differentiate between video and voice calls
                 Intent intent2 = new Intent(this, VideoCallActivity.class);
                 this.startActivity(intent2);
                 break;
