@@ -106,10 +106,13 @@ public class ChatActivity extends AppCompatActivity {
         //IMPORTANT: Hardcoded value to simulate if call is incoming rather than outgoing
         final boolean forceCallToBeReceiving = true;
 
-        String advisorName = Singleton.getInstance().advisors.get(Integer.parseInt(getIntent().getStringExtra("contactId"))-1).name;
+        Advisor advisor = Singleton.getInstance().advisors.get(Integer.parseInt(getIntent().getStringExtra("contactId"))-1);
+        String advisorName = advisor.name;
+        String resDirectory = advisor.avatar;
 
         intent.putExtra("forceCallToBeReceiving", forceCallToBeReceiving);
         intent.putExtra("caller", advisorName);
+        intent.putExtra("advisorAvatar", resDirectory);
         this.startActivity(intent);
         return true;
     }

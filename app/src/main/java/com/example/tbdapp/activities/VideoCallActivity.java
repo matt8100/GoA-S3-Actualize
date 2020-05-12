@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +55,7 @@ public class VideoCallActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.call_type)).setText("Voice Call");
         }
 
+        ((ImageView) findViewById(R.id.avatar)).setImageResource(getResources().getIdentifier(getIntent().getExtras().getString("advisorAvatar"), "drawable", getPackageName()));
         ((TextView) findViewById(R.id.recipient_name)).setText(getIntent().getExtras().getString("caller"));
 
         final MediaPlayer callIncoming = MediaPlayer.create(this, R.raw.call_incoming);
@@ -83,7 +86,7 @@ public class VideoCallActivity extends AppCompatActivity {
 
                     callIncoming.stop();
                     callEnd.start();
-                    new CountDownTimer(2000, 1000) {
+                    new CountDownTimer(1000, 1000) {
                         public void onTick(long millisUntilFinished) {
                         }
                         public void onFinish() {
@@ -228,6 +231,7 @@ public class VideoCallActivity extends AppCompatActivity {
                         }
                     });
                 }else {
+                    secondaryVideo.stopPlayback();
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
                     findViewById(R.id.secondaryVideoContainer).setVisibility(View.GONE);
                 }
@@ -373,10 +377,10 @@ public class VideoCallActivity extends AppCompatActivity {
         });
 
         //Note on enter key press
-        notesText.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+        notesText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
                     hadNotes = true;
 
                     //Remove notes overlay and reset
