@@ -3,6 +3,15 @@
     <string name="placeholderText">This text is placeholder text.</string>
     <string name="app_name">TBD App</string>
 
+    <string name="clear_text">Clear Text</string>
+    <string name="search">Search</string>
+    <string name="all">All</string>
+    <string name="financial">Financial</string>
+    <string name="career">Career</string>
+    <string name="advisorType">Advisor Type</string>
+    <string name="career_advisor">Career Advisor</string>
+    <string name="financial_advisor">Financial Advisor</string>
+
     <!-- Tab Bar -->
     <string name="tab_item_explore">Explore</string>
     <string name="tab_item_messaging">Messaging</string>
@@ -69,7 +78,7 @@
     <string name="healthCondition1" />
     <string name="healthCondition2" />
     <string name="healthCondition3" />
-    <string name="healthCondition">healthCondition1</string>
+    <string name="healthCondition">Living with a mental or physical disability</string>
     
     <!-- Advisor Profile -->
     <string name="advisorProfile_header1">Description</string>

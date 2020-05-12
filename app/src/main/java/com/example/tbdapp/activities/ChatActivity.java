@@ -44,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
 
         Advisor currentAdvisor = Singleton.getInstance().advisors.get(Integer.parseInt(mContactId)-1);
         getSupportActionBar().setTitle(currentAdvisor.name);
-        getSupportActionBar().setSubtitle(currentAdvisor.advisorType);
+        getSupportActionBar().setSubtitle(currentAdvisor.advisorType.toString());
 
         mMessagesList = findViewById(R.id.messagesList);
         mMessageInput = findViewById(R.id.input);

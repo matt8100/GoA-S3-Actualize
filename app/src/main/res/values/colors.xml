@@ -5,4 +5,8 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="darkerPurple">#2523B9</color>
+
+    <color name="searchBarTransparent">#E68CBAF9</color>
+    <color name="fadedTurquoise">#8ECBCF</color>
+    <color name="purple">#807CF9</color>
 </resources>

@@ -21,4 +21,10 @@
             <item name="android:fontFamily">@font/roboto</item>
     </style>
 
+    <style name="ExploreTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_condensed_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>
