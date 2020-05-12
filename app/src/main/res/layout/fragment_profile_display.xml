@@ -377,7 +377,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/roboto_condensed_regular"
-                        android:text="@string/health_condition"
+                        android:text="@string/health_conditions"
                         android:textColor="#BA000000"
                         android:textSize="20sp" />
 

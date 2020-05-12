@@ -79,7 +79,17 @@ public class ProfileDisplayFragment extends ProfileFragment {
         expectedIncomeTextView.setText(user.expectedIncomeText);
 
         healthConditionTextView = v.findViewById(R.id.label_healthCondition);
-        healthConditionTextView.setText(user.healthConditionText);
+
+        StringBuilder healthConditionText = new StringBuilder();
+        for(String healthCondition : user.healthConditions) {
+            healthConditionText.append(healthCondition).append("\n");
+        }
+        int index = healthConditionText.lastIndexOf("\n");
+        if(index != -1) { //string exists
+            healthConditionText.deleteCharAt(index);
+        }
+
+        healthConditionTextView.setText(healthConditionText);
 
         lookingForTextView = v.findViewById(R.id.label_lookingFor);
         lookingForTextView.setText(user.lookingForText);
