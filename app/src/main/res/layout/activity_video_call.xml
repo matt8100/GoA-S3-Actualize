@@ -8,142 +8,142 @@
     android:layout_height="match_parent">
 
 <!--    call start-->
+
+    <!--    main content-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="visible"
         android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/call_screen_gradient"
-        android:elevation="10dp">
+        android:elevation="10dp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-50dp">
 
 
         <TextView
             android:id="@+id/recipient_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:maxWidth="384dp"
-            android:layout_marginTop="164dp"
             android:text=""
+            android:textAlignment="center"
             android:textColor="#ffffff"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="center"/>
+            app:layout_constraintBottom_toTopOf="@+id/call_type" />
 
         <TextView
             android:id="@+id/call_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Video Call"
             android:textColor="#ffffff"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recipient_name" />
+            android:layout_marginBottom="24dp"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
             android:layout_width="192dp"
             android:layout_height="192dp"
-            android:src="@drawable/profile_photo"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="336dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/call_type"
-            android:background="@drawable/circle_image">
+            app:layout_constraintStart_toStartOf="parent">
 
-        </ImageView>
+        </de.hdodenhof.circleimageview.CircleImageView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/accept_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            app:layout_constraintBottom_toTopOf="@+id/accept_text"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="56dp"
             android:layout_marginBottom="16dp"
-            app:srcCompat="@drawable/ic_call"
             android:backgroundTint="#ffffff"
-            android:tint="#1FDE60"
+            android:clickable="true"
             android:scaleType="center"
+            android:tint="#1FDE60"
             app:fabCustomSize="80dp"
+            app:layout_constraintBottom_toTopOf="@+id/accept_text"
+            app:layout_constraintStart_toStartOf="parent"
             app:maxImageSize="48dp"
-            />
+            app:srcCompat="@drawable/ic_call" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/decline_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            app:layout_constraintBottom_toTopOf="@+id/decline_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_call_end"
             android:layout_marginEnd="56dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#ffffff"
-            android:tint="#FF0000"
+            android:clickable="true"
             android:scaleType="center"
+            android:tint="#FF0000"
             app:fabCustomSize="80dp"
-            app:maxImageSize="48dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/decline_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:maxImageSize="48dp"
+            app:srcCompat="@drawable/ic_call_end" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/end_prematurely_fab"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="#ffffff"
             android:clickable="true"
             android:scaleType="center"
             android:tint="#FF0000"
+            android:visibility="gone"
             app:fabCustomSize="80dp"
             app:layout_constraintBottom_toTopOf="@+id/end_prematurely_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:maxImageSize="48dp"
-            app:srcCompat="@drawable/ic_call_end"
-            android:layout_marginBottom="16dp"/>
+            app:srcCompat="@drawable/ic_call_end" />
 
         <TextView
             android:id="@+id/accept_text"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Accept"
-            android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="58dp"
             android:layout_marginBottom="128dp"
-            android:textAlignment="center"/>
+            android:text="Accept"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/decline_text"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Decline"
-            android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="128dp"
             android:layout_marginEnd="58dp"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/end_prematurely_text"
-            android:visibility="gone"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="End Call"
+            android:layout_marginBottom="128dp"
+            android:text="Decline"
             android:textAlignment="center"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/end_prematurely_text"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:text="End Call"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="80dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    main content-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="gone"
         android:id="@+id/main_content"
@@ -355,7 +355,9 @@
                     android:textSize="20sp"
                     android:background="@null"
                     android:padding="8dp"
-                    android:layout_weight="7"/>
+                    android:layout_weight="7"
+                    android:imeOptions="actionDone"
+                    />
                 <ImageButton
                     android:id="@+id/new_note"
                     android:layout_height="48dp"
