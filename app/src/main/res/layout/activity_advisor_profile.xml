@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#1c2029">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -17,98 +17,70 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <TextView
+            android:id="@+id/advisorProfile_advisorName"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.432"
+            app:layout_constraintStart_toEndOf="@+id/advisorProfile_backButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
+
         <ImageButton
             android:id="@+id/advisorProfile_backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="18dp"
+            android:background="#FFFFFF"
             android:contentDescription="@string/backButton"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_arrowicon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:id="@+id/viewBar"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:background="#5F92D6">
-
-        </View>
-
-    </LinearLayout>
-
     <ImageView
         android:id="@+id/advisorProfile_advisorImage"
-        android:layout_width="411dp"
-        android:layout_height="162dp"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:background="@drawable/ic_main_page_top_bar"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/advisorImage"
-        android:cropToPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewBar" />
-
-
-    <TextView
-        android:id="@+id/advisorProfile_advisorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="Roboto Slab"
-        android:textColor="#000000"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@id/advisorProfile_advisorType"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorImage" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/advisorProfile_advisorType"
-        android:layout_width="wrap_content"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto"
+        android:background="#80EE4D4D"
+        android:fontFamily="sans-serif-condensed"
         android:paddingHorizontal="6dp"
         android:paddingVertical="10dp"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorName" />
+        app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorImage" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="64dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorType">
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/advisorProfile_callButton"
@@ -117,52 +89,15 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="48dp"
             android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_mdi_phone" />
-
-        <TextView
-            android:id="@+id/advisorProfile_callDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="Roboto"
-            android:text="Call"
-            android:textColor="#2523B9"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="48dp"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+            android:background="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/advisorProfile_messageButton"
-            android:layout_width="67dp"
+            android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginEnd="48dp"
             android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_mdi_message" />
-
-        <TextView
-            android:id="@+id/advisorProfile_messageDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="Roboto"
-            android:text="Message"
-            android:textColor="#2523B9"
-            android:layout_marginEnd="48dp"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+            android:background="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/advisorProfile_videoButton"
@@ -170,20 +105,7 @@
             android:layout_height="64dp"
             android:layout_marginEnd="40dp"
             android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_mdi_videocam" />
-
-        <TextView
-            android:id="@+id/advisorProfile_videoCallDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="Roboto"
-            android:text="Video Call"
-            android:textColor="#2523B9"
-            android:layout_marginEnd="40dp"
-            android:textSize="16sp" />
-
-    </LinearLayout>
+            android:background="#FFFFFF" />
     </LinearLayout>
 
     <ScrollView
