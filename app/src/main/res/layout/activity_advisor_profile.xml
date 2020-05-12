@@ -92,17 +92,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorName" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorType">
-
 
     <ScrollView
         android:layout_width="360dp"
@@ -167,6 +156,7 @@
         android:background="@drawable/layout_request_button_colour"
         android:fontFamily="@font/roboto_condensed_regular"
         android:text="@string/advisorProfile_requestButton"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
