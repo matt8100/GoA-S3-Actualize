@@ -96,12 +96,12 @@ public class ProfileFragment extends Fragment implements
         });
 
 
-        setupSpinner(R.id.spinner_province, R.array.labels_province, false);
-        setupSpinner(R.id.spinner_citizenship, R.array.labels_citizenship, false);
-        setupSpinner(R.id.spinner_employmentStatus, R.array.labels_employmentStatus, true);
-        setupSpinner(R.id.spinner_expectedIncome, R.array.labels_expectedIncome, true);
-        setupSpinner(R.id.spinner_housingStatus, R.array.labels_housingStatus, true);
-        setupSpinner(R.id.spinner_lookingFor, R.array.labels_lookingFor, true);
+        setupSpinner(R.id.spinner_province, R.array.labels_province, user.provinceText, false);
+        setupSpinner(R.id.spinner_citizenship, R.array.labels_citizenship, user.citizenshipText, false);
+        setupSpinner(R.id.spinner_employmentStatus, R.array.labels_employmentStatus, user.employmentStatusText, true);
+        setupSpinner(R.id.spinner_expectedIncome, R.array.labels_expectedIncome, user.expectedIncomeText, true);
+        setupSpinner(R.id.spinner_housingStatus, R.array.labels_housingStatus, user.housingStatusText, true);
+        setupSpinner(R.id.spinner_lookingFor, R.array.labels_lookingFor, user.lookingForText, true);
 
         return v;
     }
@@ -116,7 +116,7 @@ public class ProfileFragment extends Fragment implements
         inflater.inflate(R.menu.done_menu, menu);
     }
 
-    private void setupSpinner(int id, int array, boolean enabled) {
+    private void setupSpinner(int id, int array, String selectedText, boolean enabled) {
         Spinner spinner = v.findViewById(id);
         spinner.setOnItemSelectedListener(this);
 
@@ -124,42 +124,43 @@ public class ProfileFragment extends Fragment implements
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         spinner.setEnabled(enabled);
+        spinner.setSelection(arrayAdapter.getPosition(selectedText));
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.done){
-            User myUser = Singleton.getInstance().user;
+            User user = Singleton.getInstance().user;
 
-            myUser.name = editTextName.getText().toString();
-            myUser.preferredName = editTextPreferredName.getText().toString();
-            myUser.dateOfBirth= editTextDateOfBirth.getText().toString();
-            myUser.email = editTextEmail.getText().toString();
-            myUser.provinceText = province.getSelectedItem().toString();
-            myUser.citizenshipText = citizenship.getSelectedItem().toString();
-            myUser.employmentStatusText = employmentStatus.getSelectedItem().toString();
-            myUser.expectedIncomeText = expectedIncome.getSelectedItem().toString();
-            myUser.housingStatusText = housingStatus.getSelectedItem().toString();
+            user.name = editTextName.getText().toString();
+            user.preferredName = editTextPreferredName.getText().toString();
+            user.dateOfBirth= editTextDateOfBirth.getText().toString();
+            user.email = editTextEmail.getText().toString();
+            user.provinceText = province.getSelectedItem().toString();
+            user.citizenshipText = citizenship.getSelectedItem().toString();
+            user.employmentStatusText = employmentStatus.getSelectedItem().toString();
+            user.expectedIncomeText = expectedIncome.getSelectedItem().toString();
+            user.housingStatusText = housingStatus.getSelectedItem().toString();
 
             if (healthCondition2.isChecked() && healthCondition3.isChecked()&& healthCondition1.isChecked()) {
-                myUser.healthConditionText = "Living with a mental or physical disability, Living with an addiction, In need of medical equipment or other assistance";
+                user.healthConditionText = "Living with a mental or physical disability, Living with an addiction, In need of medical equipment or other assistance";
             }else if (healthCondition1.isChecked() && healthCondition2.isChecked()){
-                myUser.healthConditionText = "Living with a mental or physical disability, Living with an addiction";
+                user.healthConditionText = "Living with a mental or physical disability, Living with an addiction";
             }else if (healthCondition1.isChecked() && healthCondition3.isChecked()){
-                myUser.healthConditionText = "Living with a mental or physical disability, In need of medical equipment or other assistance";
+                user.healthConditionText = "Living with a mental or physical disability, In need of medical equipment or other assistance";
             }else if (healthCondition2.isChecked() && healthCondition3.isChecked()) {
-                myUser.healthConditionText = "Living with an addiction, In need of medical equipment or other assistance";
+                user.healthConditionText = "Living with an addiction, In need of medical equipment or other assistance";
             }else if (healthCondition1.isChecked()){
-                myUser.healthConditionText = "Living with a mental or physical disability";
+                user.healthConditionText = "Living with a mental or physical disability";
             }else if (healthCondition2.isChecked()){
-                myUser.healthConditionText = "Living with an addiction";
+                user.healthConditionText = "Living with an addiction";
             }else if (healthCondition3.isChecked()) {
-                myUser.healthConditionText = "In need of medical equipment or other assistance";
+                user.healthConditionText = "In need of medical equipment or other assistance";
             }else{
-                myUser.healthConditionText = "None";
+                user.healthConditionText = "None";
             }
 
-            myUser.lookingForText = lookingFor.getSelectedItem().toString();
+            user.lookingForText = lookingFor.getSelectedItem().toString();
 
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout,profileDisplayFragment);
