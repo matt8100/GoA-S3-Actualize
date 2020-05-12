@@ -152,7 +152,7 @@
         android:id="@+id/requestButton"
         android:layout_width="216dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="22dp"
         android:background="@drawable/layout_request_button_colour"
         android:fontFamily="@font/roboto_condensed_regular"
         android:text="@string/advisorProfile_requestButton"
