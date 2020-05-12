@@ -104,95 +104,15 @@
         app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorType">
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/advisorProfile_callButton"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="48dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_mdi_phone" />
-
-        <TextView
-            android:id="@+id/advisorProfile_callDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="Roboto"
-            android:text="Call"
-            android:textColor="#2523B9"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="48dp"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/advisorProfile_messageButton"
-            android:layout_width="67dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="48dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_mdi_message" />
-
-        <TextView
-            android:id="@+id/advisorProfile_messageDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="Roboto"
-            android:text="Message"
-            android:textColor="#2523B9"
-            android:layout_marginEnd="48dp"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/advisorProfile_videoButton"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="40dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:src="@drawable/ic_mdi_videocam" />
-
-        <TextView
-            android:id="@+id/advisorProfile_videoCallDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="Roboto"
-            android:text="Video Call"
-            android:textColor="#2523B9"
-            android:layout_marginEnd="40dp"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="360dp"
         android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/requestButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/advisorProfile_advisorType">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -241,10 +161,14 @@
 
     <Button
         android:id="@+id/requestButton"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/layout_request_button_colour"
+        android:fontFamily="@font/roboto_condensed_regular"
         android:text="@string/advisorProfile_requestButton"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
