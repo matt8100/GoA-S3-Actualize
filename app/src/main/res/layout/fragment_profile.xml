@@ -29,15 +29,17 @@
             </View>
 
 
-        <ImageView
-            android:id="@+id/profile_imageView"
-            android:layout_width="411dp"
-            android:layout_height="162dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:background="@drawable/ic_main_page_top_bar"
-            android:cropToPadding="true"
-            app:srcCompat="@drawable/profile_picture" />
+            <ImageView
+                android:id="@+id/profile_imageView"
+                android:layout_width="411dp"
+                android:layout_height="246dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_topstyle_new"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/profile_picture"
+                android:elevation="8dp"
+                android:scaleType="centerInside"/>
 
 
 
@@ -45,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
