@@ -8,144 +8,150 @@
     android:layout_height="match_parent">
 
 <!--    call start-->
-
-    <!--    main content-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/call_screen_gradient"
         android:elevation="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-50dp">
 
-
-        <TextView
-            android:id="@+id/recipient_name"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:maxWidth="384dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/call_type" />
-
-        <TextView
-            android:id="@+id/call_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="24dp"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar"
-            android:layout_width="192dp"
-            android:layout_height="192dp"
-            android:layout_marginBottom="336dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
-        </de.hdodenhof.circleimageview.CircleImageView>
+            <TextView
+                android:id="@+id/recipient_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:maxWidth="384dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toTopOf="@+id/call_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/accept_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#ffffff"
-            android:clickable="true"
-            android:scaleType="center"
-            android:tint="#1FDE60"
-            app:fabCustomSize="80dp"
-            app:layout_constraintBottom_toTopOf="@+id/accept_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:maxImageSize="48dp"
-            app:srcCompat="@drawable/ic_call" />
+            <TextView
+                android:id="@+id/call_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/decline_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#ffffff"
-            android:clickable="true"
-            android:scaleType="center"
-            android:tint="#FF0000"
-            app:fabCustomSize="80dp"
-            app:layout_constraintBottom_toTopOf="@+id/decline_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:maxImageSize="48dp"
-            app:srcCompat="@drawable/ic_call_end" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="192dp"
+                android:layout_height="192dp"
+                android:layout_marginBottom="280dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/end_prematurely_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#ffffff"
-            android:clickable="true"
-            android:scaleType="center"
-            android:tint="#FF0000"
-            android:visibility="gone"
-            app:fabCustomSize="80dp"
-            app:layout_constraintBottom_toTopOf="@+id/end_prematurely_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:maxImageSize="48dp"
-            app:srcCompat="@drawable/ic_call_end" />
+            </de.hdodenhof.circleimageview.CircleImageView>
 
-        <TextView
-            android:id="@+id/accept_text"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="58dp"
-            android:layout_marginBottom="128dp"
-            android:text="Accept"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/accept_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#ffffff"
+                android:clickable="true"
+                android:scaleType="center"
+                android:tint="#1FDE60"
+                app:fabCustomSize="80dp"
+                app:layout_constraintBottom_toTopOf="@+id/accept_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:maxImageSize="48dp"
+                app:srcCompat="@drawable/ic_call" />
 
-        <TextView
-            android:id="@+id/decline_text"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="58dp"
-            android:layout_marginBottom="128dp"
-            android:text="Decline"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/decline_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="56dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#ffffff"
+                android:clickable="true"
+                android:scaleType="center"
+                android:tint="#FF0000"
+                app:fabCustomSize="80dp"
+                app:layout_constraintBottom_toTopOf="@+id/decline_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:maxImageSize="48dp"
+                app:srcCompat="@drawable/ic_call_end" />
 
-        <TextView
-            android:id="@+id/end_prematurely_text"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp"
-            android:text="End Call"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/end_prematurely_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#ffffff"
+                android:clickable="true"
+                android:scaleType="center"
+                android:tint="#FF0000"
+                android:visibility="gone"
+                app:fabCustomSize="80dp"
+                app:layout_constraintBottom_toTopOf="@+id/end_prematurely_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:maxImageSize="48dp"
+                app:srcCompat="@drawable/ic_call_end" />
+
+            <TextView
+                android:id="@+id/accept_text"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="58dp"
+                android:layout_marginBottom="0dp"
+                android:text="Accept"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/decline_text"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="58dp"
+                android:layout_marginBottom="0dp"
+                android:text="Decline"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/end_prematurely_text"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:text="End Call"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <!--    main content-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -153,20 +159,19 @@
 
         <VideoView
             android:id="@+id/mainVideo"
-            android:layout_width="800dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:translationX="-40dp"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/secondaryVideoContainer"
-            android:layout_width="200dp"
-            android:layout_height="152dp"
+            android:layout_width="126dp"
+            android:layout_height="224dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/shadow_rectangle"
@@ -174,19 +179,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mainVideo">
 
-            <VideoView
-                android:id="@+id/secondaryVideo"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <VideoView-->
+<!--                android:id="@+id/secondaryVideo"-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="fill_parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:visibility="gone"/>-->
+
+            <FrameLayout
+                android:id="@+id/preview_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" >
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/recording_indicator"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="24dp"
             android:layout_marginEnd="10dp"
             android:gravity="end|top"
             android:paddingStart="8dp"
@@ -198,12 +212,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:translationY="-8dp"
-                android:layout_marginEnd="100dp"
+                android:translationY="-4dp"
+                android:layout_marginEnd="88dp"
                 android:gravity="end|top"
                 android:text="●"
                 android:textColor="#FF0000"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -213,9 +227,10 @@
                 android:gravity="end|top"
                 android:text="Recording"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="8dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
@@ -243,7 +258,8 @@
 
             <ImageButton
                 android:id="@+id/fab_mic"
-                android:layout_width="78dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_unmute"
                 tools:layout_editor_absoluteX="83dp"
@@ -257,8 +273,9 @@
 
             <ImageButton
                 android:id="@+id/fab_camera"
-                android:layout_width="78dp"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_camera_on"
                 tools:layout_editor_absoluteX="83dp"
                 tools:layout_editor_absoluteY="606dp"
@@ -271,7 +288,8 @@
 
             <ImageButton
                 android:id="@+id/fab_record"
-                android:layout_width="80dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_record"
                 tools:layout_editor_absoluteX="83dp"
@@ -285,7 +303,8 @@
 
             <ImageButton
                 android:id="@+id/fab_switch_camera"
-                android:layout_width="78dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_switch_camera"
                 tools:layout_editor_absoluteX="83dp"
@@ -299,7 +318,8 @@
 
             <ImageButton
                 android:id="@+id/fab_hangUp"
-                android:layout_width="78dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_call_end"
                 tools:layout_editor_absoluteX="83dp"
@@ -332,9 +352,8 @@
             <LinearLayout
                 android:id="@+id/notes_overlay_hitbox"
                 android:layout_height="435dp"
-                android:layout_width="match_parent">
-
-
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
             </LinearLayout>
 
             <LinearLayout
