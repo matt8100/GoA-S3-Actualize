@@ -14,5 +14,6 @@ public class Advisor extends Author implements Serializable {
         this.advisorType = advisorType;
         this.advisorDescription = advisorDescription;
         this.advisorSkills = advisorSkills;
+        this.avatar = avatar;
     }
 }
