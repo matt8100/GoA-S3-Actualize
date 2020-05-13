@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,134 +7,369 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <VideoView
-        android:id="@+id/mainVideo"
-        android:layout_width="wrap_content"
+<!--    call start-->
+
+    <!--    main content-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:background="@drawable/call_screen_gradient"
+        android:elevation="10dp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-50dp">
+
+
+        <TextView
+            android:id="@+id/recipient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:maxWidth="384dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/call_type" />
+
+        <TextView
+            android:id="@+id/call_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="24dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
+            android:layout_marginBottom="336dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/accept_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#ffffff"
+            android:clickable="true"
+            android:scaleType="center"
+            android:tint="#1FDE60"
+            app:fabCustomSize="80dp"
+            app:layout_constraintBottom_toTopOf="@+id/accept_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxImageSize="48dp"
+            app:srcCompat="@drawable/ic_call" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/decline_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#ffffff"
+            android:clickable="true"
+            android:scaleType="center"
+            android:tint="#FF0000"
+            app:fabCustomSize="80dp"
+            app:layout_constraintBottom_toTopOf="@+id/decline_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:maxImageSize="48dp"
+            app:srcCompat="@drawable/ic_call_end" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/end_prematurely_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#ffffff"
+            android:clickable="true"
+            android:scaleType="center"
+            android:tint="#FF0000"
+            android:visibility="gone"
+            app:fabCustomSize="80dp"
+            app:layout_constraintBottom_toTopOf="@+id/end_prematurely_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxImageSize="48dp"
+            app:srcCompat="@drawable/ic_call_end" />
+
+        <TextView
+            android:id="@+id/accept_text"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="58dp"
+            android:layout_marginBottom="128dp"
+            android:text="Accept"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/decline_text"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="58dp"
+            android:layout_marginBottom="128dp"
+            android:text="Decline"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/end_prematurely_text"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:text="End Call"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/secondaryVideoContainer"
-        android:layout_width="200dp"
-        android:layout_height="152dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:elevation="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainVideo"
-        android:background="@drawable/shadow_rectangle"
+        android:visibility="gone"
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
 
         <VideoView
-            android:id="@+id/secondaryVideo"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent"
+            android:id="@+id/mainVideo"
+            android:layout_width="800dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintVertical_bias="0.0"
+            android:translationX="-40dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/secondaryVideoContainer"
+            android:layout_width="200dp"
+            android:layout_height="152dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/shadow_rectangle"
+            android:elevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainVideo">
 
-    <TextView
-        android:id="@+id/recording_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:gravity="right|top"
-        android:text="● Recording"
-        android:textColor="#FF0000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <VideoView
+                android:id="@+id/secondaryVideo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/bottom_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mainVideo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recording_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="end|top"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/recording_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondaryVideoContainer">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:translationY="-8dp"
+                android:layout_marginEnd="100dp"
+                android:gravity="end|top"
+                android:text="●"
+                android:textColor="#FF0000"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end|top"
+                android:text="Recording"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
-            android:id="@+id/fab_mic"
+            android:id="@+id/fab_add_notes"
             android:layout_width="78dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_unmute"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="606dp"
-            android:background="@null"
             android:adjustViewBounds="true"
+            android:background="@null"
             android:padding="20dp"
             android:scaleType="fitCenter"
             android:tint="@color/white"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add_note" />
 
-        <ImageButton
-            android:id="@+id/fab_camera"
-            android:layout_width="78dp"
+        <LinearLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mainVideo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/fab_mic"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_unmute"
+                tools:layout_editor_absoluteX="83dp"
+                tools:layout_editor_absoluteY="606dp"
+                android:background="@null"
+                android:adjustViewBounds="true"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:tint="@color/white"
+                />
+
+            <ImageButton
+                android:id="@+id/fab_camera"
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_camera_on"
+                tools:layout_editor_absoluteX="83dp"
+                tools:layout_editor_absoluteY="606dp"
+                android:background="@null"
+                android:adjustViewBounds="true"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:tint="@color/white"
+                />
+
+            <ImageButton
+                android:id="@+id/fab_record"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_record"
+                tools:layout_editor_absoluteX="83dp"
+                tools:layout_editor_absoluteY="606dp"
+                android:background="@drawable/stroke_circle"
+                android:adjustViewBounds="true"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:tint="#FF0000"
+                />
+
+            <ImageButton
+                android:id="@+id/fab_switch_camera"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_switch_camera"
+                tools:layout_editor_absoluteX="83dp"
+                tools:layout_editor_absoluteY="606dp"
+                android:background="@null"
+                android:adjustViewBounds="true"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:tint="@color/white"
+                />
+
+            <ImageButton
+                android:id="@+id/fab_hangUp"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_call_end"
+                tools:layout_editor_absoluteX="83dp"
+                tools:layout_editor_absoluteY="606dp"
+                android:background="@null"
+                android:adjustViewBounds="true"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:tint="@color/white"
+                />
+
+        </LinearLayout>
+
+<!--        notes-->
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_camera_on"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="606dp"
-            android:background="@null"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:tint="@color/white"
-            />
+            android:gravity="bottom"
+            android:id="@+id/notes_overlay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            android:elevation="5dp"
+            android:background="#55000000"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/fab_record"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_record"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="606dp"
-            android:background="@drawable/stroke_circle"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:tint="#FF0000"
-            />
+            <LinearLayout
+                android:id="@+id/notes_overlay_hitbox"
+                android:layout_height="435dp"
+                android:layout_width="match_parent">
 
-        <ImageButton
-            android:id="@+id/fab_switch_camera"
-            android:layout_width="78dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_switch_camera"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="606dp"
-            android:background="@null"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:tint="@color/white"
-            />
 
-        <ImageButton
-            android:id="@+id/fab_hangUp"
-            android:layout_width="78dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_call_end"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="606dp"
-            android:background="@null"
-            android:adjustViewBounds="true"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:tint="@color/white"
-            />
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_height="350dp"
+                android:layout_width="match_parent"
+                android:background="#282828"
+                >
 
+                <EditText
+                    android:id="@+id/notes_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textShortMessage"
+                    android:hint="Add a note…"
+                    android:textColor="#BEC2C4"
+                    android:textColorHint="#88BEC2C4"
+                    android:textSize="20sp"
+                    android:background="@null"
+                    android:padding="8dp"
+                    android:layout_weight="7"
+                    android:imeOptions="actionDone"
+                    />
+                <ImageButton
+                    android:id="@+id/new_note"
+                    android:layout_height="48dp"
+                    android:layout_width="48dp"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_add"
+                    android:tint="#ffffff"
+                    android:background="@null">
+
+                </ImageButton>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

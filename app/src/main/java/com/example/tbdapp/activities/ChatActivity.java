@@ -1,10 +1,11 @@
 package com.example.tbdapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -86,6 +87,34 @@ public class ChatActivity extends AppCompatActivity {
 
     private void loadMessages() {
         mAdapter.addToEnd(Singleton.getInstance().chatHistory.get(mContactId), false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, VideoCallActivity.class);
+        switch(item.getItemId()) {
+            case R.id.startVideo:
+                intent.putExtra("withCamera", true);
+                break;
+            case R.id.startCall:
+                intent.putExtra("withCamera", false);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        //IMPORTANT: Hardcoded value to simulate if call is incoming rather than outgoing
+        final boolean forceCallToBeReceiving = true;
+
+        Advisor advisor = Singleton.getInstance().advisors.get(Integer.parseInt(getIntent().getStringExtra("contactId"))-1);
+        String advisorName = advisor.name;
+        String resDirectory = advisor.avatar;
+
+        intent.putExtra("forceCallToBeReceiving", forceCallToBeReceiving);
+        intent.putExtra("caller", advisorName);
+        intent.putExtra("advisorAvatar", resDirectory);
+        this.startActivity(intent);
+        return true;
     }
 }
 
