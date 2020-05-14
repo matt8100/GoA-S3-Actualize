@@ -15,7 +15,7 @@ public class User extends Author{
     public String lookingForText;
 
 
-    public User( String name, String avatar, String preferredName, String dateOfBirth, String email, ArrayList<String> healthConditions, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
+    public User( String name, String avatar, String preferredName, String dateOfBirth, String email, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, ArrayList<String> healthConditions, String lookingFor) {
         super("0", name, avatar);
         this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
