@@ -28,4 +28,5 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.github.stfalcon:chatkit:0.3.3'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
