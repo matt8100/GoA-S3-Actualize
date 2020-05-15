@@ -180,18 +180,20 @@
                 android:id="@+id/secondaryVideoContainer"
                 android:layout_width="94.5dp"
                 android:layout_height="168dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:background="@drawable/shadow_rectangle"
                 android:elevation="1dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="48dp">
 
                 <FrameLayout
                     android:id="@+id/preview_camera"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true" >
-                </FrameLayout>
+                    android:layout_centerVertical="true"></FrameLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
