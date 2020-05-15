@@ -79,7 +79,17 @@ public class ProfileDisplayFragment extends ProfileFragment {
         expectedIncomeTextView.setText(user.expectedIncomeText);
 
         healthConditionTextView = v.findViewById(R.id.label_healthCondition);
-        healthConditionTextView.setText(user.healthConditionText);
+
+        StringBuilder healthConditionText = new StringBuilder();
+        for(String healthCondition : user.healthConditions) {
+            healthConditionText.append(healthCondition).append("\n");
+        }
+        int index = healthConditionText.lastIndexOf("\n");
+        if(index != -1) { //string exists
+            healthConditionText.deleteCharAt(index);
+        }
+
+        healthConditionTextView.setText(healthConditionText);
 
         lookingForTextView = v.findViewById(R.id.label_lookingFor);
         lookingForTextView.setText(user.lookingForText);
@@ -95,19 +105,6 @@ public class ProfileDisplayFragment extends ProfileFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.edit) {
-            User myUser = Singleton.getInstance().user;
-
-            myUser.name = NameTextView.getText().toString();
-            myUser.preferredName = preferredNameTextView.getText().toString();
-            myUser.dateOfBirth = dateOfBirthTextView.getText().toString();
-            myUser.email = emailTextView.getText().toString();
-            myUser.provinceText = provinceTextView.getText().toString();
-            myUser.citizenshipText = citizenshipTextView.getText().toString();
-            myUser.employmentStatusText = employmentStatusTextView.getText().toString();
-            myUser.expectedIncomeText = expectedIncomeTextView.getText().toString();
-            myUser.housingStatusText = housingStatusTextView.getText().toString();
-            myUser.healthConditionText = healthConditionTextView.getText().toString();
-            myUser.lookingForText = lookingForTextView.getText().toString();
 
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);

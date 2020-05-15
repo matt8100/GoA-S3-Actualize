@@ -1,5 +1,7 @@
 package com.example.tbdapp.models;
 
+import java.util.ArrayList;
+
 public class User extends Author{
     public String preferredName;
     public String dateOfBirth;
@@ -9,11 +11,11 @@ public class User extends Author{
     public String employmentStatusText;
     public String expectedIncomeText;
     public String housingStatusText;
-    public String healthConditionText;
+    public ArrayList<String> healthConditions;
     public String lookingForText;
 
 
-    public User( String name, String avatar, String preferredName, String dateOfBirth, String email, String healthConditionText, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, String lookingFor) {
+    public User( String name, String avatar, String preferredName, String dateOfBirth, String email, String province, String citizenship, String employmentStatus, String expectedIncome, String housingStatus, ArrayList<String> healthConditions, String lookingFor) {
         super("0", name, avatar);
         this.preferredName = preferredName;
         this.dateOfBirth = dateOfBirth;
@@ -21,7 +23,7 @@ public class User extends Author{
         this.employmentStatusText = employmentStatus;
         this.provinceText = province;
         this.citizenshipText = citizenship;
-        this.healthConditionText = healthConditionText;
+        this.healthConditions = healthConditions;
         this.housingStatusText = housingStatus;
         this.lookingForText = lookingFor;
         this.expectedIncomeText = expectedIncome;
