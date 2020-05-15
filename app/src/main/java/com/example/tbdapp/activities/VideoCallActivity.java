@@ -71,6 +71,11 @@ public class VideoCallActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        );
+
         //Show correct screen
         findViewById(R.id.loading).setVisibility(View.VISIBLE);
         findViewById(R.id.main_content).setVisibility(View.GONE);
