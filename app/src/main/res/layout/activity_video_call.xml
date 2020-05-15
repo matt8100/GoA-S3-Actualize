@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/call_screen_gradient"
         android:elevation="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-50dp">
 
@@ -137,7 +137,7 @@
                 android:id="@+id/end_prematurely_text"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="0dp"
                 android:text="@string/endCall"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
