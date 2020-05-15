@@ -104,12 +104,16 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         //IMPORTANT: Hardcoded value to simulate if call is incoming rather than outgoing
-        final boolean forceCallToBeReceiving = true;
+        final boolean forceCallToBeReceiving = false;
+
+        //IMPORTANT: Hardcoded value to force which video will be played as the "advisor" on the other end
+        final int videoFile = R.raw.test_video1;
 
         Advisor advisor = Singleton.getInstance().advisors.get(Integer.parseInt(getIntent().getStringExtra("contactId"))-1);
         String advisorName = advisor.name;
         String resDirectory = advisor.avatar;
 
+        intent.putExtra("videoFile", videoFile);
         intent.putExtra("forceCallToBeReceiving", forceCallToBeReceiving);
         intent.putExtra("caller", advisorName);
         intent.putExtra("advisorAvatar", resDirectory);

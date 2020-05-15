@@ -3,15 +3,20 @@ package com.example.tbdapp.activities;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,8 +25,11 @@ import android.widget.Toast;
 import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.tbdapp.R;
+import com.example.tbdapp.views.MirrorView;
 
 import java.util.Objects;
 
@@ -29,13 +37,23 @@ public class VideoCallActivity extends AppCompatActivity {
     //Default mic and camera options
     boolean recording = false;
     boolean micOn = true;
+    boolean cameraIsFront = true;
     boolean cameraOn;
 
     boolean hadNotes = false;
     boolean hadRecording = false;
 
+    private Camera mCam;
+    private MirrorView mCamPreview;
+    private int mCameraId = 0;
+    private FrameLayout mPreviewLayout;
+    private int videoFile;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
 
@@ -44,19 +62,32 @@ public class VideoCallActivity extends AppCompatActivity {
         int uiOptions =
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
         decorView.setSystemUiVisibility(uiOptions);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        //Show correct screen
+        findViewById(R.id.loading).setVisibility(View.VISIBLE);
+        findViewById(R.id.main_content).setVisibility(View.GONE);
+
         //Show incoming/outgoing call screen
-        if(getIntent().getExtras().getBoolean("withCamera")) {
-            ((TextView) findViewById(R.id.call_type)).setText("Video Call");
+        if(Objects.requireNonNull(getIntent().getExtras()).getBoolean("withCamera")) {
+            ((TextView) findViewById(R.id.call_type)).setText(R.string.videoCall);
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, 50);
+            }
         }else {
-            ((TextView) findViewById(R.id.call_type)).setText("Voice Call");
+            ((TextView) findViewById(R.id.call_type)).setText(R.string.voiceCall);
         }
 
         ((ImageView) findViewById(R.id.avatar)).setImageResource(getResources().getIdentifier(getIntent().getExtras().getString("advisorAvatar"), "drawable", getPackageName()));
         ((TextView) findViewById(R.id.recipient_name)).setText(getIntent().getExtras().getString("caller"));
+
+        videoFile = getIntent().getExtras().getInt("videoFile");
 
         final MediaPlayer callIncoming = MediaPlayer.create(this, R.raw.call_incoming);
         final MediaPlayer callOutgoing = MediaPlayer.create(this, R.raw.call_outgoing);
@@ -79,7 +110,7 @@ public class VideoCallActivity extends AppCompatActivity {
             findViewById(R.id.decline_fab).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     ((TextView) findViewById(R.id.call_type)).setText("");
-                    ((TextView) findViewById(R.id.recipient_name)).setText("Call Ended");
+                    ((TextView) findViewById(R.id.recipient_name)).setText(R.string.callEnded);
 
                     findViewById(R.id.decline_fab).setEnabled(false);
                     findViewById(R.id.accept_fab).setEnabled(false);
@@ -122,7 +153,7 @@ public class VideoCallActivity extends AppCompatActivity {
             findViewById(R.id.end_prematurely_fab).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     ((TextView) findViewById(R.id.call_type)).setText("");
-                    ((TextView) findViewById(R.id.recipient_name)).setText("Call Ended");
+                    ((TextView) findViewById(R.id.recipient_name)).setText(R.string.callEnded);
 
                     findViewById(R.id.end_prematurely_fab).setEnabled(false);
 
@@ -130,7 +161,7 @@ public class VideoCallActivity extends AppCompatActivity {
                     callOutgoing.stop();
                     callEnd.start();
 
-                    new CountDownTimer(2000, 1000) {
+                    new CountDownTimer(1000, 1000) {
                         public void onTick(long millisUntilFinished) {
                         }
                         public void onFinish() {
@@ -156,9 +187,7 @@ public class VideoCallActivity extends AppCompatActivity {
         final ImageButton newNote = findViewById(R.id.new_note);
         final VideoView mainVideo = findViewById(R.id.mainVideo);
         final ConstraintLayout recordingIndicator = findViewById(R.id.recording_indicator);
-        final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
-        final VideoView secondaryVideo = findViewById(R.id.secondaryVideo);
-        final String videoPath2 = "android.resource://" + getPackageName() + "/" + R.raw.test_video2;
+        final String videoPath = "android.resource://" + getPackageName() + "/" + videoFile;
         final MediaPlayer recordingStart = MediaPlayer.create(this, R.raw.recording_start);
         final MediaPlayer recordingEnd = MediaPlayer.create(this, R.raw.recording_end);
         final MediaPlayer callEnd = MediaPlayer.create(this, R.raw.call_end);
@@ -173,16 +202,10 @@ public class VideoCallActivity extends AppCompatActivity {
             }
         });
 
-        //set the video of secondary video (client's video)
-        secondaryVideo.setVideoURI(Uri.parse(videoPath2));
-        secondaryVideo.start();
-        secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });
-
+        //Use Camera
+        mCameraId = findCamera(cameraIsFront);
+        mPreviewLayout = findViewById(R.id.preview_camera);
+        mPreviewLayout.removeAllViews();
 
         //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
@@ -198,21 +221,26 @@ public class VideoCallActivity extends AppCompatActivity {
 
 
         //Camera state on create
-        cameraOn = getIntent().getExtras().getBoolean("withCamera");
+        cameraOn = Objects.requireNonNull(getIntent().getExtras()).getBoolean("withCamera");
         if(cameraOn) {
             camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
             findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
-            secondaryVideo.setVideoURI(Uri.parse(videoPath2));
-            secondaryVideo.start();
-            secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mp.setLooping(true);
-                }
-            });
+            findViewById(R.id.preview_camera).setVisibility(View.VISIBLE);
+
+            mCameraId = findCamera(cameraIsFront);
+            startCameraInLayout(mPreviewLayout, mCameraId);
+            setCameraDisplayOrientationAndSize();
+
         }else {
             camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
             findViewById(R.id.secondaryVideoContainer).setVisibility(View.GONE);
+            findViewById(R.id.preview_camera).setVisibility(View.GONE);
+            mPreviewLayout.removeAllViews();
+
+            if (mCam != null) {
+                mCam.release();
+                mCam = null;
+            }
         }
 
         //toggle on/off camera
@@ -222,18 +250,20 @@ public class VideoCallActivity extends AppCompatActivity {
                 if(cameraOn) {
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
                     findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
-                    secondaryVideo.setVideoURI(Uri.parse(videoPath2));
-                    secondaryVideo.start();
-                    secondaryVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mp) {
-                            mp.setLooping(true);
-                        }
-                    });
+
+                    mCameraId = findCamera(cameraIsFront);
+                    startCameraInLayout(mPreviewLayout, mCameraId);
+                    setCameraDisplayOrientationAndSize();
+
                 }else {
-                    secondaryVideo.stopPlayback();
                     camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_off, getTheme()));
                     findViewById(R.id.secondaryVideoContainer).setVisibility(View.GONE);
+
+                    mPreviewLayout.removeAllViews();
+                    if (mCam != null) {
+                        mCam.release();
+                        mCam = null;
+                    }
                 }
             }
         });
@@ -293,7 +323,18 @@ public class VideoCallActivity extends AppCompatActivity {
         //switch camera
         switchCamera.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Do something when camera is switched
+                if(cameraOn) {
+                    cameraIsFront = !cameraIsFront;
+                    //restart camera
+                    if (mCam != null) {
+                        mCam.release();
+                        mCam = null;
+                    }
+                    mCameraId = findCamera(cameraIsFront);
+
+                    startCameraInLayout(mPreviewLayout, mCameraId);
+                    setCameraDisplayOrientationAndSize();
+                }
             }
         });
 
@@ -316,7 +357,7 @@ public class VideoCallActivity extends AppCompatActivity {
                     newText = "Your notes and recording were saved.";
                 }else if(!hadNotes && hadRecording) {
                     newText = "Your recording was saved.";
-                }else if(hadNotes && !hadRecording) {
+                }else if(hadNotes) {
                     newText = "Your notes were saved.";
                 }else {
                     newText = "";
@@ -330,7 +371,7 @@ public class VideoCallActivity extends AppCompatActivity {
 
                 ((TextView) findViewById(R.id.call_type)).setText(newText);
 
-                ((TextView) findViewById(R.id.recipient_name)).setText("Call Ended");
+                ((TextView) findViewById(R.id.recipient_name)).setText(R.string.callEnded);
 
                 //Transition screen after timer
                 new CountDownTimer(1000, 1000) {
@@ -343,7 +384,6 @@ public class VideoCallActivity extends AppCompatActivity {
 
                         //Stop videos
                         mainVideo.stopPlayback();
-                        secondaryVideo.stopPlayback();
 
                         //Play hang up sound
                         callEnd.start();
@@ -352,6 +392,11 @@ public class VideoCallActivity extends AppCompatActivity {
                             public void onTick(long millisUntilFinished) {
                             }
                             public void onFinish() {
+                                //stop camera
+                                if (mCam != null) {
+                                    mCam.release();
+                                    mCam = null;
+                                }
                                 //Close activity and return to previous activity
                                 finish();
 
@@ -441,10 +486,58 @@ public class VideoCallActivity extends AppCompatActivity {
         });
 
         //Show the call screen when everything is loaded
+        findViewById(R.id.loading).setVisibility(View.GONE);
         findViewById(R.id.main_content).setVisibility(View.VISIBLE);
+
     }
     public void addNote(String noteContent) {
         //Do something with the note content
+    }
+    private int findCamera(boolean isFrontCamera) {
+        int foundId = -1;
+        int numCams = Camera.getNumberOfCameras();
+        for (int camId = 0; camId < numCams; camId++) {
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(camId, info);
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT && isFrontCamera) {
+                foundId = camId;
+                break;
+            }else if(info.facing == Camera.CameraInfo.CAMERA_FACING_BACK && !isFrontCamera) {
+                foundId = camId;
+                break;
+            }
+        }
+        return foundId;
+    }
+    private void startCameraInLayout(FrameLayout layout, int cameraId) {
+        mCam = Camera.open(cameraId);
+        if (mCam != null) {
+            mCamPreview = new MirrorView(this, mCam);
+            layout.addView(mCamPreview);
+        }
+    }
+    public void setCameraDisplayOrientationAndSize() {
+        Camera.CameraInfo info = new Camera.CameraInfo();
+        Camera.getCameraInfo(mCameraId, info);
+        int rotation = getWindowManager().getDefaultDisplay().getRotation();
+        int degrees = rotation * 90;
+
+        int result;
+        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+            result = (info.orientation + degrees) % 360;
+            result = (360 - result) % 360;
+        } else {
+            result = (info.orientation - degrees + 360) % 360;
+        }
+        mCam.setDisplayOrientation(result);
+
+        Camera.Size previewSize = mCam.getParameters().getPreviewSize();
+        if (result == 90 || result == 270) {
+            mCamPreview.mHolder.setFixedSize(previewSize.height, previewSize.width);
+        } else {
+            mCamPreview.mHolder.setFixedSize(previewSize.width, previewSize.height);
+
+        }
     }
 }
 
