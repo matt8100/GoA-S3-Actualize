@@ -47,6 +47,7 @@ public class VideoCallActivity extends AppCompatActivity {
     private MirrorView mCamPreview;
     private int mCameraId = 0;
     private FrameLayout mPreviewLayout;
+    private int videoFile;
 
 
     @Override
@@ -85,6 +86,8 @@ public class VideoCallActivity extends AppCompatActivity {
 
         ((ImageView) findViewById(R.id.avatar)).setImageResource(getResources().getIdentifier(getIntent().getExtras().getString("advisorAvatar"), "drawable", getPackageName()));
         ((TextView) findViewById(R.id.recipient_name)).setText(getIntent().getExtras().getString("caller"));
+
+        videoFile = getIntent().getExtras().getInt("videoFile");
 
         final MediaPlayer callIncoming = MediaPlayer.create(this, R.raw.call_incoming);
         final MediaPlayer callOutgoing = MediaPlayer.create(this, R.raw.call_outgoing);
@@ -158,7 +161,7 @@ public class VideoCallActivity extends AppCompatActivity {
                     callOutgoing.stop();
                     callEnd.start();
 
-                    new CountDownTimer(2000, 1000) {
+                    new CountDownTimer(1000, 1000) {
                         public void onTick(long millisUntilFinished) {
                         }
                         public void onFinish() {
@@ -184,7 +187,7 @@ public class VideoCallActivity extends AppCompatActivity {
         final ImageButton newNote = findViewById(R.id.new_note);
         final VideoView mainVideo = findViewById(R.id.mainVideo);
         final ConstraintLayout recordingIndicator = findViewById(R.id.recording_indicator);
-        final String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.test_video1;
+        final String videoPath = "android.resource://" + getPackageName() + "/" + videoFile;
         final MediaPlayer recordingStart = MediaPlayer.create(this, R.raw.recording_start);
         final MediaPlayer recordingEnd = MediaPlayer.create(this, R.raw.recording_end);
         final MediaPlayer callEnd = MediaPlayer.create(this, R.raw.call_end);
