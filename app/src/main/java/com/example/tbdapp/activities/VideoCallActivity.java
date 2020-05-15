@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -49,6 +51,8 @@ public class VideoCallActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
 
@@ -57,7 +61,11 @@ public class VideoCallActivity extends AppCompatActivity {
         int uiOptions =
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
         decorView.setSystemUiVisibility(uiOptions);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
@@ -66,13 +74,13 @@ public class VideoCallActivity extends AppCompatActivity {
         findViewById(R.id.main_content).setVisibility(View.GONE);
 
         //Show incoming/outgoing call screen
-        if(getIntent().getExtras().getBoolean("withCamera")) {
-            ((TextView) findViewById(R.id.call_type)).setText("Video Call");
+        if(Objects.requireNonNull(getIntent().getExtras()).getBoolean("withCamera")) {
+            ((TextView) findViewById(R.id.call_type)).setText(R.string.videoCall);
             if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, 50);
             }
         }else {
-            ((TextView) findViewById(R.id.call_type)).setText("Voice Call");
+            ((TextView) findViewById(R.id.call_type)).setText(R.string.voiceCall);
         }
 
         ((ImageView) findViewById(R.id.avatar)).setImageResource(getResources().getIdentifier(getIntent().getExtras().getString("advisorAvatar"), "drawable", getPackageName()));
@@ -99,7 +107,7 @@ public class VideoCallActivity extends AppCompatActivity {
             findViewById(R.id.decline_fab).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     ((TextView) findViewById(R.id.call_type)).setText("");
-                    ((TextView) findViewById(R.id.recipient_name)).setText("Call Ended");
+                    ((TextView) findViewById(R.id.recipient_name)).setText(R.string.callEnded);
 
                     findViewById(R.id.decline_fab).setEnabled(false);
                     findViewById(R.id.accept_fab).setEnabled(false);
@@ -142,7 +150,7 @@ public class VideoCallActivity extends AppCompatActivity {
             findViewById(R.id.end_prematurely_fab).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     ((TextView) findViewById(R.id.call_type)).setText("");
-                    ((TextView) findViewById(R.id.recipient_name)).setText("Call Ended");
+                    ((TextView) findViewById(R.id.recipient_name)).setText(R.string.callEnded);
 
                     findViewById(R.id.end_prematurely_fab).setEnabled(false);
 
@@ -210,7 +218,7 @@ public class VideoCallActivity extends AppCompatActivity {
 
 
         //Camera state on create
-        cameraOn = getIntent().getExtras().getBoolean("withCamera");
+        cameraOn = Objects.requireNonNull(getIntent().getExtras()).getBoolean("withCamera");
         if(cameraOn) {
             camera.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_on, getTheme()));
             findViewById(R.id.secondaryVideoContainer).setVisibility(View.VISIBLE);
@@ -346,7 +354,7 @@ public class VideoCallActivity extends AppCompatActivity {
                     newText = "Your notes and recording were saved.";
                 }else if(!hadNotes && hadRecording) {
                     newText = "Your recording was saved.";
-                }else if(hadNotes && !hadRecording) {
+                }else if(hadNotes) {
                     newText = "Your notes were saved.";
                 }else {
                     newText = "";
@@ -360,7 +368,7 @@ public class VideoCallActivity extends AppCompatActivity {
 
                 ((TextView) findViewById(R.id.call_type)).setText(newText);
 
-                ((TextView) findViewById(R.id.recipient_name)).setText("Call Ended");
+                ((TextView) findViewById(R.id.recipient_name)).setText(R.string.callEnded);
 
                 //Transition screen after timer
                 new CountDownTimer(1000, 1000) {

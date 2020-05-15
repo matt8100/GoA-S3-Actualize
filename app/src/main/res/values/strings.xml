@@ -95,4 +95,20 @@
     <string name="voiceCall">Voice Call</string>
     <string name="videoCall">Video Call</string>
 
+<!--    VideoCall Activity-->
+    <string name="recording">Recording</string>
+    <string name="callEnded">Call Ended</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="endCall">End Call</string>
+    <string name="notes">Notes</string>
+    <string name="recordingIcon">●</string>
+    <string name="microphone">Microphone</string>
+    <string name="camera">Camera</string>
+    <string name="record">Record</string>
+    <string name="switchCamera">Switch Camera</string>
+    <string name="hangUp">Hang Up</string>
+    <string name="noteHint">Add a note…</string>
+    <string name="addNote">Add Note</string>
+
 </resources>
