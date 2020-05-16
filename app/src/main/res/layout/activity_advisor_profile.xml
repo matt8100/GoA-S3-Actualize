@@ -31,19 +31,30 @@
         app:layout_constraintTop_toTopOf="@id/advisorProfile_advisorImage" />
 
     <ImageView
-        android:id="@+id/advisorProfile_advisorImage"
         android:layout_width="0dp"
         android:layout_height="246dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
-        android:background="@drawable/ic_topstyle_new"
+        android:src="@drawable/ic_topstyle_new"
         android:contentDescription="@string/advisorImage"
         android:cropToPadding="true"
-        android:elevation="8dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/advisorProfile_advisorImage"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="56dp"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
 
     <TextView
         android:id="@+id/advisorProfile_advisorName"
