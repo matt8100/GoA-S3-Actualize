@@ -21,7 +21,9 @@ public class Singleton {
 
         chatHistory = new HashMap<>();
         populateChatHistories();
-        populateMessageList();
+        
+        populateMessageList("2", "0", "Hey there Phillip! Would you like to schedule a video call to discuss how I can help you?");
+        populateMessageList("1", "0", "message 1 from marcel");
     }
 
     public static Singleton getInstance() {
@@ -59,15 +61,11 @@ public class Singleton {
         }
     }
 
-    private void populateMessageList() {
-        for(int i=0;i<advisors.size();i++) {
-            for(int j=1;j<11;j++) {
-                if(j%2==0) {
-                    chatHistory.get(String.valueOf(i+1)).add(new Message("0","test", user, new Date()));
-                } else {
-                    chatHistory.get(String.valueOf(i+1)).add(new Message("1","test", advisors.get(i), new Date()));
-                }
-            }
+    public void populateMessageList(String senderID, String recipientID, String message) {
+        if(Integer.parseInt(senderID) == 0) {
+            chatHistory.get(Integer.toString(Integer.parseInt(recipientID))).add(0, new Message("0", message, user, new Date()));
+        } else if(Integer.parseInt(recipientID) == 0) {
+            chatHistory.get(Integer.toString(Integer.parseInt(senderID))).add(0, new Message("1", message, advisors.get(Integer.parseInt(senderID) - 1), new Date()));
         }
     }
 }
