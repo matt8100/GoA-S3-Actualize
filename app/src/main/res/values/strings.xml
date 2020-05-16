@@ -91,12 +91,12 @@
     <string name="health_condition_01">Living with a mental or physical disability</string>
     <string name="health_condition_02">Living with an addiction</string>
     <string name="health_condition_03">In need of medical equipment or other assistance</string>
-    <string name="looking_for">Looking For...</string>
+    <string name="looking_for">Looking For…</string>
     
     <!-- Advisor Profile -->
-    <string name="advisorProfile_header1">Description</string>
-    <string name="advisorProfile_header2">Skills</string>
-    <string name="advisorProfile_requestButton">Request</string>
+    <string name="description">Description</string>
+    <string name="skills">Skills</string>
+    <string name="request">Request</string>
 
     <!-- Accessibility -->
     <string name="advisorImage">Advisor Image</string>
