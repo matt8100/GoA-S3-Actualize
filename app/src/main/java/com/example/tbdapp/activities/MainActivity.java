@@ -15,6 +15,7 @@ import com.example.tbdapp.fragments.ContactsFragment;
 import com.example.tbdapp.fragments.ExploreFragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentProfileDisplay = new ProfileDisplayFragment();
