@@ -39,6 +39,7 @@ public class VideoCallActivity extends AppCompatActivity {
     boolean micOn = true;
     boolean cameraIsFront = true;
     boolean cameraOn;
+    boolean uiVisible = true;
 
     boolean hadNotes = false;
     boolean hadRecording = false;
@@ -69,6 +70,11 @@ public class VideoCallActivity extends AppCompatActivity {
                 | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
         decorView.setSystemUiVisibility(uiOptions);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        );
 
         //Show correct screen
         findViewById(R.id.loading).setVisibility(View.VISIBLE);
@@ -206,6 +212,20 @@ public class VideoCallActivity extends AppCompatActivity {
         mCameraId = findCamera(cameraIsFront);
         mPreviewLayout = findViewById(R.id.preview_camera);
         mPreviewLayout.removeAllViews();
+
+        //toggle hide ui
+        mainVideo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                uiVisible = !uiVisible;
+                if(uiVisible) {
+                    addNoteButton.animate().translationY(0);
+                    bottomBar.animate().translationY(0);
+                }else {
+                    addNoteButton.animate().translationY(-200);
+                    bottomBar.animate().translationY(200);
+                }
+            }
+        });
 
         //toggle on/off mic
         microphone.setOnClickListener(new View.OnClickListener() {
