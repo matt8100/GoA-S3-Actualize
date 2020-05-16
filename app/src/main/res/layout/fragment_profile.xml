@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -13,22 +13,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"
-                android:background="#5F92D6">
-
-            </View>
-
-
+                android:background="#5F92D6" />
+            
             <ImageView
                 android:id="@+id/profile_imageView"
                 android:layout_width="411dp"
@@ -39,245 +36,232 @@
                 android:cropToPadding="true"
                 app:srcCompat="@drawable/profile_picture"
                 android:elevation="8dp"
-                android:scaleType="centerInside"/>
-
-
+                android:scaleType="centerInside"
+                android:contentDescription="@string/profile_picture" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@+id/editText_name" />
 
                 <EditText
                     android:id="@+id/editText_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
-                    android:hint="first name and last name"
                     android:inputType="textPersonName"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:importantForAutofill="no" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Preferred Name"
+                    android:text="@string/preferred_name"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@id/editText_preferredName" />
 
                 <EditText
                     android:id="@+id/editText_preferredName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
-                    android:hint=""
                     android:inputType="textPersonName"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"
+                    android:importantForAutofill="no" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Date Of Birth"
+                    android:text="@string/date_of_birth"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@id/editText_dateOfBirth" />
 
                 <EditText
                     android:id="@+id/editText_dateOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
-                    android:hint="YYYY-MM-DD"
                     android:inputType="datetime"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"
+                    android:importantForAutofill="no" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
-
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Email"
+                    android:text="@string/email"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@id/editText_email"/>
 
                 <EditText
                     android:id="@+id/editText_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
-                    android:hint="Type your email here"
                     android:inputType="textEmailAddress"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
-
+                    android:textSize="18sp"
+                    android:importantForAutofill="no" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Province"
+                    android:text="@string/province"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@id/spinner_province" />
 
                 <Spinner
                     android:id="@+id/spinner_province"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto"
                     android:textColor="#FFFFFF"
                     android:textSize="50sp" />
             </LinearLayout>
-
-
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Citizenship"
+                    android:text="@string/citizenship"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@id/spinner_citizenship" />
 
                 <Spinner
                     android:id="@+id/spinner_citizenship"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto"
                     android:popupElevation="30dp"
@@ -288,72 +272,68 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Employment Status"
+                    android:text="@string/employment_status"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp"
+                    android:labelFor="@id/spinner_employmentStatus" />
 
                 <Spinner
                     android:id="@+id/spinner_employmentStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Expected Income"
+                    android:text="@string/expected_income"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
-
+                    android:textSize="20sp"
+                    android:labelFor="@id/spinner_expectedIncome" />
 
                 <Spinner
                     android:id="@+id/spinner_expectedIncome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto"
                     android:popupElevation="30dp"
@@ -361,40 +341,37 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Housing Status"
+                    android:text="@string/housing_status"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
-
+                    android:textSize="20sp"
+                    android:labelFor="@id/spinner_housingStatus" />
 
                 <Spinner
                     android:id="@+id/spinner_housingStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto"
                     android:popupElevation="30dp"
@@ -405,115 +382,108 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
-
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Health Condition"
+                    android:text="@string/health_conditions"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
-
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical" >
 
                     <CheckBox
                         android:id="@+id/healthCondition_1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Living with a mental or physical disability" />
+                        android:text="@string/health_condition_01" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical" >
 
                     <CheckBox
                         android:id="@+id/healthCondition_2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Living with an addiction" />
+                        android:text="@string/health_condition_02" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical" >
 
                     <CheckBox
                         android:id="@+id/healthCondition_3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="In need of medical equipment or other assistance" />
+                        android:text="@string/health_condition_03" />
                 </LinearLayout>
-
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical" >
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="#BEC2C4"></View>
+                    android:background="#BEC2C4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Looking For..."
+                    android:text="@string/looking_for"
                     android:textColor="#BA000000"
-                    android:textSize="20sp">
-
-                </TextView>
+                    android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/spinner_lookingFor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto"
                     android:popupElevation="30dp"
