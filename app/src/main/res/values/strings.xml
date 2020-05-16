@@ -123,5 +123,6 @@
     <string name="hangUp">Hang Up</string>
     <string name="noteHint">Add a note…</string>
     <string name="addNote">Add Note</string>
+    <string name="messages">Messages</string>
 
 </resources>

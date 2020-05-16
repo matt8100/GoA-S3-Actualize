@@ -18,8 +18,6 @@ import com.example.tbdapp.models.Singleton;
 import com.example.tbdapp.models.User;
 
 
-
-
 public class ProfileDisplayFragment extends ProfileFragment {
 
     private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
