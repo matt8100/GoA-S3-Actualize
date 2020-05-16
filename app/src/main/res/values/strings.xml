@@ -1,7 +1,7 @@
 <resources>
 
     <string name="placeholderText">This text is placeholder text.</string>
-    <string name="app_name">TBD App</string>
+    <string name="app_name">Actualize</string>
 
     <string name="clear_text">Clear Text</string>
     <string name="search">Search</string>
@@ -102,6 +102,7 @@
     <string name="advisorImage">Advisor Image</string>
     <string name="backButton">Back Button</string>
     <string name="done">done</string>
+    <string name="logo">Logo</string>
 
     <!-- Chat Activity -->
     <string name="voiceCall">Voice Call</string>
