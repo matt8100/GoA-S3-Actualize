@@ -2,6 +2,7 @@ package com.example.tbdapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         final TextView advisorDescription = findViewById(R.id.advisorProfile_advisorDescription);
         final TextView advisorSkills = findViewById(R.id.advisorProfile_advisorSkills);
         final ImageButton backButton = findViewById(R.id.advisorProfile_backButton);
+        final Button requestButton = findViewById(R.id.requestButton);
 
         // back button
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +47,13 @@ public class AdvisorProfileActivity extends AppCompatActivity {
         advisorImage.setImageResource(getResources().getIdentifier(advisor.avatar, "drawable", this.getPackageName()));
         advisorDescription.setText(advisor.advisorDescription);
         advisorSkills.setText(advisor.advisorSkills);
+
+        requestButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                requestButton.setBackgroundResource(R.drawable.layout_request_sent_button_colour);
+                requestButton.setText(R.string.requestSent);
+            }
+        });
 
     }
 
