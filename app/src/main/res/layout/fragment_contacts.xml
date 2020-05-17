@@ -31,20 +31,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-<LinearLayout
-    android:id="@+id/linear"
-    layout="@layout/custom_search_view"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/searchView">
-    
+
     <com.stfalcon.chatkit.dialogs.DialogsList
-    android:id="@+id/dialogsList"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="80dp" />
+        android:id="@+id/dialogsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

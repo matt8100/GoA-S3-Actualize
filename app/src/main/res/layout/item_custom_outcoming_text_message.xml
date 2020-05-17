@@ -21,8 +21,10 @@
             android:id="@id/messageText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="messageText"
-            android:fontFamily="@font/roboto_medium"/>
+            android:fontFamily="@font/roboto"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="messageText" />
 
     </LinearLayout>
 
