@@ -17,28 +17,28 @@
         app:tabTextColor="@color/white"
         app:tabIndicatorFullWidth="false"
         app:tabIconTint="#ffffff"
-        app:tabTextAppearance="@drawable/ic_profile_icon"
-        app:tabIndicatorHeight="1dp"
+        app:tabIndicatorHeight="2dp"
+        app:tabPaddingStart="40dp"
+        app:tabPaddingEnd="40dp"
+        android:paddingBottom="10dp">
 
-        >
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/exploreTab"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/ic_explore_icon" />-->
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/exploreTab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_explore_icon" />
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/messagesTab"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/ic_message_icon" />-->
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/messagesTab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_message_icon" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/profileTab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_profile_icon" />
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/profileTab"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/ic_profile_icon" />-->
 
     </com.google.android.material.tabs.TabLayout>
 
