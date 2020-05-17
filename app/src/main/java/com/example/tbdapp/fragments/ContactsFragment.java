@@ -2,11 +2,13 @@ package com.example.tbdapp.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -22,6 +24,7 @@ import com.stfalcon.chatkit.dialogs.DialogsList;
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ContactsFragment extends Fragment {
     ArrayList<Advisor> advisorList;
@@ -41,7 +44,7 @@ public class ContactsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_contacts, container, false);
         mDialogsListView = root.findViewById(R.id.dialogsList);
 
-        mAdapter = new DialogsListAdapter<>(new ImageLoader() {
+        mAdapter = new DialogsListAdapter<>(R.layout.item_dialog_custom, new ImageLoader() {
             @Override
             public void loadImage(ImageView imageView, String url, Object payload) {
                 int image = context.getResources().getIdentifier(url, "drawable", context.getPackageName());
@@ -80,14 +83,17 @@ public class ContactsFragment extends Fragment {
         User user = Singleton.getInstance().user;
 
         for(int i=0;i<advisorList.size();i++){
-            ArrayList<Author> users = new ArrayList<>();
-            Advisor advisor = advisorList.get(i);
-            users.add(user);
-            users.add(advisor);
+            if(!Singleton.getInstance().chatHistory.get(advisorList.get(i).id).isEmpty()) {
+                ArrayList<Author> users = new ArrayList<>();
+                Advisor advisor = advisorList.get(i);
+                users.add(user);
+                users.add(advisor);
 
-            Dialog dialog = new Dialog(advisor.id, advisor.avatar, advisor.name, users, Singleton.getLastMessage(Singleton.getInstance().chatHistory.get(advisor.id)), 0);
-            mAdapter.upsertItem(dialog);
-            mAdapter.sortByLastMessageDate();
+                Dialog dialog = new Dialog(advisor.id, advisor.avatar, advisor.name, users, Singleton.getLastMessage(Objects.requireNonNull(Singleton.getInstance().chatHistory.get(advisor.id))), 0);
+                mAdapter.upsertItem(dialog);
+                mAdapter.sortByLastMessageDate();
+
+            }
         }
     }
 }

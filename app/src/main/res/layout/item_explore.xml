@@ -9,21 +9,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/advisorImage"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:adjustViewBounds="false"
             android:contentDescription="@string/advisorImage"
-            android:cropToPadding="false"
-            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_face" />
+            app:srcCompat="@drawable/ic_face">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:id="@+id/advisorName"
@@ -31,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/roboto_slab"
+            android:fontFamily="@font/roboto_slab_bold"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/advisorImage"
             app:layout_constraintTop_toTopOf="parent"

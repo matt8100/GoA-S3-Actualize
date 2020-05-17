@@ -1,10 +1,18 @@
 package com.example.tbdapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.fragments.ProfileDisplayFragment;
@@ -15,6 +23,7 @@ import com.example.tbdapp.fragments.ContactsFragment;
 import com.example.tbdapp.fragments.ExploreFragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -69,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupTabLayout() {
+        final int tabTranslation = 12;
+
         mTabLayout = findViewById(R.id.tabLayout);
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -76,11 +89,23 @@ public class MainActivity extends AppCompatActivity {
                 int position = tab.getPosition();
                 // Log.d(//TAG, "TabLayout Tab selected: " + position);
                 loadFragment(position);
+
+                //(ImageView) tab.getCustomView().findViewById(R.id.icon)
+
+                tab.getCustomView().animate().translationY(0);
+                AlphaAnimation animation1 = new AlphaAnimation(0.8f, 1.0f);
+                animation1.setDuration(1000);
+                animation1.setFillAfter(true);
+                tab.getCustomView().startAnimation(animation1);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                tab.getCustomView().animate().translationY(tabTranslation);
+                AlphaAnimation animation1 = new AlphaAnimation(1.0f, 0.8f);
+                animation1.setDuration(1000);
+                animation1.setFillAfter(true);
+                tab.getCustomView().startAnimation(animation1);
             }
 
             @Override
@@ -88,6 +113,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        View view1 = getLayoutInflater().inflate(R.layout.layout_custom_tabs, null);
+        view1.findViewById(R.id.icon).setBackgroundResource(R.drawable.ic_explore_icon);
+        mTabLayout.addTab(mTabLayout.newTab().setCustomView(view1));
+
+        View view2 = getLayoutInflater().inflate(R.layout.layout_custom_tabs, null);
+        view2.findViewById(R.id.icon).setBackgroundResource(R.drawable.ic_message_icon);
+        mTabLayout.addTab(mTabLayout.newTab().setCustomView(view2));
+
+        View view3 = getLayoutInflater().inflate(R.layout.layout_custom_tabs, null);
+        view3.findViewById(R.id.icon).setBackgroundResource(R.drawable.ic_profile_icon);
+        mTabLayout.addTab(mTabLayout.newTab().setCustomView(view3));
+
+        mTabLayout.getTabAt(1).getCustomView().animate().translationY(tabTranslation);
+        mTabLayout.getTabAt(2).getCustomView().animate().translationY(tabTranslation);
+        AlphaAnimation animation1 = new AlphaAnimation(1.0f, 0.8f);
+        animation1.setDuration(1);
+        animation1.setFillAfter(true);
+        mTabLayout.getTabAt(1).getCustomView().startAnimation(animation1);
+        mTabLayout.getTabAt(2).getCustomView().startAnimation(animation1);
     }
 }
 

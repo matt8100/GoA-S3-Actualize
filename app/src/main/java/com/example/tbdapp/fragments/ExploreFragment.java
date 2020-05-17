@@ -22,6 +22,7 @@ import com.example.tbdapp.views.adapters.ExploreAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ExploreFragment extends Fragment {
 
@@ -33,6 +34,10 @@ public class ExploreFragment extends Fragment {
     private ArrayList<Advisor> advisorList;
     private ArrayList<Advisor> careerAdvisorList = new ArrayList<>();
     private ArrayList<Advisor> financialAdvisorList = new ArrayList<>();
+
+
+    private ArrayList<String> advisorNames = new ArrayList<>();
+    private ArrayList<Advisor> sortedAdvisors =  new ArrayList<>();
 
     public ExploreFragment(ArrayList<Advisor> advisorList) {
         this.advisorList = advisorList;
@@ -56,15 +61,26 @@ public class ExploreFragment extends Fragment {
                     financialAdvisorList.add(advisor);
                     break;
             }
+
+            advisorNames.add(advisor.name);
         }
 
+        Collections.sort(advisorNames);
+        for(String advisorName : advisorNames) {
+            for(Advisor advisor : advisorList) {
+                if(advisor.name.equals(advisorName)) {
+                    sortedAdvisors.add(advisor);
+                }
+            }
+        }
+        
         recyclerView = rootView.findViewById(R.id.exploreRecyclerView);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new ExploreAdapter(getContext(), advisorList);
+        mAdapter = new ExploreAdapter(getContext(), sortedAdvisors);
         recyclerView.setAdapter(mAdapter);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
@@ -118,17 +134,34 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                ExploreAdapter adapter = new ExploreAdapter(getContext(), advisorList);
 
-                switch (position) {
-                    case 1:
-                        adapter = new ExploreAdapter(getContext(), careerAdvisorList);
-                        break;
-                    case 2:
-                        adapter = new ExploreAdapter(getContext(), financialAdvisorList);
-                        break;
+                sortedAdvisors.clear();
+                for(String advisorName : advisorNames) {
+                    switch (position) {
+                        case 0:
+                            for(Advisor advisor : advisorList) {
+                                if(advisor.name.equals(advisorName)) {
+                                    sortedAdvisors.add(advisor);
+                                }
+                            }
+                            break;
+                        case 1:
+                            for(Advisor advisor : careerAdvisorList) {
+                                if(advisor.name.equals(advisorName)) {
+                                    sortedAdvisors.add(advisor);
+                                }
+                            }
+                            break;
+                        case 2:
+                            for(Advisor advisor : financialAdvisorList) {
+                                if(advisor.name.equals(advisorName)) {
+                                    sortedAdvisors.add(advisor);
+                                }
+                            }
+                            break;
+                    }
                 }
-
+                ExploreAdapter adapter = new ExploreAdapter(getContext(), sortedAdvisors);
                 recyclerView.setAdapter(adapter);
             }
 

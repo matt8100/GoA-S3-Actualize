@@ -29,10 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="4dp"
-            android:fontFamily="@font/roboto_condensed_regular"
+            tools:text="messageText"
+            android:fontFamily="@font/roboto_medium"
             android:textColor="#000000"
-            android:textSize="20sp"
-            tools:text="messageText" />
+            android:textSize="20sp"/>
     </LinearLayout>
 
     <TextView
@@ -42,9 +42,10 @@
         android:layout_below="@id/bubble"
         android:layout_alignStart="@id/bubble"
         android:layout_marginStart="4dp"
+        tools:text="messageTime"
         android:fontFamily="@font/roboto_light"
         android:textColor="#000000"
         android:textSize="16sp"
-        tools:text="messageTime" />
+        tools:text="messageTime"/>
 
 </RelativeLayout>

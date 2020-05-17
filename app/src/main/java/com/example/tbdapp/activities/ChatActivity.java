@@ -2,6 +2,7 @@ package com.example.tbdapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -60,11 +62,11 @@ public class ChatActivity extends AppCompatActivity {
                 imageView.setImageResource(image);
             }
         });
-
         mMessagesList.setAdapter(mAdapter);
 
         loadMessages();
 
+        final int[] numOfUserMessagesSent = {0};
         mMessageInput.setInputListener(new MessageInput.InputListener() {
             @Override
             public boolean onSubmit(CharSequence input) {
@@ -73,6 +75,8 @@ public class ChatActivity extends AppCompatActivity {
                 Message message = new Message("0", input.toString(), Singleton.getInstance().user, mDate);
                 mAdapter.addToStart(message, true);
                 Singleton.getInstance().chatHistory.get(mContactId).add(0, message);
+                numOfUserMessagesSent[0]++;
+                startDelayForNewMessage(numOfUserMessagesSent[0]);
                 return true;
             }
         });
@@ -86,7 +90,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void loadMessages() {
-        mAdapter.addToEnd(Singleton.getInstance().chatHistory.get(mContactId), false);
+        mAdapter.addToEnd(Objects.requireNonNull(Singleton.getInstance().chatHistory.get(mContactId)), false);
     }
 
     @Override
@@ -119,6 +123,27 @@ public class ChatActivity extends AppCompatActivity {
         intent.putExtra("advisorAvatar", resDirectory);
         this.startActivity(intent);
         return true;
+    }
+    public void createNewMessage(String senderID, String message) {
+        mDate = new Date();
+        Message newMessage = new Message("1", message, Singleton.getInstance().advisors.get(Integer.parseInt(senderID) - 1), mDate);
+        mAdapter.addToStart(newMessage, true);
+        Singleton.getInstance().chatHistory.get(mContactId).add(0, newMessage);
+    }
+    public void startDelayForNewMessage(int numOfExistingUserMessages) {
+        switch(numOfExistingUserMessages) {
+            case 1:
+                new CountDownTimer(4000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                    }
+                    public void onFinish() {
+                        createNewMessage(mContactId, "Sure thing!");
+                    }
+                }.start();
+                break;
+            default:
+                break;
+        }
     }
 }
 

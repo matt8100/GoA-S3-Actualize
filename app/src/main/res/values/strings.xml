@@ -2,6 +2,8 @@
 
     <string name="placeholderText">This text is placeholder text.</string>
     <string name="placeholderImage">https://www.caribbeangamezone.com/wp-content/uploads/2018/03/avatar-placeholder.png</string>
+
+    <string name="placeholderImage">https://www.caribbeangamezone.com/wp-content/uploads/2018/03/avatar-placeholder.png</string>
     <string name="app_name">TBD App</string>
 
     <string name="clear_text">Clear Text</string>
@@ -92,17 +94,19 @@
     <string name="health_condition_01">Living with a mental or physical disability</string>
     <string name="health_condition_02">Living with an addiction</string>
     <string name="health_condition_03">In need of medical equipment or other assistance</string>
-    <string name="looking_for">Looking For...</string>
+    <string name="looking_for">Looking For…</string>
     
     <!-- Advisor Profile -->
-    <string name="advisorProfile_header1">Description</string>
-    <string name="advisorProfile_header2">Skills</string>
-    <string name="advisorProfile_requestButton">Request</string>
+    <string name="description">Description</string>
+    <string name="skills">Skills</string>
+    <string name="request">Request</string>
+    <string name="requestSent">Request Sent</string>
 
     <!-- Accessibility -->
     <string name="advisorImage">Advisor Image</string>
     <string name="backButton">Back Button</string>
     <string name="done">done</string>
+    <string name="logo">Logo</string>
 
     <!-- Chat Activity -->
     <string name="voiceCall">Voice Call</string>
