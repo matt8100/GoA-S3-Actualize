@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -41,6 +42,7 @@ public class ProfileFragment extends Fragment implements
     private ProfileDisplayFragment profileDisplayFragment;
 
     private View view;
+    private ImageButton doneButton;
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -61,7 +63,7 @@ public class ProfileFragment extends Fragment implements
         setHasOptionsMenu(true);
 
         profileDisplayFragment = ProfileDisplayFragment.newInstance();
-
+        doneButton = view.findViewById(R.id.doneButton);
         profileImage = view.findViewById(R.id.profile_imageView);
         editTextName = view.findViewById(R.id.editText_name);
         editTextName.setFocusable(false);
@@ -108,6 +110,16 @@ public class ProfileFragment extends Fragment implements
         setupSpinner(R.id.spinner_expectedIncome, R.array.labels_expectedIncome, user.expectedIncomeText, true);
         setupSpinner(R.id.spinner_housingStatus, R.array.labels_housingStatus, user.housingStatusText, true);
         setupSpinner(R.id.spinner_lookingFor, R.array.labels_lookingFor, user.lookingForText, true);
+
+
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                saveUserData();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout,profileDisplayFragment);
+                fragmentTransaction.commit();
+            }
+        });
 
         return view;
     }

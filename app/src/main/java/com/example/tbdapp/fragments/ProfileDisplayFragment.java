@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
     private TextView NameTextView, preferredNameTextView, dateOfBirthTextView, emailTextView, provinceTextView, citizenshipTextView, employmentStatusTextView,
             expectedIncomeTextView, housingStatusTextView, lookingForTextView, healthConditionTextView;
     private ImageView profileImageView;
+    private ImageButton editButton;
 
 
     public ProfileDisplayFragment() {
@@ -45,6 +47,7 @@ public class ProfileDisplayFragment extends ProfileFragment {
         fragmentProfile = ProfileFragment.newInstance();
         setHasOptionsMenu(true);
         User user = Singleton.getInstance().user;
+        editButton = v.findViewById(R.id.editButton);
 
         profileImageView = v.findViewById(R.id.profile_imageView);
         profileImageView.setImageResource(getResources().getIdentifier(user.avatar, "drawable", getActivity().getPackageName()));
@@ -92,6 +95,15 @@ public class ProfileDisplayFragment extends ProfileFragment {
         lookingForTextView = v.findViewById(R.id.label_lookingFor);
         lookingForTextView.setText(user.lookingForText);
 
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout, fragmentProfile);
+                fragmentTransaction.commit();
+            }
+        });
+
         return v;
     }
 
@@ -110,8 +122,11 @@ public class ProfileDisplayFragment extends ProfileFragment {
             return true;
         }
 
+
         return onOptionsItemSelected(item);
     }
+
+
 
 
 }
