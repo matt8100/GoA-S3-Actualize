@@ -93,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 //(ImageView) tab.getCustomView().findViewById(R.id.icon)
 
                 tab.getCustomView().animate().translationY(0);
-                AlphaAnimation animation1 = new AlphaAnimation(0.8f, 1.0f);
-                animation1.setDuration(1000);
+                AlphaAnimation animation1 = new AlphaAnimation(0.7f, 1.0f);
+                animation1.setDuration(500);
                 animation1.setFillAfter(true);
                 tab.getCustomView().startAnimation(animation1);
             }
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 tab.getCustomView().animate().translationY(tabTranslation);
-                AlphaAnimation animation1 = new AlphaAnimation(1.0f, 0.8f);
-                animation1.setDuration(1000);
+                AlphaAnimation animation1 = new AlphaAnimation(1.0f, 0.7f);
+                animation1.setDuration(500);
                 animation1.setFillAfter(true);
                 tab.getCustomView().startAnimation(animation1);
             }
