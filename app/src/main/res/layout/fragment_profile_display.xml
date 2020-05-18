@@ -24,7 +24,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00992424"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
 
             <ImageView
                 android:id="@+id/profile_imageView"
-                android:layout_width="411dp"
+                android:layout_width="match_parent"
                 android:layout_height="246dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
@@ -67,7 +67,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/name"
@@ -79,7 +78,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -103,7 +101,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/preferred_name"
@@ -115,7 +112,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -139,7 +135,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/date_of_birth"
@@ -151,7 +146,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -175,7 +169,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/email"
@@ -187,7 +180,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -211,7 +203,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/province"
@@ -223,7 +214,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -247,7 +237,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/citizenship"
@@ -259,7 +248,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -283,7 +271,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/employment_status"
@@ -295,7 +282,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -319,7 +305,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/expected_income"
@@ -331,7 +316,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -355,7 +339,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/housing_status"
@@ -368,7 +351,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -392,7 +374,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/health_conditions"
@@ -404,7 +385,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
@@ -428,7 +408,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/looking_for"
@@ -440,7 +419,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
