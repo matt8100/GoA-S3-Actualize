@@ -133,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
         animation1.setFillAfter(true);
         mTabLayout.getTabAt(1).getCustomView().startAnimation(animation1);
         mTabLayout.getTabAt(2).getCustomView().startAnimation(animation1);
+
+        mTabLayout.setTabRippleColor(null);
+
     }
 }
 
