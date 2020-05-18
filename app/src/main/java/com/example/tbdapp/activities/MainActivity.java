@@ -1,18 +1,12 @@
 package com.example.tbdapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
 
 import com.example.tbdapp.R;
 import com.example.tbdapp.fragments.ProfileDisplayFragment;

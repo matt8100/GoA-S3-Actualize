@@ -137,7 +137,7 @@ public class ChatActivity extends AppCompatActivity {
                     public void onTick(long millisUntilFinished) {
                     }
                     public void onFinish() {
-                        createNewMessage(mContactId, "Sure thing!");
+                        createNewMessage(mContactId, "Sounds good!");
                     }
                 }.start();
                 break;
