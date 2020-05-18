@@ -1,8 +1,5 @@
 <resources>
-
-    <string name="placeholderText">This text is placeholder text.</string>
-    <string name="placeholderImage">https://www.caribbeangamezone.com/wp-content/uploads/2018/03/avatar-placeholder.png</string>
-    <string name="app_name">TBD App</string>
+    <string name="app_name">Actualize</string>
 
     <string name="clear_text">Clear Text</string>
     <string name="search">Search</string>
