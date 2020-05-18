@@ -111,7 +111,7 @@ public class ChatActivity extends AppCompatActivity {
         final boolean forceCallToBeReceiving = false;
 
         //IMPORTANT: Hardcoded value to force which video will be played as the "advisor" on the other end
-        final int videoFile = R.raw.test_video1;
+        final int videoFile = R.raw.example_video_2;
 
         Advisor advisor = Singleton.getInstance().advisors.get(Integer.parseInt(getIntent().getStringExtra("contactId"))-1);
         String advisorName = advisor.name;

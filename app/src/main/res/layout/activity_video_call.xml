@@ -172,9 +172,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="end"
             android:padding="8dp"
-            android:layout_marginTop="48dp">
+            android:layout_marginTop="8dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/secondaryVideoContainer"
@@ -250,7 +250,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_add_note"
             android:contentDescription="@string/notes"
-            android:layout_gravity="end"/>
+            android:layout_gravity="start"/>
 
         <LinearLayout
             android:id="@+id/bottom_bar"

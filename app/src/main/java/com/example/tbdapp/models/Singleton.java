@@ -21,9 +21,12 @@ public class Singleton {
 
         chatHistory = new HashMap<>();
         populateChatHistories();
-        
-        populateMessageList("2", "0", "Hey there Phillip! Would you like to schedule a video call to discuss how I can help you?");
-        populateMessageList("1", "0", "message 1 from marcel");
+
+        populateMessageList("4", "0", "Hi Phillip! How has your resume been going?");
+        populateMessageList("0", "4", "It's been going pretty good, I think I've got a decent start");
+        populateMessageList("4", "0", "That's great to hear! If you have any questions don't hesitate to contact me");
+
+        populateMessageList("11", "0", "Hey there Phillip! Would you like to schedule a video call to discuss how I can help you?");
     }
 
     public static Singleton getInstance() {

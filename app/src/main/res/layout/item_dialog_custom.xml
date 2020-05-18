@@ -7,7 +7,7 @@
         android:id="@id/dialogContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground">
+        android:background="@null">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/dialogAvatar"
@@ -27,9 +27,10 @@
             android:layout_toRightOf="@id/dialogAvatar"
             android:layout_toStartOf="@id/dialogDate"
             android:ellipsize="end"
-            android:includeFontPadding="false"
             android:maxLines="1"
-            android:fontFamily="@font/roboto_slab_bold" />
+            android:fontFamily="@font/roboto_slab_bold"
+            android:text="Advisor Name"
+            android:textColor="#686868"/>
 
         <TextView
             android:id="@id/dialogDate"
@@ -73,7 +74,9 @@
                 android:ellipsize="end"
                 android:gravity="top"
                 android:maxLines="1"
-                android:fontFamily="@font/roboto_condensed_regular"/>
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:text="Description"
+                android:textColor="#686868"/>
 
         </RelativeLayout>
 

@@ -34,7 +34,8 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/advisorImage"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="advisorName" />
+            tools:text="advisorName"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/advisorType"
