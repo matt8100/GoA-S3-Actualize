@@ -80,7 +80,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toTopOf="@+id/requestButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,49 +91,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="48dp">
 
             <TextView
                 android:id="@+id/advisorProfile_header1"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginBottom="24dp"
                 android:fontFamily="@font/roboto_condensed_regular"
                 android:text="@string/description"
                 android:textColor="#000000"
-                android:textSize="32sp" />
+                android:textSize="32sp"
+                android:paddingHorizontal="16dp"/>
 
             <TextView
                 android:id="@+id/advisorProfile_advisorDescription"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:paddingHorizontal="16dp"/>
 
             <TextView
                 android:id="@+id/advisorProfile_header2"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="24dp"
-                android:layout_marginStart="8dp"
                 android:fontFamily="@font/roboto_condensed_regular"
                 android:text="@string/skills"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:paddingHorizontal="16dp"/>
 
             <TextView
                 android:id="@+id/advisorProfile_advisorSkills"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:paddingHorizontal="16dp"/>
         </LinearLayout>
     </ScrollView>
 
@@ -141,7 +140,7 @@
         android:id="@+id/requestButton"
         android:layout_width="216dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/layout_request_button_colour"
         android:clickable="true"
         android:fontFamily="@font/roboto_condensed_regular"
@@ -152,4 +151,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#CCCCCC"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="703dp"
+        app:layout_constraintBottom_toTopOf="@+id/requestButton"
+        android:layout_marginBottom="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
