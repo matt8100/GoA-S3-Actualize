@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">Actualize</string>
+
+    <string name="clear_text">Clear Text</string>
+    <string name="search">Search</string>
+    <string name="all">All</string>
+    <string name="financial">Financial</string>
+    <string name="career">Career</string>
+    <string name="advisorType">Advisor Type</string>
+    <string name="career_advisor">Career Advisor</string>
+    <string name="financial_advisor">Financial Advisor</string>
+
+    <!-- Tab Bar -->
+    <string name="tab_item_explore">Explore</string>
+    <string name="tab_item_messaging">Messaging</string>
+    <string name="tab_item_userProfile">Profile</string>
+
+    <!-- Profile Fragment Spinners -->
+    <string-array name="labels_province">
+
+        <item>Alberta</item>
+        <item>British Columbia</item>
+        <item>Manitoba</item>
+        <item>New Brunswick</item>
+        <item>Newfoundland and Labrador</item>
+        <item>Northwest Territories</item>
+        <item>Nova Scotia</item>
+        <item>Nunavut</item>
+        <item>Ontario</item>
+        <item>Prince Edward Island</item>
+        <item>Quebec</item>
+        <item>Saskatchewan</item>
+        <item>Yukon</item>
+    </string-array>
+    <string-array name="labels_citizenship">
+
+        <item>Canadian Citizen</item>
+        <item>Permanent Resident</item>
+        <item>Refugee</item>
+        <item>Work Permit</item>
+
+    </string-array>
+    <string-array name="labels_employmentStatus">
+
+        <item>Contract Worker</item>
+        <item>Employee</item>
+        <item>Self-employed</item>
+        <item>Unemployed</item>
+
+    </string-array>
+    <string-array name="labels_expectedIncome">
+
+        <item>$20,000</item>
+        <item>$30,000</item>
+        <item>$50,000</item>
+
+    </string-array>
+    <string-array name="labels_housingStatus">
+
+        <item>Free lodger</item>
+        <item>Itinerant</item>
+        <item>Owner</item>
+        <item>Tenant</item>
+
+    </string-array>
+    <string-array name="labels_lookingFor">
+
+        <item>Stable Employment</item>
+        <item>Part-time Employment</item>
+        <item>Career Advice</item>
+        <item>Financial Advice</item>
+
+    </string-array>
+
+    <string name="preferred_name">Preferred name</string>
+    <string name="name">Name</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="email">Email</string>
+    <string name="province">Province</string>
+    <string name="citizenship">Citizenship</string>
+    <string name="employment_status">Employment Status</string>
+    <string name="expected_income">Expected Income</string>
+    <string name="housing_status">Housing Status</string>
+    <string name="health_conditions">Health Conditions</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
+    <string name="health_condition_01">Living with a mental or physical disability</string>
+    <string name="health_condition_02">Living with an addiction</string>
+    <string name="health_condition_03">In need of medical equipment or other assistance</string>
+    <string name="looking_for">Looking For…</string>
+    
+    <!-- Advisor Profile -->
+    <string name="description">Description</string>
+    <string name="skills">Skills</string>
+    <string name="request">Request</string>
+    <string name="requestSent">Request Sent</string>
+
+    <!-- Accessibility -->
+    <string name="advisorImage">Advisor Image</string>
+    <string name="backButton">Back Button</string>
+    <string name="done">done</string>
+    <string name="logo">Logo</string>
+
+    <!-- Chat Activity -->
+    <string name="voiceCall">Voice Call</string>
+    <string name="videoCall">Video Call</string>
+
+<!--    VideoCall Activity-->
+    <string name="recording">Recording</string>
+    <string name="callEnded">Call Ended</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="endCall">End Call</string>
+    <string name="notes">Notes</string>
+    <string name="recordingIcon">●</string>
+    <string name="microphone">Microphone</string>
+    <string name="camera">Camera</string>
+    <string name="record">Record</string>
+    <string name="switchCamera">Switch Camera</string>
+    <string name="hangUp">Hang Up</string>
+    <string name="noteHint">Add a note…</string>
+    <string name="addNote">Add Note</string>
+    <string name="messages">Messages</string>
+
+</resources>

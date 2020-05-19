@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tbdapp">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo_color"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_color"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.MainActivity" android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".fragments.ProfileFragment"
+            android:label = "Profile"
+            android:parentActivityName=".activities.MainActivity">
+        </activity>
+        <activity android:name=".fragments.ProfileDisplayFragment"
+            android:label = "ProfileDisplayFragment"
+            android:parentActivityName=".activities.MainActivity">
+        </activity>
+        <activity android:name=".activities.AdvisorProfileActivity" />
+        <activity
+            android:name=".activities.ChatActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tbdapp.activities.ChatActivity" />
+        </activity>
+        <activity android:name=".activities.VideoCallActivity" android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

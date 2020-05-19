@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:titleTextColor="@color/black"
+        app:subtitleTextColor="@color/black"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <com.stfalcon.chatkit.messages.MessagesList
+        android:id="@+id/messagesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/input"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="0dp"
+        android:background="#F7F7F7"
+
+        app:incomingBubbleDrawable="@drawable/incoming_message_bubble"
+        app:incomingBubblePaddingTop="8dp"
+        app:incomingBubblePaddingBottom="8dp"
+        app:incomingBubblePaddingLeft="4dp"
+        app:incomingBubblePaddingRight="8dp"
+        app:incomingDefaultBubbleColor="#ACB4F3"
+        app:incomingTextColor="#000000"
+        app:incomingTextSize="16sp"
+        app:incomingTimeTextColor="#8C8C8C"
+
+        app:outcomingBubbleDrawable="@drawable/outcoming_message_bubble"
+        app:outcomingBubblePaddingTop="8dp"
+        app:outcomingBubblePaddingBottom="8dp"
+        app:outcomingBubblePaddingLeft="12dp"
+        app:outcomingBubblePaddingRight="8dp"
+        app:outcomingDefaultBubbleColor="#D3D4E0"
+        app:outcomingTextColor="#000000"
+        app:outcomingTextSize="16sp"
+        app:outcomingTimeTextColor="#8C8C8C"
+
+        app:textAutoLink="all"
+        />
+
+    <com.stfalcon.chatkit.messages.MessageInput
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:inputHint="Message..."
+
+        app:showAttachmentButton="true"
+        app:attachmentButtonBackground="@drawable/ic_add_circle"
+        app:attachmentButtonMargin="8dp"
+        app:attachmentButtonDefaultIconColor="@color/white"
+        app:attachmentButtonHeight="40dp"
+        app:attachmentButtonWidth="40dp"
+
+        app:inputButtonIcon="@drawable/layout_nothing"
+        app:inputButtonBackground="@drawable/ic_send_message"
+        app:inputButtonMargin="8dp"
+
+        app:inputBackground="@drawable/layout_messaging_input_background"
+        app:inputTextSize="16sp"
+
+
+        />
+
+</RelativeLayout>
