@@ -5,13 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <ImageButton
+        android:id="@+id/doneButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/transparent"
+        android:clickable="true"
+        android:elevation="9dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/done_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
+        android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
@@ -28,8 +41,8 @@
             
             <ImageView
                 android:id="@+id/profile_imageView"
-                android:layout_width="411dp"
-                android:layout_height="246dp"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:background="@drawable/ic_topstyle_new"
@@ -43,14 +56,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/name"
@@ -63,15 +74,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/disabled_text"
                     android:textSize="18sp"
-                    android:importantForAutofill="no" />
+                    android:importantForAutofill="no"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -90,7 +101,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/preferred_name"
@@ -103,13 +113,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/disabled_text"
                     android:textSize="18sp"
                     android:importantForAutofill="no" />
             </LinearLayout>
@@ -130,7 +139,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/date_of_birth"
@@ -143,13 +151,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="datetime"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/disabled_text"
                     android:textSize="18sp"
                     android:importantForAutofill="no" />
             </LinearLayout>
@@ -170,7 +177,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/email"
@@ -183,13 +189,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@null"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="textEmailAddress"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/disabled_text"
                     android:textSize="18sp"
                     android:importantForAutofill="no" />
             </LinearLayout>
@@ -210,7 +215,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/province"
@@ -247,7 +251,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/citizenship"
@@ -285,7 +288,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/employment_status"
@@ -319,7 +321,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/expected_income"
@@ -357,7 +358,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/housing_status"
@@ -395,7 +395,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/health_conditions"
@@ -470,7 +469,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_condensed_regular"
                     android:text="@string/looking_for"

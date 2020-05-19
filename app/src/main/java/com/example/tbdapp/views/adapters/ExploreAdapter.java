@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tbdapp.R;
 import com.example.tbdapp.activities.AdvisorProfileActivity;
 import com.example.tbdapp.models.Advisor;
-import com.example.tbdapp.models.AdvisorType;
 
 import java.util.ArrayList;
 
@@ -51,7 +50,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ExploreV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExploreViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ExploreViewHolder holder, final int position) {
         final Advisor currentAdvisor = advisorList.get(position);
 
         holder.advisorImage.setImageResource(context.getResources().getIdentifier(currentAdvisor.avatar, "drawable", context.getPackageName()));

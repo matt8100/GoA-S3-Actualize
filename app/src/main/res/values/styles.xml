@@ -27,4 +27,17 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="advisorName">
+        <item name="android:fontFamily">@font/roboto_slab_bold</item>
+    </style>
+    <style name="title">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="subtitle">
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+    <style name="description">
+        <item name="android:fontFamily">@font/roboto_condensed_regular</item>
+    </style>
+
 </resources>
